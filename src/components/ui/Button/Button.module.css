@@ -1,0 +1,120 @@
+.button {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid transparent;
+  background: transparent;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-weight: 800;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.leading {
+  flex-direction: row-reverse;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+/* — variantes — */
+
+.primary {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.primary:hover {
+  background: var(--color-accent-hover);
+}
+
+.primary:active {
+  background: var(--color-accent-pressed);
+}
+
+.secondary {
+  border-color: var(--color-divider);
+  background: var(--color-bg);
+}
+
+.secondary:hover {
+  background: color-mix(in srgb, var(--color-text) 7%, var(--color-bg));
+}
+
+.secondary:active {
+  background: color-mix(in srgb, var(--color-text) 14%, var(--color-bg));
+}
+
+.ghost {
+  padding-inline: 0;
+  color: var(--color-accent);
+}
+
+.ghost:hover {
+  color: var(--color-accent-hover);
+}
+
+/* — tamaños — */
+
+.small {
+  min-width: 40px;
+  min-height: 40px;
+  padding-block: 0;
+  font-size: 14px;
+}
+
+.small:not(.ghost) {
+  padding-inline: 12px;
+}
+
+.medium {
+  gap: 28px;
+  min-width: 150px;
+  min-height: 44px;
+  padding: 12px 14px;
+  font-size: 15px;
+}
+
+.large {
+  flex: 1 1 0;
+  gap: 8px;
+  min-height: 52px;
+  padding: 15px 12px;
+  font-size: 15px;
+}
+
+/* — visibilidad de la etiqueta — */
+
+.labelNever,
+.labelFromTablet {
+  justify-content: center;
+  padding-inline: 0;
+}
+
+.labelNever .label,
+.labelFromTablet .label {
+  display: none;
+}
+
+@media (width >= 768px) {
+  .labelFromTablet:not(.ghost) {
+    justify-content: space-between;
+    padding-inline: 12px;
+  }
+
+  .labelFromTablet .label {
+    display: inline;
+  }
+
+  .large {
+    flex: 0 0 auto;
+    gap: 40px;
+    min-width: 210px;
+    padding-inline: 18px;
+    font-size: 16px;
+  }
+}

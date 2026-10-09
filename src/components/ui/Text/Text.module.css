@@ -1,0 +1,109 @@
+.text {
+  margin: 0;
+}
+
+.paragraph {
+  font-size: 15px;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+.paragraphLarge {
+  font-size: 18px;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+.lead {
+  font-size: var(--lead-size);
+  line-height: 1.35;
+  text-wrap: pretty;
+}
+
+.title {
+  font-size: var(--text-title-size, 26px);
+  font-weight: 800;
+  line-height: 1.12;
+  text-wrap: pretty;
+}
+
+.figure {
+  font-size: var(--text-figure-size, 56px);
+  font-stretch: 118%;
+  font-weight: 900;
+  line-height: 0.9;
+}
+
+.greeting {
+  font-size: 19px;
+  font-weight: 600;
+}
+
+.role {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.eyebrow,
+.label,
+.caption,
+.note,
+.micro {
+  font-family: var(--font-mono);
+}
+
+.eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.label {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.caption {
+  font-size: 13px;
+}
+
+.note {
+  font-size: 12px;
+}
+
+.micro {
+  font-size: 11px;
+}
+
+.toneDefault {
+  color: inherit;
+}
+
+.toneMuted {
+  color: var(--color-muted);
+}
+
+.toneAccent {
+  color: var(--color-accent-ink);
+}
+
+@media (width >= 768px) {
+  .greeting {
+    font-size: 22px;
+  }
+
+  .role {
+    font-size: 26px;
+  }
+}
+
+@media (width >= 1024px) {
+  .greeting {
+    font-size: 24px;
+  }
+
+  .role {
+    font-size: 30px;
+  }
+}
