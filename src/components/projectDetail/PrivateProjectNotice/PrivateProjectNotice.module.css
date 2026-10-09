@@ -1,0 +1,12 @@
+.notice {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 16px;
+  background: var(--color-surface);
+}
+
+.icon {
+  margin-top: 2px;
+  color: var(--color-accent-ink);
+}

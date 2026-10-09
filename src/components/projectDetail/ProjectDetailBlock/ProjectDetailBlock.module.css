@@ -1,0 +1,7 @@
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: var(--border-rule);
+}
