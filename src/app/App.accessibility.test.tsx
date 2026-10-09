@@ -55,6 +55,20 @@ describe('App accessibility', () => {
     expect(screen.getByRole('region', { name: 'Proyectos' })).toBeInTheDocument();
   });
 
+  it('offers a keyboard link at the start of every section to skip it', () => {
+    render(<App />);
+
+    expect(screen.getByRole('link', { name: 'Saltar a Sobre mí' })).toHaveAttribute(
+      'href',
+      '#sobre-mi',
+    );
+    expect(screen.getByRole('link', { name: 'Saltar a Contacto' })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Volver al inicio' })).toHaveAttribute(
+      'href',
+      '#inicio',
+    );
+  });
+
   it('takes the rest of the page out of reach while a dialog is open', () => {
     render(<App />);
     fireEvent.click(screen.getByRole('button', { name: /RequiFy/ }));

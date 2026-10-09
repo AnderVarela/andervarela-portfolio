@@ -1,6 +1,7 @@
 import type { CSSProperties, ReactNode } from 'react';
 
 import { buildSectionTitleId, type SectionId } from '@/content/sections';
+import { SkipSectionLink } from '@/components/layout/SkipSectionLink/SkipSectionLink';
 import { joinClassNames } from '@/utils/classNames';
 
 import styles from './Section.module.css';
@@ -23,11 +24,15 @@ export function Section({ id, children, pinnedHeight }: SectionProps) {
     <section
       id={id}
       data-section
+      tabIndex={-1}
       aria-labelledby={buildSectionTitleId(id)}
       className={joinClassNames(styles.section, isPinned && styles.pinned)}
       style={isPinned ? pinnedStyle : undefined}
     >
-      <div className={styles.viewport}>{children}</div>
+      <div className={styles.viewport}>
+        <SkipSectionLink sectionId={id} />
+        {children}
+      </div>
     </section>
   );
 }

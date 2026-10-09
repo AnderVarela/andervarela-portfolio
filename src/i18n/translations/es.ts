@@ -69,6 +69,8 @@ export const spanishTranslation = {
   },
   accessibility: {
     skipToContent: 'Saltar al contenido',
+    skipToSection: 'Saltar a',
+    backToTop: 'Volver al inicio',
     sectionsNavigation: 'Secciones',
     languageSelector: 'Idioma',
     avatarDescription: 'Avatar de Ander, ilustración decorativa',
