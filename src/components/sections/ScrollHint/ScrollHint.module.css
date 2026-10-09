@@ -1,0 +1,21 @@
+.scrollHint {
+  position: absolute;
+  bottom: 32px;
+  left: calc(var(--rail-width) + var(--page-padding-x));
+  display: none;
+  gap: 14px;
+  align-items: center;
+  opacity: calc(1 - clamp(0, calc(var(--section-top, 0) / -80), 1));
+}
+
+.line {
+  width: 2px;
+  height: 40px;
+  background: linear-gradient(var(--color-accent) 50%, var(--color-divider) 50%);
+}
+
+@media (width >= 768px) {
+  .scrollHint {
+    display: flex;
+  }
+}

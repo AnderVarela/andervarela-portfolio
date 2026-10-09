@@ -1,0 +1,22 @@
+.footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: var(--border-rule);
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.sourceLink {
+  color: var(--color-muted);
+  text-underline-offset: 3px;
+}
+
+.sourceLink:hover {
+  color: var(--color-accent);
+}

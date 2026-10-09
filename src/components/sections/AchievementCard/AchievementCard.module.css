@@ -1,0 +1,8 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+  padding-top: 16px;
+  border-top: var(--border-rule);
+}
