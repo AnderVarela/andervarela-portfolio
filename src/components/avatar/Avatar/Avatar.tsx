@@ -21,12 +21,7 @@ export function Avatar() {
   const poseDescription = AVATAR_POSES[activePoseIndex]?.description ?? '';
 
   return (
-    <div
-      ref={avatarReference}
-      role="img"
-      aria-label={`${translation.accessibility.avatarDescription}: ${poseDescription}`}
-      className={styles.avatar}
-    >
+    <div ref={avatarReference} className={styles.avatar}>
       <div data-avatar-tilt className={styles.tilt}>
         <button
           type="button"
@@ -35,10 +30,16 @@ export function Avatar() {
           className={styles.winkArea}
           onClick={triggerWink}
         />
-        {AVATAR_POSES.map((pose, poseIndex) => (
-          <AvatarPoseImage key={pose.sectionId} poseIndex={poseIndex} imageUrl={pose.imageUrl} />
-        ))}
-        <TechnologyOrbit poseIndex={SKILLS_POSE_INDEX} />
+        <div
+          role="img"
+          aria-label={`${translation.accessibility.avatarDescription}: ${poseDescription}`}
+          className={styles.poses}
+        >
+          {AVATAR_POSES.map((pose, poseIndex) => (
+            <AvatarPoseImage key={pose.sectionId} poseIndex={poseIndex} imageUrl={pose.imageUrl} />
+          ))}
+          <TechnologyOrbit poseIndex={SKILLS_POSE_INDEX} />
+        </div>
       </div>
     </div>
   );

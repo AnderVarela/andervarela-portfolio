@@ -9,6 +9,12 @@
   --color-accent-hover: #ff7a63;
   --color-accent-pressed: #ff9783;
   --color-accent-ink: #ff6b52;
+
+  /* Acento como fondo de texto: en claro se oscurece para llegar a 4,5:1 con el texto. */
+  --color-accent-fill: var(--color-accent);
+  --color-accent-fill-hover: var(--color-accent-hover);
+  --color-accent-fill-pressed: var(--color-accent-pressed);
+
   --color-accent-soft: color-mix(in oklab, var(--color-accent) 18%, var(--color-bg));
   --color-accent-soft-text: var(--color-accent-ink);
   --color-neutral-soft: color-mix(in oklab, var(--color-text) 10%, var(--color-bg));
@@ -32,6 +38,9 @@
   --color-accent-hover: #dd2b0f;
   --color-accent-pressed: #ae1800;
   --color-accent-ink: #ae1800;
+  --color-accent-fill: #cf2409;
+  --color-accent-fill-hover: #b81d05;
+  --color-accent-fill-pressed: #9c1500;
   --color-accent-soft: color-mix(in oklab, var(--color-accent) 14%, var(--color-bg));
   --color-accent-soft-text: var(--color-accent-pressed);
   --color-neutral-soft: color-mix(in oklab, var(--color-text) 8%, var(--color-bg));

@@ -21,7 +21,7 @@
 }
 
 .value:hover {
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 
 .trailing {

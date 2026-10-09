@@ -7,9 +7,12 @@ import { useProjectDetailStore } from '@/stores/useProjectDetailStore';
 import { App } from './App';
 
 describe('App', () => {
+  beforeEach(() => {
+    usePreferencesStore.setState({ language: 'es' });
+  });
+
   afterEach(() => {
     useProjectDetailStore.getState().closeProject();
-    usePreferencesStore.setState({ language: 'es' });
   });
 
   it('renders the eight sections with their anchors', () => {
@@ -29,7 +32,7 @@ describe('App', () => {
   it('translates the interface when another language is selected', () => {
     render(<App />);
 
-    fireEvent.click(screen.getByRole('button', { name: 'EN' }));
+    fireEvent.click(screen.getByRole('button', { name: /English/ }));
 
     expect(screen.getByText("Hi, I'm")).toBeInTheDocument();
     expect(document.documentElement.lang).toBe('en');

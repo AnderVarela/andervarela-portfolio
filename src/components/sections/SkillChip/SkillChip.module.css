@@ -11,7 +11,7 @@
 }
 
 .chip:hover {
-  border-color: var(--color-accent);
-  background: var(--color-accent);
+  border-color: var(--color-accent-fill);
+  background: var(--color-accent-fill);
   color: var(--color-bg);
 }

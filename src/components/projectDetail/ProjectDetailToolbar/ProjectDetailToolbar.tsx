@@ -37,7 +37,7 @@ export function ProjectDetailToolbar({
 
   return (
     <div className={styles.toolbar}>
-      <span className={styles.position}>
+      <span className={styles.position} aria-live="polite">
         <Text kind={TextTypes.Note} label={positionLabel} tone={TextTones.Muted} />
       </span>
       <Button

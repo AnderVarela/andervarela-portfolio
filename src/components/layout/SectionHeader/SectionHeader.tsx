@@ -1,7 +1,7 @@
 import { SectionEyebrow } from '@/components/layout/SectionEyebrow/SectionEyebrow';
 import { Heading } from '@/components/ui/Heading/Heading';
 import { HeadingTypes, type HeadingType } from '@/components/ui/Heading/Heading.types';
-import { formatSectionNumber, type SectionId } from '@/content/sections';
+import { buildSectionTitleId, formatSectionNumber, type SectionId } from '@/content/sections';
 
 import styles from './SectionHeader.module.css';
 
@@ -21,7 +21,7 @@ export function SectionHeader({
   return (
     <header className={styles.header}>
       <SectionEyebrow sectionNumber={formatSectionNumber(sectionId)} label={sectionName} />
-      <Heading kind={headingKind} label={title} />
+      <Heading id={buildSectionTitleId(sectionId)} kind={headingKind} label={title} />
     </header>
   );
 }

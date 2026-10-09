@@ -18,6 +18,8 @@ import {
 
 interface ButtonProps {
   label: string;
+  /* Nombre para lectores de pantalla cuando la etiqueta visible necesita contexto. */
+  accessibleLabel?: string;
   onClick: MouseEventHandler<HTMLButtonElement>;
   variant?: ButtonVariant;
   size?: ButtonSize;
@@ -32,6 +34,7 @@ interface ButtonProps {
 
 export function Button({
   label,
+  accessibleLabel = label,
   onClick,
   variant = ButtonVariants.Secondary,
   size = ButtonSizes.Small,
@@ -58,7 +61,7 @@ export function Button({
       type="button"
       className={buttonClassName}
       onClick={onClick}
-      aria-label={label}
+      aria-label={accessibleLabel}
       aria-expanded={isExpanded}
       aria-haspopup={opensDialog ? 'dialog' : undefined}
     >

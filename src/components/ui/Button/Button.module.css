@@ -24,16 +24,16 @@
 /* — variantes — */
 
 .primary {
-  background: var(--color-accent);
+  background: var(--color-accent-fill);
   color: var(--color-bg);
 }
 
 .primary:hover {
-  background: var(--color-accent-hover);
+  background: var(--color-accent-fill-hover);
 }
 
 .primary:active {
-  background: var(--color-accent-pressed);
+  background: var(--color-accent-fill-pressed);
 }
 
 .secondary {
@@ -51,11 +51,11 @@
 
 .ghost {
   padding-inline: 0;
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 
 .ghost:hover {
-  color: var(--color-accent-hover);
+  color: var(--color-text);
 }
 
 /* — tamaños — */

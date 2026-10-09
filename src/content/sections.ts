@@ -47,3 +47,8 @@ export type SectionNameKey = SectionDefinition['nameKey'];
 export function getSectionNameKey(sectionId: SectionId): SectionNameKey {
   return SECTIONS.find((section) => section.id === sectionId)?.nameKey ?? 'home';
 }
+
+/* Id del titular de una sección: con él la región se anuncia por su nombre. */
+export function buildSectionTitleId(sectionId: SectionId): string {
+  return `${sectionId}-title`;
+}

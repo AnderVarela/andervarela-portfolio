@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties, type RefObject } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 
 import { SECTIONS } from '@/content/sections';
 import {
@@ -21,10 +21,8 @@ export type DetailPhase = (typeof DetailPhases)[keyof typeof DetailPhases];
 
 /* Algo menos que la transición CSS del panel (0,5 s) para desmontar justo al terminar. */
 const COLLAPSE_MILLISECONDS = 480;
-const FOCUS_DELAY_MILLISECONDS = 450;
-const CLOSE_KEY = 'Escape';
-const FOCUS_CYCLE_KEY = 'Tab';
-const FOCUSABLE_SELECTOR = 'button:not([disabled]), a[href]';
+export const OPENING_ANIMATION_MILLISECONDS = 450;
+const STEP_BY_ARROW_KEY: Partial<Record<string, number>> = { ArrowLeft: -1, ArrowRight: 1 };
 
 interface ProjectDetailTransition {
   phase: DetailPhase;
@@ -105,77 +103,17 @@ export function useProjectDetailTransition(projectId: string): ProjectDetailTran
   return { phase, collapsedStyle: toPositionStyle(collapsedRectangle), requestClose };
 }
 
-function findFocusTargetWhenCycling(
-  panelElement: HTMLElement,
-  isMovingBackwards: boolean,
-): HTMLElement | null {
-  const focusableElements = [...panelElement.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)];
-  const firstElement = focusableElements.at(0);
-  const lastElement = focusableElements.at(-1);
-  const focusedElement = document.activeElement;
-
-  if (!firstElement || !lastElement) return null;
-  if (!panelElement.contains(focusedElement)) return firstElement;
-  if (isMovingBackwards && focusedElement === firstElement) return lastElement;
-  if (!isMovingBackwards && focusedElement === lastElement) return firstElement;
-  return null;
-}
-
-/* Escape cierra el detalle y Tab no deja que el foco salga de él. */
-export function useDialogKeyboard(
-  panelReference: RefObject<HTMLElement | null>,
-  onClose: () => void,
-): void {
-  const latestOnClose = useRef(onClose);
-
+/* Las flechas izquierda y derecha pasan al proyecto anterior y al siguiente sin cerrar. */
+export function useAdjacentProjectKeys(): void {
   useEffect(() => {
-    latestOnClose.current = onClose;
-  });
-
-  useEffect(() => {
-    function handleKeyDown(event: KeyboardEvent): void {
-      if (event.key === CLOSE_KEY) latestOnClose.current();
-      if (event.key !== FOCUS_CYCLE_KEY || !panelReference.current) return;
-
-      const focusTarget = findFocusTargetWhenCycling(panelReference.current, event.shiftKey);
-      if (focusTarget) {
-        event.preventDefault();
-        focusTarget.focus();
-      }
+    function showAdjacentProjectOnArrow(event: KeyboardEvent): void {
+      const step = STEP_BY_ARROW_KEY[event.key];
+      if (step !== undefined) useProjectDetailStore.getState().showAdjacentProject(step);
     }
 
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keydown', showAdjacentProjectOnArrow);
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [panelReference]);
-}
-
-/* Lleva el foco al botón de cerrar al abrir y lo devuelve a quien abrió el detalle al cerrar. */
-export function useDialogFocus(initialFocusReference: RefObject<HTMLElement | null>): void {
-  useEffect(() => {
-    const previouslyFocusedElement = document.activeElement;
-    const focusTimeoutId = setTimeout(
-      () => initialFocusReference.current?.focus({ preventScroll: true }),
-      prefersReducedMotion() ? 0 : FOCUS_DELAY_MILLISECONDS,
-    );
-
-    return () => {
-      clearTimeout(focusTimeoutId);
-      if (previouslyFocusedElement instanceof HTMLElement) {
-        previouslyFocusedElement.focus({ preventScroll: true });
-      }
-    };
-  }, [initialFocusReference]);
-}
-
-/* Mientras el detalle está abierto la página de fondo no hace scroll. */
-export function usePageScrollLock(): void {
-  useEffect(() => {
-    document.documentElement.style.overflow = 'hidden';
-
-    return () => {
-      document.documentElement.style.overflow = '';
+      window.removeEventListener('keydown', showAdjacentProjectOnArrow);
     };
   }, []);
 }

@@ -74,5 +74,9 @@ export const englishTranslation: Translation = {
     sectionsNavigation: 'Sections',
     languageSelector: 'Language',
     avatarDescription: 'Avatar of Ander, decorative illustration',
+    opensInNewTab: 'opens in a new tab',
+    copyEmail: 'Copy email',
+    emailCopied: 'Email copied',
+    projectDetailContent: 'Project detail',
   },
 };

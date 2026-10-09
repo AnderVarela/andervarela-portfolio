@@ -4,6 +4,8 @@ import { Icon } from '@/components/ui/Icon/Icon';
 import { IconNames, IconSizes } from '@/components/ui/Icon/Icon.types';
 import { Text } from '@/components/ui/Text/Text';
 import { TextTones, TextTypes } from '@/components/ui/Text/Text.types';
+import { VisuallyHidden } from '@/components/ui/VisuallyHidden/VisuallyHidden';
+import { useTranslation } from '@/i18n/useTranslation';
 
 import styles from './ContactRow.module.css';
 
@@ -16,6 +18,8 @@ interface ContactRowProps {
 }
 
 export function ContactRow({ label, href, value, opensInNewTab = false, action }: ContactRowProps) {
+  const translation = useTranslation();
+
   return (
     <div className={styles.row}>
       <span className={styles.label}>
@@ -28,8 +32,9 @@ export function ContactRow({ label, href, value, opensInNewTab = false, action }
         rel={opensInNewTab ? 'noopener noreferrer' : undefined}
       >
         {value}
+        {opensInNewTab && <VisuallyHidden label={`(${translation.accessibility.opensInNewTab})`} />}
       </a>
-      <span className={styles.trailing}>
+      <span className={styles.trailing} aria-hidden={action ? undefined : 'true'}>
         {action ?? <Icon name={IconNames.ArrowUpRight} size={IconSizes.ExtraLarge} />}
       </span>
     </div>

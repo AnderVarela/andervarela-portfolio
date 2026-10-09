@@ -1,4 +1,7 @@
+import type { FocusEvent } from 'react';
+
 import type { Project, ProjectGroup } from '@/content/projects';
+import { clamp } from '@/utils/math';
 
 export interface IndexedProject {
   project: Project;
@@ -50,4 +53,36 @@ export function arrangeProjectsForTrack(projects: readonly Project[]): TrackItem
   });
 
   return trackItems;
+}
+
+const SECTION_SELECTOR = '[data-section]';
+const HORIZONTAL_TRACK_DIRECTION = 'row';
+
+/*
+ * La pista avanza con el scroll vertical, así que una tarjeta enfocada con el teclado
+ * puede quedar fuera de la ventana. Se lleva el scroll al punto que la alinea al inicio.
+ */
+export function scrollFocusedCardIntoView(
+  event: FocusEvent<HTMLDivElement>,
+  overflowDistance: number,
+): void {
+  const trackElement = event.currentTarget;
+  const focusedElement = event.target;
+  const sectionElement = trackElement.closest(SECTION_SELECTOR);
+  const isHorizontalTrack =
+    window.getComputedStyle(trackElement).flexDirection === HORIZONTAL_TRACK_DIRECTION;
+  const isKeyboardFocus = focusedElement.matches(':focus-visible');
+
+  if (!sectionElement || !isHorizontalTrack || !isKeyboardFocus || overflowDistance === 0) return;
+
+  const cardOffsetInTrack =
+    focusedElement.getBoundingClientRect().left - trackElement.getBoundingClientRect().left;
+  const trackProgress = clamp(cardOffsetInTrack / overflowDistance);
+  const sectionRectangle = sectionElement.getBoundingClientRect();
+  const pinnedScrollDistance = sectionRectangle.height - window.innerHeight;
+
+  window.scrollTo({
+    top: sectionRectangle.top + window.scrollY + trackProgress * pinnedScrollDistance,
+    behavior: 'auto',
+  });
 }
