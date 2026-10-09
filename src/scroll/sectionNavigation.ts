@@ -29,3 +29,12 @@ export function createSectionLinkHandler(sectionId: SectionId, onNavigate?: () =
     scrollToSection(sectionId);
   };
 }
+
+/*
+ * Lleva el scroll y el foco a una sección, para que el siguiente Tab continúe desde ella.
+ * La sección debe admitir foco programático (tabIndex -1).
+ */
+export function moveToSection(sectionId: SectionId): void {
+  scrollToSection(sectionId);
+  document.getElementById(sectionId)?.focus({ preventScroll: true });
+}

@@ -71,6 +71,8 @@ export const englishTranslation: Translation = {
   },
   accessibility: {
     skipToContent: 'Skip to content',
+    skipToSection: 'Skip to',
+    backToTop: 'Back to top',
     sectionsNavigation: 'Sections',
     languageSelector: 'Language',
     avatarDescription: 'Avatar of Ander, decorative illustration',

@@ -71,6 +71,8 @@ export const galicianTranslation: Translation = {
   },
   accessibility: {
     skipToContent: 'Saltar ao contido',
+    skipToSection: 'Saltar a',
+    backToTop: 'Volver ao inicio',
     sectionsNavigation: 'Seccións',
     languageSelector: 'Idioma',
     avatarDescription: 'Avatar de Ander, ilustración decorativa',

@@ -2,6 +2,11 @@
   position: relative;
 }
 
+/* Recibe el foco al saltar desde otra sección, pero no es un control. */
+.section:focus-visible {
+  outline: none;
+}
+
 .viewport {
   position: relative;
   display: flex;
@@ -14,7 +19,12 @@
     height: var(--section-pinned-height);
   }
 
-  .pinned > .viewport {
+  .pinned > /* Recibe el foco al saltar desde otra sección, pero no es un control. */
+.section:focus-visible {
+    outline: none;
+  }
+
+  .viewport {
     position: sticky;
     top: 0;
     height: 100vh;
