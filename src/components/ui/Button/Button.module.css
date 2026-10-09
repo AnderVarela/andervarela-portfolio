@@ -58,6 +58,24 @@
   color: var(--color-text);
 }
 
+/*
+ * — foco —
+ * Sobre el relleno de acento el anillo de acento no se distingue: usa el color de texto.
+ * En el botón con borde, el anillo ocupa el sitio del borde en vez de duplicarlo.
+ */
+
+.primary:focus-visible {
+  outline-color: var(--color-text);
+}
+
+.secondary:focus-visible {
+  outline-offset: -2px;
+}
+
+.ghost:focus-visible {
+  outline-offset: 4px;
+}
+
 /* — tamaños — */
 
 .small {

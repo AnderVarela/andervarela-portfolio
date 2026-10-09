@@ -18,3 +18,8 @@
 .card:hover {
   border-top-color: var(--color-accent);
 }
+
+/* Separado de la tarjeta para que no se confunda con su borde superior. */
+.card:focus-visible {
+  outline-offset: 6px;
+}

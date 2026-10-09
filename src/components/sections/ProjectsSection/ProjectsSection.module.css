@@ -31,5 +31,8 @@
   /* clip y no hidden: el foco no debe poder desplazar la ventana por su cuenta. */
   .trackWindow {
     overflow: clip;
+
+    /* Deja sitio al anillo de foco de las tarjetas, que sobresale de la ventana. */
+    overflow-clip-margin: 10px;
   }
 }

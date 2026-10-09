@@ -13,3 +13,7 @@
 .skipLink:focus {
   top: 16px;
 }
+
+.skipLink:focus-visible {
+  outline-color: var(--color-text);
+}

@@ -1,11 +1,16 @@
 .link {
   display: flex;
   gap: 12px;
+  width: fit-content;
   align-items: center;
   padding: 8px 12px 8px 0;
   color: var(--color-muted);
   letter-spacing: 0.04em;
   text-decoration: none;
+}
+
+.link:focus-visible {
+  outline-offset: 4px;
 }
 
 .link:hover {

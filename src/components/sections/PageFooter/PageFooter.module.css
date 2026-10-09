@@ -17,6 +17,10 @@
   text-underline-offset: 3px;
 }
 
+.sourceLink:focus-visible {
+  outline-offset: 4px;
+}
+
 .sourceLink:hover {
   color: var(--color-accent-ink);
 }

@@ -21,6 +21,10 @@
   text-decoration: none;
 }
 
+.brand:focus-visible {
+  outline-offset: 4px;
+}
+
 @media (width >= 768px) {
   .mobileBar {
     display: none;
