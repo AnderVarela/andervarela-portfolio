@@ -1,0 +1,43 @@
+:root {
+  --font-sans: 'Archivo Variable', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+
+  --color-bg: #121110;
+  --color-surface: #1d1b1a;
+  --color-text: #f1efed;
+  --color-accent: #ff563c;
+  --color-accent-hover: #ff7a63;
+  --color-accent-pressed: #ff9783;
+  --color-accent-ink: #ff6b52;
+  --color-accent-soft: color-mix(in oklab, var(--color-accent) 18%, var(--color-bg));
+  --color-accent-soft-text: var(--color-accent-ink);
+  --color-neutral-soft: color-mix(in oklab, var(--color-text) 10%, var(--color-bg));
+  --color-neutral-soft-text: color-mix(in oklab, var(--color-text) 85%, var(--color-bg));
+  --color-divider: color-mix(in srgb, var(--color-text) 26%, transparent);
+  --color-muted: color-mix(in oklab, var(--color-text) 66%, var(--color-bg));
+  --color-grid-line: color-mix(in srgb, var(--color-text) 7%, transparent);
+  --color-decoration: color-mix(in srgb, var(--color-text) 6%, transparent);
+  --color-backdrop: rgb(0 0 0 / 62%);
+  --shadow-overlay: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
+  --border-rule: 2px solid var(--color-divider);
+
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  --color-bg: #f3f2f2;
+  --color-surface: #e7e5e4;
+  --color-text: #201e1d;
+  --color-accent: #ec3013;
+  --color-accent-hover: #dd2b0f;
+  --color-accent-pressed: #ae1800;
+  --color-accent-ink: #ae1800;
+  --color-accent-soft: color-mix(in oklab, var(--color-accent) 14%, var(--color-bg));
+  --color-accent-soft-text: var(--color-accent-pressed);
+  --color-neutral-soft: color-mix(in oklab, var(--color-text) 8%, var(--color-bg));
+  --color-divider: color-mix(in srgb, var(--color-text) 34%, transparent);
+  --color-muted: color-mix(in oklab, var(--color-text) 70%, var(--color-bg));
+  --color-grid-line: color-mix(in srgb, var(--color-text) 9%, transparent);
+
+  color-scheme: light;
+}

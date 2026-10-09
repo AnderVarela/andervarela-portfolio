@@ -1,0 +1,14 @@
+.highlights {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  margin: 0;
+  padding: 0;
+  border-top: var(--border-rule);
+  list-style: none;
+}
+
+@media (width >= 768px) {
+  .highlights {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

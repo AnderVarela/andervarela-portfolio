@@ -1,0 +1,40 @@
+.panel {
+  --thumbnail-background: var(--color-bg);
+  --project-card-title-size: 22px;
+
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: 14px;
+  padding: 14px 18px 18px;
+  border-top: 2px solid var(--color-accent);
+  background: color-mix(in oklab, var(--color-surface) 70%, transparent);
+}
+
+.header {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.members {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (width >= 768px) {
+  .panel {
+    --project-card-width: 270px;
+  }
+
+  .members {
+    flex-direction: row;
+  }
+}
+
+@media (width >= 1024px) {
+  .panel {
+    --project-card-width: 300px;
+  }
+}

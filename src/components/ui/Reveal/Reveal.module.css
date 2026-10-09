@@ -1,0 +1,62 @@
+/*
+ * --section-enter y --section-exit los escribe la coreografía de scroll en cada sección.
+ * Sin ellos (sin JavaScript o con movimiento reducido) el contenido se muestra tal cual.
+ */
+.reveal {
+  --reveal-delay: 0;
+  --reveal-progress: clamp(0, calc(var(--section-enter, 1) * 1.5 - var(--reveal-delay) * 0.15), 1);
+  --reveal-exit: 0;
+
+  opacity: calc(var(--reveal-progress) * (1 - var(--reveal-exit)));
+}
+
+.fadesOnExit {
+  --reveal-exit: var(--section-exit, 0);
+}
+
+.orderSecond {
+  --reveal-delay: 1;
+}
+
+.orderThird {
+  --reveal-delay: 2;
+}
+
+.orderFourth {
+  --reveal-delay: 3;
+}
+
+.up {
+  transform: translate3d(
+    0,
+    calc((1 - var(--reveal-progress)) * 56px - var(--reveal-exit) * 40px),
+    0
+  );
+}
+
+.liftOnExit {
+  transform: translate3d(0, calc(var(--reveal-exit) * -40px), 0);
+}
+
+.fromLeft {
+  transform: translate3d(
+    calc((1 - var(--reveal-progress)) * var(--reveal-slide-x) * -1),
+    calc((1 - var(--reveal-progress)) * var(--reveal-slide-y)),
+    0
+  );
+}
+
+.fromRight {
+  transform: translate3d(
+    calc((1 - var(--reveal-progress)) * var(--reveal-slide-x)),
+    calc((1 - var(--reveal-progress)) * var(--reveal-slide-y)),
+    0
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transform: none;
+    opacity: 1;
+  }
+}

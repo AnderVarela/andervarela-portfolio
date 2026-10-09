@@ -1,0 +1,46 @@
+/*
+ * --timeline-progress va de 0 a 1 mientras se recorre la sección fijada.
+ * En móvil y con movimiento reducido la línea aparece completa.
+ */
+.timeline {
+  --timeline-progress: 1;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline::before,
+.timeline::after {
+  position: absolute;
+  top: 6px;
+  left: 4px;
+  width: 2px;
+  content: '';
+}
+
+.timeline::before {
+  bottom: 6px;
+  background: var(--color-divider);
+}
+
+.timeline::after {
+  height: calc(var(--timeline-progress) * (100% - 12px));
+  background: var(--color-accent);
+}
+
+@media (width >= 768px) {
+  .timeline {
+    gap: clamp(12px, 2.4vh, 26px);
+  }
+}
+
+@media (width >= 768px) and (prefers-reduced-motion: no-preference) {
+  .timeline {
+    --timeline-progress: clamp(0, calc((var(--section-progress, 1) - 0.04) / 0.78), 1);
+  }
+}

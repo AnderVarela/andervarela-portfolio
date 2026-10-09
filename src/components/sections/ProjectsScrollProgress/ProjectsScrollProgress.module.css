@@ -1,0 +1,28 @@
+.progress {
+  display: none;
+  gap: 14px;
+  align-items: center;
+  min-width: 240px;
+  color: var(--color-muted);
+}
+
+.bar {
+  position: relative;
+  flex: 1;
+  height: 2px;
+  background: var(--color-divider);
+}
+
+.barFill {
+  position: absolute;
+  inset: 0;
+  transform: scaleX(var(--section-progress, 0));
+  transform-origin: left;
+  background: var(--color-accent);
+}
+
+@media (width >= 768px) {
+  .progress {
+    display: flex;
+  }
+}

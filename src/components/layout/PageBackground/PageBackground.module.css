@@ -1,0 +1,27 @@
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: var(--layer-background);
+  background: color-mix(in oklab, var(--color-bg), var(--color-accent) var(--background-tint, 0%));
+  pointer-events: none;
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(to right, var(--color-grid-line) 1px, transparent 1px);
+  background-position: var(--rail-width) calc(var(--scroll-position, 0) * -0.12px);
+  background-size: 25vw 100%;
+}
+
+@media (width >= 768px) {
+  .grid {
+    background-size: calc(var(--content-width) / 12) 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grid {
+    background-position: var(--rail-width) 0;
+  }
+}

@@ -1,0 +1,31 @@
+.tag {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  padding: 3px 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+}
+
+.neutral {
+  background: var(--color-neutral-soft);
+  color: var(--color-neutral-soft-text);
+}
+
+.accent {
+  background: var(--color-accent-soft);
+  color: var(--color-accent-soft-text);
+}
+
+.outline {
+  border: 1px solid var(--color-accent);
+  background: var(--color-bg);
+  color: var(--color-accent);
+}
+
+.solid {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  font-weight: 600;
+}
