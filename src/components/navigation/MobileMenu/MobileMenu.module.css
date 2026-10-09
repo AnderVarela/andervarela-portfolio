@@ -1,0 +1,43 @@
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: var(--layer-menu);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 20px 24px;
+  overflow: auto;
+  background: var(--color-bg);
+}
+
+.topBar {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--mobile-bar-height);
+  margin: 0 -20px;
+  padding: 0 20px;
+  border-bottom: var(--border-rule);
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.preferences {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+  margin-top: 12px;
+}
+
+@media (width >= 768px) {
+  .menu {
+    display: none;
+  }
+}

@@ -1,0 +1,28 @@
+.mobileBar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: var(--layer-interface);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--mobile-bar-height);
+  padding: 0 20px;
+  border-bottom: var(--border-rule);
+  background: var(--color-bg);
+}
+
+.brand {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+@media (width >= 768px) {
+  .mobileBar {
+    display: none;
+  }
+}

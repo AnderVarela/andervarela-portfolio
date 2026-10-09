@@ -1,0 +1,38 @@
+.link {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 12px 8px 0;
+  color: var(--color-muted);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: var(--color-text);
+}
+
+.active {
+  color: var(--color-accent-ink);
+  font-weight: 600;
+}
+
+.marker {
+  width: 2px;
+  height: 16px;
+  background: transparent;
+}
+
+.active .marker {
+  background: var(--color-accent);
+}
+
+.name {
+  display: none;
+}
+
+@media (width >= 1024px) {
+  .name {
+    display: inline;
+  }
+}

@@ -1,0 +1,22 @@
+.progressBar {
+  position: absolute;
+  background: var(--color-accent);
+}
+
+.vertical {
+  top: 0;
+  right: -2px;
+  width: 2px;
+  height: 100%;
+  transform: scaleY(var(--scroll-progress, 0));
+  transform-origin: top;
+}
+
+.horizontal {
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  transform: scaleX(var(--scroll-progress, 0));
+  transform-origin: left;
+}

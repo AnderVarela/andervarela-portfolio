@@ -1,0 +1,10 @@
+.switcher {
+  display: flex;
+  border: var(--border-rule);
+  background: var(--color-bg);
+}
+
+.stretched {
+  flex: 1;
+  min-height: 48px;
+}

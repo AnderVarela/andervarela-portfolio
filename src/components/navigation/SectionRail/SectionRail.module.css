@@ -1,0 +1,58 @@
+.rail {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: var(--layer-interface);
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: var(--rail-width);
+  padding: 28px 0 28px 20px;
+  border-right: var(--border-rule);
+  background: color-mix(in oklab, var(--color-bg) 82%, transparent);
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.desktopOnly,
+.location {
+  display: none;
+}
+
+@media (width >= 768px) {
+  .rail {
+    display: flex;
+  }
+}
+
+@media (width >= 1024px) {
+  .rail {
+    padding-left: 28px;
+  }
+
+  .desktopOnly {
+    display: inline;
+  }
+
+  .location {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+  }
+}

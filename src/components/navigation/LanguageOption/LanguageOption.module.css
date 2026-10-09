@@ -1,0 +1,16 @@
+.option {
+  flex: 1;
+  min-height: 36px;
+  padding: 0 11px;
+  border: 0;
+  background: transparent;
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.selected {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
