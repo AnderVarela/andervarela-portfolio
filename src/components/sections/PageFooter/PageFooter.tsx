@@ -1,3 +1,4 @@
+import { VisuallyHidden } from '@/components/ui/VisuallyHidden/VisuallyHidden';
 import { SITE_SOURCE_CODE_URL } from '@/content/contact';
 import { PROFILE_NAME } from '@/content/profile';
 import { useTranslation } from '@/i18n/useTranslation';
@@ -20,7 +21,8 @@ export function PageFooter() {
         rel="noopener noreferrer"
         className={styles.sourceLink}
       >
-        {translation.contact.sourceCode} ↗
+        {translation.contact.sourceCode} <span aria-hidden="true">↗</span>
+        <VisuallyHidden label={`(${translation.accessibility.opensInNewTab})`} />
       </a>
     </footer>
   );

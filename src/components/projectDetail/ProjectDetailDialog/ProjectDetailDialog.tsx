@@ -1,5 +1,10 @@
 import { useRef } from 'react';
 
+import {
+  useDialogFocus,
+  useDialogKeyboard,
+  usePageScrollLock,
+} from '@/accessibility/dialogBehaviours';
 import { ProjectDetailSummary } from '@/components/projectDetail/ProjectDetailSummary/ProjectDetailSummary';
 import { ProjectDetailToolbar } from '@/components/projectDetail/ProjectDetailToolbar/ProjectDetailToolbar';
 import { ProjectGallery } from '@/components/projectDetail/ProjectGallery/ProjectGallery';
@@ -8,9 +13,8 @@ import { joinClassNames } from '@/utils/classNames';
 
 import {
   DetailPhases,
-  useDialogFocus,
-  useDialogKeyboard,
-  usePageScrollLock,
+  OPENING_ANIMATION_MILLISECONDS,
+  useAdjacentProjectKeys,
   useProjectDetailTransition,
   useProjectLocationHash,
 } from './ProjectDetailDialog.helper';
@@ -30,7 +34,8 @@ export function ProjectDetailDialog({ project, projectIndex }: ProjectDetailDial
   const isExpanded = phase === DetailPhases.Expanded;
 
   useDialogKeyboard(panelReference, requestClose);
-  useDialogFocus(closeButtonReference);
+  useDialogFocus(closeButtonReference, OPENING_ANIMATION_MILLISECONDS);
+  useAdjacentProjectKeys();
   usePageScrollLock();
   useProjectLocationHash(project.id);
 

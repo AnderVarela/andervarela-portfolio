@@ -28,7 +28,8 @@
 }
 
 @media (width >= 768px) {
+  /* clip y no hidden: el foco no debe poder desplazar la ventana por su cuenta. */
   .trackWindow {
-    overflow: hidden;
+    overflow: clip;
   }
 }

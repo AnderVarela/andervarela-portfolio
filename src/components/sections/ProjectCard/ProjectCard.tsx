@@ -3,8 +3,10 @@ import { TagList } from '@/components/ui/TagList/TagList';
 import { Text } from '@/components/ui/Text/Text';
 import { TextTones, TextTypes } from '@/components/ui/Text/Text.types';
 import type { Project } from '@/content/projects';
+import { useTranslation } from '@/i18n/useTranslation';
 import { openProjectDetailFromElement } from '@/stores/projectDetail.helper';
 
+import { describeProjectCard } from './ProjectCard.helper';
 import styles from './ProjectCard.module.css';
 
 interface ProjectCardProps {
@@ -14,11 +16,14 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, projectIndex, title }: ProjectCardProps) {
+  const translation = useTranslation();
+
   return (
     <button
       type="button"
       data-project-card={project.id}
       aria-haspopup="dialog"
+      aria-label={describeProjectCard(project, title, translation.projects.privateProject)}
       className={styles.card}
       onClick={(event) => openProjectDetailFromElement(project.id, event.currentTarget)}
     >

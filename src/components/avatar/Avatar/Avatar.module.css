@@ -18,6 +18,11 @@
   transform-origin: 50% 100%;
 }
 
+.poses {
+  position: absolute;
+  inset: 0;
+}
+
 .winkArea {
   position: absolute;
   top: 6%;
@@ -36,6 +41,11 @@
 @media (width >= 768px) {
   .avatar {
     z-index: var(--layer-avatar-raised);
+  }
+
+  .poses {
+    position: absolute;
+    inset: 0;
   }
 
   .winkArea {

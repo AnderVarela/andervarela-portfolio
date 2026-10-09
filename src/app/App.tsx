@@ -16,7 +16,7 @@ import { ProjectsSection } from '@/components/sections/ProjectsSection/ProjectsS
 import { SkillsSection } from '@/components/sections/SkillsSection/SkillsSection';
 import { Toast } from '@/components/ui/Toast/Toast';
 
-import { usePageBehaviours } from './App.helper';
+import { useIsOverlayOpen, usePageBehaviours } from './App.helper';
 import styles from './App.module.css';
 
 const MAIN_CONTENT_ID = 'main';
@@ -24,25 +24,28 @@ const MAIN_CONTENT_ID = 'main';
 /* Las capas se apilan de fondo a frente en el mismo orden en que aparecen aquí. */
 export function App() {
   usePageBehaviours();
+  const isOverlayOpen = useIsOverlayOpen();
 
   return (
     <div className={styles.app}>
-      <SkipLink targetId={MAIN_CONTENT_ID} />
-      <PageBackground />
-      <SectionRail />
-      <UtilityBar />
-      <MobileBar />
-      <main id={MAIN_CONTENT_ID} className={styles.content}>
-        <HeroSection />
-        <AboutSection />
-        <ExperienceSection />
-        <ProjectsSection />
-        <AchievementsSection />
-        <EducationSection />
-        <SkillsSection />
-        <ContactSection />
-      </main>
-      <Avatar />
+      <div inert={isOverlayOpen}>
+        <SkipLink targetId={MAIN_CONTENT_ID} />
+        <PageBackground />
+        <SectionRail />
+        <UtilityBar />
+        <MobileBar />
+        <main id={MAIN_CONTENT_ID} tabIndex={-1} className={styles.content}>
+          <HeroSection />
+          <AboutSection />
+          <ExperienceSection />
+          <ProjectsSection />
+          <AchievementsSection />
+          <EducationSection />
+          <SkillsSection />
+          <ContactSection />
+        </main>
+        <Avatar />
+      </div>
       <ProjectDetail />
       <MobileMenu />
       <Toast />

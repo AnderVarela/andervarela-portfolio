@@ -72,6 +72,10 @@ export const spanishTranslation = {
     sectionsNavigation: 'Secciones',
     languageSelector: 'Idioma',
     avatarDescription: 'Avatar de Ander, ilustración decorativa',
+    opensInNewTab: 'se abre en una pestaña nueva',
+    copyEmail: 'Copiar email',
+    emailCopied: 'Email copiado',
+    projectDetailContent: 'Detalle del proyecto',
   },
 };
 

@@ -74,5 +74,9 @@ export const galicianTranslation: Translation = {
     sectionsNavigation: 'Seccións',
     languageSelector: 'Idioma',
     avatarDescription: 'Avatar de Ander, ilustración decorativa',
+    opensInNewTab: 'ábrese nunha pestana nova',
+    copyEmail: 'Copiar email',
+    emailCopied: 'Email copiado',
+    projectDetailContent: 'Detalle do proxecto',
   },
 };

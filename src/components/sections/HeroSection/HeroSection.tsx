@@ -11,7 +11,7 @@ import { RevealDirections, RevealOrders } from '@/components/ui/Reveal/Reveal.ty
 import { Text } from '@/components/ui/Text/Text';
 import { TextTones, TextTypes } from '@/components/ui/Text/Text.types';
 import { PROFILE_FIRST_NAME, PROFILE_NAME_IN_TWO_LINES } from '@/content/profile';
-import { formatSectionNumber, SectionIds } from '@/content/sections';
+import { buildSectionTitleId, formatSectionNumber, SectionIds } from '@/content/sections';
 import { useTranslation } from '@/i18n/useTranslation';
 
 import styles from './HeroSection.module.css';
@@ -33,6 +33,7 @@ export function HeroSection() {
           <Reveal direction={RevealDirections.LiftOnExit}>
             <Text kind={TextTypes.Greeting} label={translation.hero.greeting} />
             <Heading
+              id={buildSectionTitleId(SectionIds.Home)}
               kind={HeadingTypes.Giant}
               level={HeadingLevels.Page}
               label={PROFILE_NAME_IN_TWO_LINES}

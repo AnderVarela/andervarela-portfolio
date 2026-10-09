@@ -4,7 +4,11 @@ import { ProjectCard } from '@/components/sections/ProjectCard/ProjectCard';
 import { ProjectGroupPanel } from '@/components/sections/ProjectGroupPanel/ProjectGroupPanel';
 import { PROJECTS } from '@/content/projects';
 
-import { arrangeProjectsForTrack, TrackItemKinds } from './ProjectsTrack.helper';
+import {
+  arrangeProjectsForTrack,
+  scrollFocusedCardIntoView,
+  TrackItemKinds,
+} from './ProjectsTrack.helper';
 import styles from './ProjectsTrack.module.css';
 
 const TRACK_ITEMS = arrangeProjectsForTrack(PROJECTS);
@@ -19,7 +23,12 @@ export function ProjectsTrack({ overflowDistance, ref }: ProjectsTrackProps) {
   const trackStyle = { '--track-overflow': overflowDistance } as CSSProperties;
 
   return (
-    <div ref={ref} className={styles.track} style={trackStyle}>
+    <div
+      ref={ref}
+      className={styles.track}
+      style={trackStyle}
+      onFocus={(event) => scrollFocusedCardIntoView(event, overflowDistance)}
+    >
       {TRACK_ITEMS.map((trackItem) =>
         trackItem.kind === TrackItemKinds.ProjectGroup ? (
           <ProjectGroupPanel

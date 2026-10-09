@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from 'react';
 
-import type { SectionId } from '@/content/sections';
+import { buildSectionTitleId, type SectionId } from '@/content/sections';
 import { joinClassNames } from '@/utils/classNames';
 
 import styles from './Section.module.css';
@@ -23,6 +23,7 @@ export function Section({ id, children, pinnedHeight }: SectionProps) {
     <section
       id={id}
       data-section
+      aria-labelledby={buildSectionTitleId(id)}
       className={joinClassNames(styles.section, isPinned && styles.pinned)}
       style={isPinned ? pinnedStyle : undefined}
     >

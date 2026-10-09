@@ -1,4 +1,4 @@
-import type { Language } from '@/i18n/languages';
+import { LANGUAGE_NAMES, type Language } from '@/i18n/languages';
 import { usePreferencesStore } from '@/stores/usePreferencesStore';
 import { joinClassNames } from '@/utils/classNames';
 
@@ -16,6 +16,7 @@ export function LanguageOption({ language }: LanguageOptionProps) {
     <button
       type="button"
       aria-pressed={isSelected}
+      aria-label={`${language.toUpperCase()} · ${LANGUAGE_NAMES[language]}`}
       lang={language}
       onClick={() => selectLanguage(language)}
       className={joinClassNames(styles.option, isSelected && styles.selected)}
