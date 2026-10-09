@@ -14,3 +14,8 @@
   background: var(--color-text);
   color: var(--color-bg);
 }
+
+/* Por dentro, para no pisar el borde del grupo ni la opción vecina. */
+.option:focus-visible {
+  outline-offset: -2px;
+}

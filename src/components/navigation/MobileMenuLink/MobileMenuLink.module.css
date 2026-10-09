@@ -25,3 +25,8 @@
 .active .name {
   color: var(--color-accent-ink);
 }
+
+/* La fila ocupa todo el ancho: el anillo va por dentro para no salirse del menú. */
+.link:focus-visible {
+  outline-offset: -2px;
+}

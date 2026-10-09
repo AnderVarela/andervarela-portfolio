@@ -12,12 +12,17 @@
 }
 
 .value {
+  justify-self: start;
   min-width: 0;
   color: var(--color-text);
   font-size: clamp(17px, 5vw, 22px);
   font-weight: 800;
   overflow-wrap: anywhere;
   text-decoration: none;
+}
+
+.value:focus-visible {
+  outline-offset: 4px;
 }
 
 .value:hover {
