@@ -6,6 +6,8 @@ export default {
       { message: 'Las clases de CSS Modules se escriben en camelCase' },
     ],
     'selector-pseudo-class-no-unknown': [true, { ignorePseudoClasses: ['global', 'local'] }],
+    // Las variables se agrupan por tema con líneas en blanco.
+    'custom-property-empty-line-before': null,
     'property-no-unknown': [true, { ignoreProperties: ['composes'] }],
   },
 };

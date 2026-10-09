@@ -1,0 +1,80 @@
+/* Variables de maquetación compartidas. Base: móvil; después tableta y escritorio. */
+:root {
+  --layer-background: 0;
+  --layer-content: 2;
+  --layer-avatar: 30;
+  --layer-interface: 40;
+  --layer-avatar-raised: 45;
+  --layer-overlay: 50;
+  --layer-menu: 55;
+  --layer-skip-link: 60;
+  --layer-toast: 70;
+
+  --rail-width: 0px;
+  --mobile-bar-height: 56px;
+  --page-padding-x: 20px;
+  --content-width: calc(100vw - var(--rail-width));
+  --avatar-zone-side: 0px;
+  --avatar-zone-projects: 0px;
+  --avatar-zone-contact: 0px;
+  --section-padding-top: 88px;
+  --section-padding-bottom: 120px;
+  --columns-around-avatar: minmax(0, 1fr);
+  --columns-right-offset: 0px;
+
+  --decoration-size: 46vw;
+  --heading-giant-size: clamp(56px, 17vw, 76px);
+  --heading-section-size: 48px;
+  --heading-section-compact-size: 44px;
+  --heading-contact-size: clamp(30px, 9.6vw, 60px);
+  --heading-detail-size: 40px;
+  --lead-size: 20px;
+
+  --reveal-slide-x: 0px;
+  --reveal-slide-y: 32px;
+}
+
+@media (width >= 768px) {
+  :root {
+    --rail-width: 72px;
+    --page-padding-x: 32px;
+    --avatar-zone-side: calc(var(--content-width) * 0.4);
+    --avatar-zone-projects: calc(var(--content-width) * 0.33);
+    --avatar-zone-contact: calc(var(--content-width) * 0.4);
+    --section-padding-top: 110px;
+    --section-padding-bottom: 72px;
+    --columns-around-avatar: minmax(0, 1fr) minmax(0, 0.9fr) minmax(0, 1fr);
+    --columns-right-offset: 100px;
+
+    --decoration-size: 32vw;
+    --heading-giant-size: clamp(64px, 9vw, 110px);
+    --heading-section-size: clamp(44px, 6vw, 64px);
+    --heading-section-compact-size: 40px;
+    --heading-contact-size: clamp(44px, 6vw, 60px);
+    --heading-detail-size: 48px;
+    --lead-size: 22px;
+
+    --reveal-slide-x: 48px;
+    --reveal-slide-y: 0px;
+  }
+}
+
+@media (width >= 1024px) {
+  :root {
+    --rail-width: 200px;
+    --page-padding-x: 56px;
+    --avatar-zone-contact: calc(var(--content-width) * 0.34);
+    --section-padding-top: 120px;
+    --section-padding-bottom: 80px;
+    --columns-around-avatar: minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1fr);
+    --columns-right-offset: 120px;
+
+    --decoration-size: 30vw;
+    --heading-giant-size: clamp(80px, 9.6vw, 168px);
+    --heading-section-size: clamp(52px, 5.4vw, 92px);
+    --heading-section-compact-size: clamp(44px, 4vw, 68px);
+    --heading-contact-size: clamp(52px, 5.4vw, 120px);
+    --heading-detail-size: clamp(44px, 4.4vw, 72px);
+    --lead-size: clamp(22px, 1.9vw, 30px);
+  }
+}

@@ -41,6 +41,8 @@ export default tseslint.config(
       'react/prop-types': 'off',
       '@typescript-eslint/consistent-type-imports': 'error',
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/restrict-template-expressions': ['error', { allowNumber: true }],
+      '@typescript-eslint/no-confusing-void-expression': ['error', { ignoreArrowShorthand: true }],
       'check-file/filename-naming-convention': [
         'error',
         { 'src/components/**/*.{ts,tsx}': 'PASCAL_CASE' },
