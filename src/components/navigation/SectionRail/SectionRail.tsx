@@ -5,10 +5,8 @@ import { SectionRailLink } from '@/components/navigation/SectionRailLink/Section
 import { Text } from '@/components/ui/Text/Text';
 import { TextTones, TextTypes } from '@/components/ui/Text/Text.types';
 import { PROFILE_DOMAIN } from '@/content/profile';
-import { SECTIONS, SectionIds } from '@/content/sections';
+import { SECTIONS } from '@/content/sections';
 import { useTranslation } from '@/i18n/useTranslation';
-import { buildSectionHash } from '@/scroll/locationHash.helper';
-import { createSectionLinkHandler } from '@/scroll/sectionNavigation';
 import { useScrollStore } from '@/stores/useScrollStore';
 
 import styles from './SectionRail.module.css';
@@ -21,16 +19,12 @@ export function SectionRail() {
   return (
     <nav aria-label={translation.accessibility.sectionsNavigation} className={styles.rail}>
       <ScrollProgressBar orientation={ScrollProgressOrientations.Vertical} />
-      <a
-        href={buildSectionHash(SectionIds.Home)}
-        onClick={createSectionLinkHandler(SectionIds.Home)}
-        className={styles.brand}
-      >
+      <div aria-hidden="true" className={styles.brand}>
         <BrandMark />
         <span className={styles.desktopOnly}>
           <Text kind={TextTypes.Micro} label={PROFILE_DOMAIN} tone={TextTones.Muted} />
         </span>
-      </a>
+      </div>
       <ol className={styles.links}>
         {SECTIONS.map((section, index) => (
           <li key={section.id}>
