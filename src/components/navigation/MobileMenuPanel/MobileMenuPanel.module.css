@@ -29,11 +29,20 @@
   list-style: none;
 }
 
+/* Pegado al borde inferior: el espacio sobrante queda entre las secciones y los ajustes. */
+.footer {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 12px;
+}
+
 .preferences {
   display: flex;
   gap: 10px;
   align-items: stretch;
-  margin-top: 12px;
 }
 
 @media (width >= 768px) {

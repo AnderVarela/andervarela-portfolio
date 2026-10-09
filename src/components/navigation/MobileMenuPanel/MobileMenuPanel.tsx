@@ -70,11 +70,13 @@ export function MobileMenuPanel() {
           ))}
         </ol>
       </nav>
-      <div className={styles.preferences}>
-        <LanguageSwitcher isStretched />
-        <ThemeToggle isLabelVisible />
+      <div className={styles.footer}>
+        <div className={styles.preferences}>
+          <LanguageSwitcher isStretched />
+          <ThemeToggle isLabelVisible />
+        </div>
+        <DownloadCurriculumButton size={ButtonSizes.Medium} isFullWidth />
       </div>
-      <DownloadCurriculumButton size={ButtonSizes.Medium} isFullWidth />
     </div>
   );
 }
