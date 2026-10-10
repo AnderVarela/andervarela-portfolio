@@ -15,7 +15,8 @@
   background: linear-gradient(var(--color-accent) 50%, var(--color-divider) 50%);
 }
 
-@media (width >= 768px) {
+/* En ventanas muy bajas no cabría sin tocar el borde inferior: mejor no mostrarlo. */
+@media (width >= 768px) and (height >= 760px) {
   .scrollHint {
     display: flex;
   }
