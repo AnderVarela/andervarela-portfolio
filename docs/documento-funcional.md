@@ -195,7 +195,7 @@ Línea de tiempo. La sección se fija y los hitos avanzan con el scroll.
 
 - Estandaricé los componentes de UI con React y TypeScript estricto para reducir bugs y horas de QA.
 - Monté una arquitectura de estado global con Zustand que evita re-renderizados innecesarios y datos desincronizados.
-- Migré el entorno a Vite y protegí el repositorio con Husky, Commitlint y Playwright.
+- Protegí el repositorio con Husky, Commitlint y Playwright.
 - Hago de puente entre front y back en la definición de contratos y el consumo de APIs.
 
 Cada punto muestra las tecnologías implicadas como etiquetas.
