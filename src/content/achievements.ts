@@ -1,3 +1,5 @@
+import type { Translation } from '@/i18n/translations/es';
+
 export interface Achievement {
   figure: string;
   title: string;
@@ -5,22 +7,30 @@ export interface Achievement {
   relatedProjectId?: string;
 }
 
-export const HACKATHON_AWARDS: readonly Achievement[] = [
-  {
-    figure: '1.º',
-    title: "HackSpain '26",
-    detail: '1.er premio · THEKER Robotics · 36 h',
-    relatedProjectId: 'hackspain-26',
-  },
-  {
-    figure: '1.º',
-    title: "HackUDC '25",
-    detail: '1.er premio · reto de Denodo · 36 h',
-    relatedProjectId: 'hackudc-25',
-  },
-];
+export function listHackathonAwards(translation: Translation): readonly Achievement[] {
+  const { firstPlaceFigure, hackspainDetail, hackudcDetail } = translation.achievements;
 
-export const ACADEMIC_AND_CERTIFIED_MERITS: readonly Achievement[] = [
-  { figure: '10', title: 'Matrícula de Honor (10)', detail: 'defensa del TFM' },
-  { figure: 'AWS', title: 'AWS Certified Cloud Practitioner' },
-];
+  return [
+    {
+      figure: firstPlaceFigure,
+      title: "HackSpain '26",
+      detail: hackspainDetail,
+      relatedProjectId: 'hackspain-26',
+    },
+    {
+      figure: firstPlaceFigure,
+      title: "HackUDC '25",
+      detail: hackudcDetail,
+      relatedProjectId: 'hackudc-25',
+    },
+  ];
+}
+
+export function listAcademicAndCertifiedMerits(translation: Translation): readonly Achievement[] {
+  const { thesisHonoursTitle, thesisHonoursDetail } = translation.achievements;
+
+  return [
+    { figure: '10', title: thesisHonoursTitle, detail: thesisHonoursDetail },
+    { figure: 'AWS', title: 'AWS Certified Cloud Practitioner' },
+  ];
+}

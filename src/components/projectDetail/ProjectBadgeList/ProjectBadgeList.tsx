@@ -1,6 +1,6 @@
 import { Tag } from '@/components/ui/Tag/Tag';
 import { TagVariants } from '@/components/ui/Tag/Tag.types';
-import type { Project } from '@/content/projects';
+import { listProjects, type Project } from '@/content/projects';
 import { useTranslation } from '@/i18n/useTranslation';
 
 import { describeGroupMembership } from './ProjectBadgeList.helper';
@@ -12,7 +12,7 @@ interface ProjectBadgeListProps {
 
 export function ProjectBadgeList({ project }: ProjectBadgeListProps) {
   const translation = useTranslation();
-  const groupMembership = describeGroupMembership(project);
+  const groupMembership = describeGroupMembership(project, listProjects(translation));
 
   return (
     <div className={styles.badges}>

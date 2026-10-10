@@ -1,9 +1,10 @@
-import { PROJECTS } from '@/content/projects';
+import { listProjects } from '@/content/projects';
+import { spanishTranslation } from '@/i18n/translations/es';
 
 import { arrangeProjectsForTrack, TrackItemKinds } from './ProjectsTrack.helper';
 
 describe('arrangeProjectsForTrack', () => {
-  const trackItems = arrangeProjectsForTrack(PROJECTS);
+  const trackItems = arrangeProjectsForTrack(listProjects(spanishTranslation));
 
   it('keeps standalone projects and collapses a group into one item', () => {
     expect(trackItems.map((item) => item.kind)).toEqual([

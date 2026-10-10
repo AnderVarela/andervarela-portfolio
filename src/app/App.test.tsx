@@ -38,6 +38,17 @@ describe('App', () => {
     expect(document.documentElement.lang).toBe('en');
   });
 
+  it('translates the content, not only the interface', () => {
+    render(<App />);
+
+    fireEvent.click(screen.getByRole('button', { name: /English/ }));
+
+    expect(screen.getByText(/I'm a frontend developer/)).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /This portfolio/ })).toBeInTheDocument();
+    expect(screen.getByText('Applied AI', { exact: false })).toBeInTheDocument();
+    expect(screen.queryByText(/Soy desarrollador/)).not.toBeInTheDocument();
+  });
+
   it('opens the detail of a project from its card', () => {
     render(<App />);
 

@@ -5,7 +5,7 @@ import { SectionHeader } from '@/components/layout/SectionHeader/SectionHeader';
 import { DegreeEntry } from '@/components/sections/DegreeEntry/DegreeEntry';
 import { Reveal } from '@/components/ui/Reveal/Reveal';
 import { getStaggeredRevealOrder } from '@/components/ui/Reveal/Reveal.helper';
-import { DEGREES } from '@/content/education';
+import { listDegrees } from '@/content/education';
 import { formatSectionNumber, SectionIds } from '@/content/sections';
 import { useTranslation } from '@/i18n/useTranslation';
 
@@ -32,9 +32,9 @@ export function EducationSection() {
             />
           </Reveal>
           <AvatarStage sectionId={SectionIds.Education} />
-          {DEGREES.map((degree, index) => (
+          {listDegrees(translation).map((degree, index) => (
             <Reveal
-              key={degree.title}
+              key={degree.period}
               order={getStaggeredRevealOrder(DEGREES_FIRST_REVEAL_STEP + index)}
             >
               <DegreeEntry degree={degree} />
