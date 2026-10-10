@@ -58,6 +58,17 @@ Se sigue **git flow**:
 Las integraciones se hacen con `git merge --no-ff`. Los mensajes siguen
 [Conventional Commits](https://www.conventionalcommits.org/).
 
+## Despliegue
+
+La web se sirve desde **GitHub Pages** en [andervarela.es](https://andervarela.es).
+
+Cada push a `main` lanza [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), que ejecuta
+`npm run verify` y publica `dist/`. También se puede lanzar a mano desde la pestaña _Actions_.
+
+El dominio se configura en _Settings → Pages → Custom domain_ del repositorio (al publicar con
+GitHub Actions no hace falta fichero `CNAME`). En la zona DNS del dominio, `andervarela.es` apunta con
+registros `A` a las IP de GitHub Pages y `www` con un `CNAME` a `andervarela.github.io`.
+
 ### Comprobaciones locales (Husky)
 
 | Hook         | Comprueba                                                                                                  |
