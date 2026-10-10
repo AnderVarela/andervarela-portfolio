@@ -5,8 +5,11 @@
   border: var(--border-rule);
   background: var(--color-surface);
   object-fit: cover;
+  object-position: 50% 0;
 }
 
+/* La principal se ve entera, con su propia proporción. */
 .featured {
   grid-column: 1 / -1;
+  aspect-ratio: auto;
 }
