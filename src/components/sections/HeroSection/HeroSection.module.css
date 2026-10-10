@@ -28,11 +28,11 @@
 @media (width >= 768px) {
   /* El aviso de scroll va en el flujo, bajo el contenido: así nunca se le puede montar encima. */
   .layout {
-    padding-block: 96px 32px;
+    padding-block: clamp(72px, 9vh, 96px) 32px;
   }
 
   .content {
-    gap: 22px;
+    gap: clamp(14px, 2.4vh, 22px);
     margin-block: auto;
     max-width: calc(var(--content-width) * 0.56);
   }

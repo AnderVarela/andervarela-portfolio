@@ -47,7 +47,9 @@
     --columns-right-offset: 100px;
 
     --decoration-size: 32vw;
-    --heading-giant-size: clamp(64px, 9vw, 110px);
+
+    /* También se ajusta al alto, para que el inicio quepa entero en ventanas bajas. */
+    --heading-giant-size: clamp(56px, min(9vw, 13vh), 110px);
     --heading-section-size: clamp(44px, 6vw, 64px);
     --heading-section-compact-size: 40px;
     --heading-contact-size: clamp(44px, 6vw, 60px);
@@ -70,11 +72,11 @@
     --columns-right-offset: 120px;
 
     --decoration-size: 30vw;
-    --heading-giant-size: clamp(80px, 9.6vw, 168px);
+    --heading-giant-size: clamp(64px, min(9.6vw, 13vh), 168px);
     --heading-section-size: clamp(52px, 5.4vw, 92px);
     --heading-section-compact-size: clamp(44px, 4vw, 68px);
     --heading-contact-size: clamp(52px, 5.4vw, 120px);
     --heading-detail-size: clamp(44px, 4.4vw, 72px);
-    --lead-size: clamp(22px, 1.9vw, 30px);
+    --lead-size: clamp(20px, min(1.9vw, 3.4vh), 30px);
   }
 }
