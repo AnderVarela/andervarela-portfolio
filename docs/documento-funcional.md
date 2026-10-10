@@ -339,7 +339,7 @@ En móvil se puede minimizar el avatar tocándolo.
 | Estilos | CSS Modules con variables para los temas |
 | Idiomas | Ficheros de traducción por idioma (ES / EN) |
 | Calidad | Playwright, Husky, Commitlint |
-| Despliegue | Hosting estático en `andervarela.es` |
+| Despliegue | GitHub Pages en `andervarela.es`, publicado con GitHub Actions |
 
 El contenido (experiencia, proyectos, skills) vive en ficheros de datos separados del código, para poder actualizarlo sin tocar componentes.
 
