@@ -1,6 +1,9 @@
 import portfolioExperienceScreenshotUrl from '@/assets/projects/portfolio/experience.jpg';
 import portfolioHomeScreenshotUrl from '@/assets/projects/portfolio/home.jpg';
 import portfolioSkillsScreenshotUrl from '@/assets/projects/portfolio/skills.jpg';
+import hackspainEpisodeDashboardScreenshotUrl from '@/assets/projects/hackspain/episode-dashboard.png';
+import hackspainSimulationCellScreenshotUrl from '@/assets/projects/hackspain/simulation-cell.gif';
+import hackspainControlPanelScreenshotUrl from '@/assets/projects/hackspain/simulation-control-panel.png';
 import invoicesBatchFinishedScreenshotUrl from '@/assets/projects/rubicon-invoices/batch-finished.jpg';
 import invoicesBatchQueueScreenshotUrl from '@/assets/projects/rubicon-invoices/batch-queue.jpg';
 import invoicesCompleteDataScreenshotUrl from '@/assets/projects/rubicon-invoices/complete-invoice-data.jpg';
@@ -229,16 +232,41 @@ export const PROJECTS: readonly Project[] = [
   },
   {
     id: 'hackspain-26',
-    name: "Proyecto HackSpain '26",
-    shortName: "HackSpain '26",
+    name: "STACKSPECT · HackSpain '26",
+    shortName: 'STACKSPECT',
     glyph: 'HS26',
     type: 'Hackatón · 36 h',
-    summary: 'Automatización industrial para THEKER Robotics.',
-    problem: "Reto de automatización industrial de THEKER Robotics en HackSpain '26.",
-    contribution: PENDING_HACKATHON_CONTRIBUTION,
-    isContributionPending: true,
-    technologies: PENDING_STACK,
-    links: [{ kind: ProjectLinkKinds.Code }],
+    summary: 'Paletizado robótico medido episodio a episodio, para THEKER Robotics.',
+    problem:
+      "Reto de THEKER Robotics en HackSpain '26: que un brazo robótico apile paquetes en un palé sin que se derrumbe y demostrar con datos cuánto mejora la solución.",
+    contribution:
+      'En equipo construimos una celda simulada en la que un brazo UR10e paletiza cajas vigilando el centro de gravedad, y una plataforma de observabilidad que mide cada episodio: estabilidad, tiempo de ciclo, utilización y eventos, en directo y comparando ejecuciones entre commits. Yo trabajé en la plataforma web.',
+    technologies: [
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Supabase',
+      'TanStack Query',
+      'Python',
+      'MuJoCo',
+    ],
+    links: [{ kind: ProjectLinkKinds.Code, url: 'https://github.com/STACKSPECT/Platform' }],
+    screenshots: [
+      {
+        imageUrl: hackspainEpisodeDashboardScreenshotUrl,
+        description:
+          'Panel de un episodio de paletizado: vista cenital y alzado del palé, indicadores y registro de eventos',
+      },
+      {
+        imageUrl: hackspainSimulationCellScreenshotUrl,
+        description: 'Celda simulada: un brazo robótico pasa cajas de un contenedor a un palé',
+      },
+      {
+        imageUrl: hackspainControlPanelScreenshotUrl,
+        description:
+          'Panel de ejecución de la simulación, con la lista de experimentos y los controles de velocidad',
+      },
+    ],
     awardBadge: '1.er premio',
   },
   {
