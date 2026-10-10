@@ -8,7 +8,6 @@ import { Reveal } from '@/components/ui/Reveal/Reveal';
 import { RevealDirections, RevealOrders } from '@/components/ui/Reveal/Reveal.types';
 import { Text } from '@/components/ui/Text/Text';
 import { TextTypes } from '@/components/ui/Text/Text.types';
-import { ABOUT_SUMMARY } from '@/content/profile';
 import { formatSectionNumber, SectionIds } from '@/content/sections';
 import { useTranslation } from '@/i18n/useTranslation';
 
@@ -34,7 +33,7 @@ export function AboutSection() {
           </Reveal>
           <AvatarStage sectionId={SectionIds.About} />
           <Reveal order={RevealOrders.Second}>
-            <Text kind={TextTypes.Lead} label={ABOUT_SUMMARY} />
+            <Text kind={TextTypes.Lead} label={translation.about.summary} />
           </Reveal>
           <Reveal order={RevealOrders.Third}>
             <ProfileHighlightList />

@@ -10,44 +10,19 @@ import { SectionIds, type SectionId } from './sections';
 
 export interface AvatarPose {
   sectionId: SectionId;
-  description: string;
   imageUrl: string;
 }
 
-/* Una pose por sección, en el mismo orden que SECTIONS. */
+/* Una pose por sección, en el mismo orden que SECTIONS. La descripción la da la traducción. */
 export const AVATAR_POSES: readonly AvatarPose[] = [
-  {
-    sectionId: SectionIds.Home,
-    description: 'Saluda con la mano y sonríe',
-    imageUrl: greetingImageUrl,
-  },
-  {
-    sectionId: SectionIds.About,
-    description: 'Relajado, brazos cruzados',
-    imageUrl: armsCrossedImageUrl,
-  },
-  { sectionId: SectionIds.Experience, description: 'Con el portátil', imageUrl: laptopImageUrl },
-  {
-    sectionId: SectionIds.Projects,
-    description: 'Manos en el bolsillo, mira la tarjeta del cursor',
-    imageUrl: handsInPocketsImageUrl,
-  },
-  {
-    sectionId: SectionIds.Achievements,
-    description: 'Levanta un trofeo',
-    imageUrl: trophyImageUrl,
-  },
-  {
-    sectionId: SectionIds.Education,
-    description: 'Con birrete',
-    imageUrl: graduationCapImageUrl,
-  },
-  {
-    sectionId: SectionIds.Skills,
-    description: 'Brazos arriba, con iconos de tecnologías',
-    imageUrl: armsRaisedImageUrl,
-  },
-  { sectionId: SectionIds.Contact, description: 'Se despide', imageUrl: greetingImageUrl },
+  { sectionId: SectionIds.Home, imageUrl: greetingImageUrl },
+  { sectionId: SectionIds.About, imageUrl: armsCrossedImageUrl },
+  { sectionId: SectionIds.Experience, imageUrl: laptopImageUrl },
+  { sectionId: SectionIds.Projects, imageUrl: handsInPocketsImageUrl },
+  { sectionId: SectionIds.Achievements, imageUrl: trophyImageUrl },
+  { sectionId: SectionIds.Education, imageUrl: graduationCapImageUrl },
+  { sectionId: SectionIds.Skills, imageUrl: armsRaisedImageUrl },
+  { sectionId: SectionIds.Contact, imageUrl: greetingImageUrl },
 ];
 
 export const ORBITING_TECHNOLOGY_LABELS: readonly string[] = ['TS', 'R', 'JS', 'AWS'];

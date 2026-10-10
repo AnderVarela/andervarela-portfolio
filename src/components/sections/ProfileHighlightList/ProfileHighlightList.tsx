@@ -1,13 +1,16 @@
 import { ProfileHighlightItem } from '@/components/sections/ProfileHighlightItem/ProfileHighlightItem';
-import { PROFILE_HIGHLIGHTS } from '@/content/profile';
+import { listProfileHighlights } from '@/content/profile';
+import { useTranslation } from '@/i18n/useTranslation';
 
 import styles from './ProfileHighlightList.module.css';
 
 export function ProfileHighlightList() {
+  const translation = useTranslation();
+
   return (
     <ul className={styles.highlights}>
-      {PROFILE_HIGHLIGHTS.map((highlight) => (
-        <ProfileHighlightItem key={highlight.description} highlight={highlight} />
+      {listProfileHighlights(translation).map((highlight) => (
+        <ProfileHighlightItem key={highlight.figure} highlight={highlight} />
       ))}
     </ul>
   );

@@ -6,7 +6,7 @@ import { ExperiencePositionSummary } from '@/components/sections/ExperiencePosit
 import { ExperienceTimeline } from '@/components/sections/ExperienceTimeline/ExperienceTimeline';
 import { Reveal } from '@/components/ui/Reveal/Reveal';
 import { RevealDirections, RevealOrders } from '@/components/ui/Reveal/Reveal.types';
-import { CURRENT_POSITION } from '@/content/experience';
+import { describeCurrentPosition } from '@/content/experience';
 import { formatSectionNumber, SectionIds } from '@/content/sections';
 import { useTranslation } from '@/i18n/useTranslation';
 
@@ -17,6 +17,7 @@ const PINNED_HEIGHT = '300vh';
 
 export function ExperienceSection() {
   const translation = useTranslation();
+  const currentPosition = describeCurrentPosition(translation);
 
   return (
     <Section id={SectionIds.Experience} pinnedHeight={PINNED_HEIGHT}>
@@ -34,11 +35,11 @@ export function ExperienceSection() {
                 title={translation.sections.experience}
               />
               <AvatarStage sectionId={SectionIds.Experience} />
-              <ExperiencePositionSummary position={CURRENT_POSITION} />
+              <ExperiencePositionSummary position={currentPosition} />
             </div>
           </Reveal>
           <Reveal order={RevealOrders.Second} direction={RevealDirections.None} fadesOnExit={false}>
-            <ExperienceTimeline milestones={CURRENT_POSITION.milestones} />
+            <ExperienceTimeline milestones={currentPosition.milestones} />
           </Reveal>
         </div>
       </div>

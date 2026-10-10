@@ -15,7 +15,7 @@ interface ProjectThumbnailProps {
 /* Portada de la tarjeta: la captura principal o, mientras no exista, un marcador. */
 export function ProjectThumbnail({ project, projectIndex }: ProjectThumbnailProps) {
   const translation = useTranslation();
-  const coverScreenshot = project.screenshots?.[0];
+  const coverScreenshot = project.screenshots[0];
 
   return (
     <span className={styles.thumbnail}>

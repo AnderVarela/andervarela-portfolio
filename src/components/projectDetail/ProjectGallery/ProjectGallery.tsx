@@ -17,7 +17,7 @@ export function ProjectGallery({ project }: ProjectGalleryProps) {
   const translation = useTranslation();
   const { gallery, mainScreenshot, screenshot } = translation.projectDetail;
 
-  if (project.screenshots) {
+  if (project.screenshots.length > 0) {
     return (
       <div className={styles.gallery}>
         <span className={styles.title}>

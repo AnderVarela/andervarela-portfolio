@@ -8,7 +8,7 @@ import { HeadingTypes } from '@/components/ui/Heading/Heading.types';
 import { Reveal } from '@/components/ui/Reveal/Reveal';
 import { RevealDirections, RevealOrders } from '@/components/ui/Reveal/Reveal.types';
 import { formatSectionNumber, SectionIds } from '@/content/sections';
-import { SKILL_AREAS_LEFT_OF_AVATAR, SKILL_AREAS_RIGHT_OF_AVATAR } from '@/content/skills';
+import { listSkillAreasLeftOfAvatar, listSkillAreasRightOfAvatar } from '@/content/skills';
 import { useTranslation } from '@/i18n/useTranslation';
 
 export function SkillsSection() {
@@ -32,7 +32,7 @@ export function SkillsSection() {
               />
             </Reveal>
             <AvatarStage sectionId={SectionIds.Skills} />
-            {SKILL_AREAS_LEFT_OF_AVATAR.map((skillArea) => (
+            {listSkillAreasLeftOfAvatar(translation).map((skillArea) => (
               <Reveal
                 key={skillArea.code}
                 order={RevealOrders.Second}
@@ -43,7 +43,7 @@ export function SkillsSection() {
             ))}
           </>
         }
-        rightColumn={SKILL_AREAS_RIGHT_OF_AVATAR.map((skillArea) => (
+        rightColumn={listSkillAreasRightOfAvatar(translation).map((skillArea) => (
           <Reveal
             key={skillArea.code}
             order={RevealOrders.Third}

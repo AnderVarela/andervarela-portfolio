@@ -3,7 +3,7 @@ import { useRef } from 'react';
 import { AvatarPoseImage } from '@/components/avatar/AvatarPoseImage/AvatarPoseImage';
 import { TechnologyOrbit } from '@/components/avatar/TechnologyOrbit/TechnologyOrbit';
 import { AVATAR_POSES } from '@/content/avatarPoses';
-import { findSectionIndex, SectionIds } from '@/content/sections';
+import { findSectionIndex, getSectionNameKey, SectionIds } from '@/content/sections';
 import { useTranslation } from '@/i18n/useTranslation';
 import { useScrollStore } from '@/stores/useScrollStore';
 
@@ -18,7 +18,10 @@ export function Avatar() {
   const avatarReference = useRef<HTMLDivElement>(null);
   const activePoseIndex = useScrollStore((state) => state.avatarTimeline.poseIndex);
   const triggerWink = useAvatarMotion(avatarReference);
-  const poseDescription = AVATAR_POSES[activePoseIndex]?.description ?? '';
+  const activePose = AVATAR_POSES[activePoseIndex];
+  const poseDescription = activePose
+    ? translation.avatarPoses[getSectionNameKey(activePose.sectionId)]
+    : '';
 
   return (
     <div ref={avatarReference} className={styles.avatar}>

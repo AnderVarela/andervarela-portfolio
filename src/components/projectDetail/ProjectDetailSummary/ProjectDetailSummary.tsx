@@ -30,11 +30,7 @@ export function ProjectDetailSummary({ project, titleId }: ProjectDetailSummaryP
         <Text kind={TextTypes.ParagraphLarge} label={project.problem} />
       </ProjectDetailBlock>
       <ProjectDetailBlock label={translation.projectDetail.contribution}>
-        <Text
-          kind={TextTypes.ParagraphLarge}
-          label={project.contribution}
-          tone={project.isContributionPending ? TextTones.Muted : TextTones.Default}
-        />
+        <Text kind={TextTypes.ParagraphLarge} label={project.contribution} />
       </ProjectDetailBlock>
       <ProjectDetailBlock label={translation.projectDetail.stack}>
         <TagList labels={project.technologies} />
