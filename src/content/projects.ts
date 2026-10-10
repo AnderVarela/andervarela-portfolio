@@ -1,6 +1,9 @@
 import portfolioExperienceScreenshotUrl from '@/assets/projects/portfolio/experience.jpg';
 import portfolioHomeScreenshotUrl from '@/assets/projects/portfolio/home.jpg';
 import portfolioSkillsScreenshotUrl from '@/assets/projects/portfolio/skills.jpg';
+import requifyActiveRuleScreenshotUrl from '@/assets/projects/requify/active-rule.jpg';
+import requifyControlPanelScreenshotUrl from '@/assets/projects/requify/control-panel.jpg';
+import requifyNewRuleScreenshotUrl from '@/assets/projects/requify/new-rule.jpg';
 
 export const ProjectLinkKinds = {
   Web: 'web',
@@ -63,9 +66,25 @@ export const PROJECTS: readonly Project[] = [
     problem:
       'El frontend se queda bloqueado cada vez que un endpoint del backend no está listo o falla.',
     contribution:
-      'Construí una extensión de Chrome (Manifest V3) y una SPA que simulan peticiones HTTP, con latencia y patrones de respuesta configurables. Fue mi TFM y lo defendí con Matrícula de Honor (10).',
-    technologies: ['Manifest V3', 'React', 'TypeScript'],
-    links: [{ kind: ProjectLinkKinds.Code }, { kind: ProjectLinkKinds.Demo }],
+      'Construí una extensión de Chrome (Manifest V3) que intercepta las peticiones HTTP de cualquier web y devuelve respuestas simuladas, y una SPA de panel de control para gestionar las reglas por colecciones: método y patrón de URL, código de estado, retardo, cabeceras y cuerpo, con importación y exportación. No necesita backend: todo se guarda en el navegador. Fue mi TFM y lo defendí con Matrícula de Honor (10).',
+    technologies: ['Manifest V3', 'React', 'TypeScript', 'Zustand', 'Vite', 'Vitest', 'Playwright'],
+    links: [{ kind: ProjectLinkKinds.Code, url: 'https://github.com/AnderVarela/RequiFy' }],
+    screenshots: [
+      {
+        imageUrl: requifyControlPanelScreenshotUrl,
+        description:
+          'Panel de control de RequiFy, con las colecciones de reglas y el editor de una respuesta simulada',
+      },
+      {
+        imageUrl: requifyActiveRuleScreenshotUrl,
+        description:
+          'Popup de RequiFy con una regla activa que cambia los artículos y precios de una cesta de la compra',
+      },
+      {
+        imageUrl: requifyNewRuleScreenshotUrl,
+        description: 'Formulario de RequiFy para crear una regla nueva',
+      },
+    ],
     awardBadge: 'TFM · Matrícula de Honor',
   },
   {
