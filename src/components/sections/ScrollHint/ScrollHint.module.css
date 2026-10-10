@@ -1,10 +1,11 @@
 .scrollHint {
-  position: absolute;
-  bottom: 32px;
-  left: calc(var(--rail-width) + var(--page-padding-x));
+  position: relative;
+  z-index: 1;
   display: none;
+  flex: none;
   gap: 14px;
   align-items: center;
+  margin-top: 24px;
   opacity: calc(1 - clamp(0, calc(var(--section-top, 0) / -80), 1));
 }
 

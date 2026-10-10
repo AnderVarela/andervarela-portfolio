@@ -1,6 +1,6 @@
 .layout {
   display: flex;
-  flex: 1;
+  flex: 1 0 auto;
   flex-direction: column;
   justify-content: center;
   padding: var(--section-padding-top) var(--page-padding-x) var(--section-padding-bottom)
