@@ -1,9 +1,13 @@
-/* Posición, tamaño y opacidad los escribe Avatar.motion.helper en cada fotograma. */
+/*
+ * Posición, tamaño y opacidad los escribe Avatar.motion.helper en cada fotograma.
+ * En móvil no se muestra: cada AvatarStage dibuja su propio avatar dentro de la sección.
+ */
 .avatar {
   position: fixed;
   top: 0;
   left: 0;
   z-index: var(--layer-avatar);
+  display: none;
   width: 300px;
   height: 538px;
   transform-origin: 50% 50%;
@@ -41,6 +45,7 @@
 @media (width >= 768px) {
   .avatar {
     z-index: var(--layer-avatar-raised);
+    display: block;
   }
 
   .poses {
