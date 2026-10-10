@@ -18,15 +18,14 @@
   object-fit: contain;
   object-position: 50% 100%;
   opacity: 0;
-  filter: blur(14px) drop-shadow(0 18px 24px rgb(0 0 0 / 28%));
-  transition:
-    opacity var(--pose-reveal-duration) ease-out,
-    filter var(--pose-reveal-duration) ease-out;
+  filter: drop-shadow(0 18px 24px rgb(0 0 0 / 28%));
+  transition: opacity var(--pose-reveal-duration) ease-out;
 }
 
 /*
  * La silueta difuminada de la pose, recortada con su miniatura. Al llegar la imagen se
- * desvanece mientras la imagen se enfoca encima, así que el relevo no cambia de forma.
+ * funden una con otra, así que el relevo no cambia de forma. El filtro de la imagen no se
+ * anima: Safari pinta la capa en blanco al animar un filtro que lleva drop-shadow.
  */
 .skeleton {
   --skeleton-color: color-mix(in oklab, var(--color-text) 15%, var(--color-bg));
@@ -52,7 +51,6 @@
 
 .loaded .image {
   opacity: 1;
-  filter: blur(0) drop-shadow(0 18px 24px rgb(0 0 0 / 28%));
 }
 
 .loaded .skeleton {
@@ -63,9 +61,5 @@
 @media (prefers-reduced-motion: reduce) {
   .layer {
     --pose-reveal-duration: 0.2s;
-  }
-
-  .image {
-    filter: drop-shadow(0 18px 24px rgb(0 0 0 / 28%));
   }
 }
