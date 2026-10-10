@@ -7,6 +7,9 @@ import invoicesCompleteDataScreenshotUrl from '@/assets/projects/rubicon-invoice
 import requifyActiveRuleScreenshotUrl from '@/assets/projects/requify/active-rule.jpg';
 import requifyControlPanelScreenshotUrl from '@/assets/projects/requify/control-panel.jpg';
 import requifyNewRuleScreenshotUrl from '@/assets/projects/requify/new-rule.jpg';
+import rubiconWebHomeScreenshotUrl from '@/assets/projects/rubicon-web/home.jpg';
+import rubiconWebProductDetailScreenshotUrl from '@/assets/projects/rubicon-web/product-detail.jpg';
+import rubiconWebReviewsScreenshotUrl from '@/assets/projects/rubicon-web/reviews.jpg';
 
 export const ProjectLinkKinds = {
   Web: 'web',
@@ -125,12 +128,28 @@ export const PROJECTS: readonly Project[] = [
     shortName: 'Web corporativa',
     glyph: 'R/W',
     type: 'Web corporativa',
-    summary: 'Sitio web del negocio.',
-    problem: 'Sitio web del negocio.',
-    contribution: PENDING_CONTRIBUTION,
-    isContributionPending: true,
-    technologies: PENDING_STACK,
-    links: [{ kind: ProjectLinkKinds.Web }],
+    summary: 'Web de la panadería: catálogo, reseñas y horario.',
+    problem:
+      'La panadería no tenía un sitio propio donde enseñar sus productos, su horario y cómo llegar.',
+    contribution:
+      'Construí la web de la panadería: catálogo de productos por categorías con ficha de detalle e ingredientes, reseñas de Google, horario que indica si está abierta en ese momento, avisos puntuales y cómo llegar.',
+    technologies: ['React', 'TypeScript', 'Vite', 'Zustand', 'CSS Modules', 'Vitest'],
+    links: [{ kind: ProjectLinkKinds.Web, url: 'https://panaderiarubicon.es' }],
+    screenshots: [
+      {
+        imageUrl: rubiconWebHomeScreenshotUrl,
+        description:
+          'Portada de la web de Panadería Rubicón, con el logotipo, el horario de hoy y una foto del mostrador',
+      },
+      {
+        imageUrl: rubiconWebProductDetailScreenshotUrl,
+        description: 'Ficha de un pan abierta sobre el catálogo, con precio e ingredientes',
+      },
+      {
+        imageUrl: rubiconWebReviewsScreenshotUrl,
+        description: 'Sección de reseñas de Google, con la valoración media y varias opiniones',
+      },
+    ],
     group: RUBICON_BAKERY_GROUP,
   },
   {
