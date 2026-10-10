@@ -1,6 +1,9 @@
 import portfolioExperienceScreenshotUrl from '@/assets/projects/portfolio/experience.jpg';
 import portfolioHomeScreenshotUrl from '@/assets/projects/portfolio/home.jpg';
 import portfolioSkillsScreenshotUrl from '@/assets/projects/portfolio/skills.jpg';
+import invoicesBatchFinishedScreenshotUrl from '@/assets/projects/rubicon-invoices/batch-finished.jpg';
+import invoicesBatchQueueScreenshotUrl from '@/assets/projects/rubicon-invoices/batch-queue.jpg';
+import invoicesCompleteDataScreenshotUrl from '@/assets/projects/rubicon-invoices/complete-invoice-data.jpg';
 import requifyActiveRuleScreenshotUrl from '@/assets/projects/requify/active-rule.jpg';
 import requifyControlPanelScreenshotUrl from '@/assets/projects/requify/control-panel.jpg';
 import requifyNewRuleScreenshotUrl from '@/assets/projects/requify/new-rule.jpg';
@@ -135,13 +138,39 @@ export const PROJECTS: readonly Project[] = [
     name: 'Gestión de facturas · Panadería Rubicón',
     shortName: 'Gestión de facturas',
     glyph: 'R/F',
-    type: 'Aplicación de gestión',
-    summary: 'Aplicación interna para gestionar la facturación.',
-    problem: 'Aplicación interna para gestionar la facturación.',
-    contribution: PENDING_CONTRIBUTION,
-    isContributionPending: true,
-    technologies: PENDING_STACK,
+    type: 'Aplicación de escritorio',
+    summary: 'Lee, renombra y archiva las facturas recibidas.',
+    problem:
+      'Clasificar a mano las facturas recibidas: abrir cada una, renombrarla y guardarla en la carpeta de su proveedor y trimestre.',
+    contribution:
+      'Construí una aplicación de escritorio para macOS y Windows: se arrastran PDF o fotos y la app lee con OCR el proveedor, el número, el mes y el año, renombra cada factura y la archiva en su carpeta. Si falta un dato, pregunta; lo que no puede procesar va a revisión manual y nunca sobrescribe nada. Todo se ejecuta en local: ninguna factura sale del equipo.',
+    technologies: [
+      'React',
+      'TypeScript',
+      'Vite',
+      'Tauri',
+      'Python',
+      'FastAPI',
+      'OCR',
+      'Playwright',
+    ],
     links: [],
+    screenshots: [
+      {
+        imageUrl: invoicesCompleteDataScreenshotUrl,
+        description:
+          'La aplicación pide completar los datos que no pudo leer de una factura, con el documento al lado',
+      },
+      {
+        imageUrl: invoicesBatchQueueScreenshotUrl,
+        description: 'Zona para arrastrar facturas y lista de las cuatro que se van a procesar',
+      },
+      {
+        imageUrl: invoicesBatchFinishedScreenshotUrl,
+        description:
+          'Resumen de una tanda terminada: tres facturas archivadas y una enviada a revisión manual',
+      },
+    ],
     isPrivate: true,
     group: RUBICON_BAKERY_GROUP,
   },
