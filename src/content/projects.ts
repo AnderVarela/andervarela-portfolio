@@ -7,6 +7,9 @@ import invoicesCompleteDataScreenshotUrl from '@/assets/projects/rubicon-invoice
 import requifyActiveRuleScreenshotUrl from '@/assets/projects/requify/active-rule.jpg';
 import requifyControlPanelScreenshotUrl from '@/assets/projects/requify/control-panel.jpg';
 import requifyNewRuleScreenshotUrl from '@/assets/projects/requify/new-rule.jpg';
+import catalogueCategoriesScreenshotUrl from '@/assets/projects/rubicon-catalogue/categories.jpg';
+import catalogueNoticeBannerScreenshotUrl from '@/assets/projects/rubicon-catalogue/notice-banner.jpg';
+import catalogueProductsScreenshotUrl from '@/assets/projects/rubicon-catalogue/products.jpg';
 import rubiconWebHomeScreenshotUrl from '@/assets/projects/rubicon-web/home.jpg';
 import rubiconWebProductDetailScreenshotUrl from '@/assets/projects/rubicon-web/product-detail.jpg';
 import rubiconWebReviewsScreenshotUrl from '@/assets/projects/rubicon-web/reviews.jpg';
@@ -57,7 +60,6 @@ export interface Project {
 
 const RUBICON_BAKERY_GROUP: ProjectGroup = { id: 'panaderia-rubicon', name: 'Panadería Rubicón' };
 
-const PENDING_CONTRIBUTION = 'Pendiente de completar.';
 const PENDING_HACKATHON_CONTRIBUTION = 'Pendiente: nombre, descripción y stack del proyecto.';
 const PENDING_STACK = ['Stack pendiente'];
 
@@ -199,12 +201,30 @@ export const PROJECTS: readonly Project[] = [
     shortName: 'Gestión de catálogo',
     glyph: 'R/C',
     type: 'SPA',
-    summary: 'SPA de administración del catálogo.',
-    problem: 'Administrar el catálogo de productos.',
-    contribution: PENDING_CONTRIBUTION,
-    isContributionPending: true,
-    technologies: PENDING_STACK,
-    links: [{ kind: ProjectLinkKinds.Demo }],
+    summary: 'Panel para gestionar todo lo que muestra la web.',
+    problem:
+      'Cambiar un precio, el horario o un aviso de la web no puede depender de pedírselo a un desarrollador.',
+    contribution:
+      'Construí el panel desde el que la panadería gestiona su web sin tocar código: productos y categorías (alta, edición, orden y visibilidad), portada, franja de aviso con fecha de retirada, horario, equipo, reseñas y contacto. Los cambios se publican al instante.',
+    technologies: ['React', 'TypeScript', 'Vite', 'Zustand', 'CSS Modules'],
+    links: [],
+    isPrivate: true,
+    screenshots: [
+      {
+        imageUrl: catalogueProductsScreenshotUrl,
+        description:
+          'Listado de productos del panel, con pestañas por categoría, buscador e interruptor de visibilidad',
+      },
+      {
+        imageUrl: catalogueCategoriesScreenshotUrl,
+        description: 'Gestión de categorías: orden, visibilidad y alta de una categoría nueva',
+      },
+      {
+        imageUrl: catalogueNoticeBannerScreenshotUrl,
+        description:
+          'Edición de la franja de aviso de la web, con vista previa y fecha de retirada automática',
+      },
+    ],
     group: RUBICON_BAKERY_GROUP,
   },
   {
