@@ -1,6 +1,6 @@
 .layout {
   display: flex;
-  flex: 1;
+  flex: 1 0 auto;
   flex-direction: column;
   justify-content: flex-start;
   padding: 84px var(--page-padding-x) 40px calc(var(--rail-width) + var(--page-padding-x));
@@ -26,13 +26,14 @@
 }
 
 @media (width >= 768px) {
+  /* El aviso de scroll va en el flujo, bajo el contenido: así nunca se le puede montar encima. */
   .layout {
-    justify-content: center;
-    padding-block: 96px;
+    padding-block: 96px 32px;
   }
 
   .content {
     gap: 22px;
+    margin-block: auto;
     max-width: calc(var(--content-width) * 0.56);
   }
 }

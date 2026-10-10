@@ -59,8 +59,8 @@ export function HeroSection() {
             <HeroActions />
           </Reveal>
         </div>
+        <ScrollHint />
       </div>
-      <ScrollHint />
     </Section>
   );
 }
