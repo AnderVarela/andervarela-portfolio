@@ -207,7 +207,7 @@ Rejilla o carrusel de tarjetas. **Todas las tarjetas son clicables** y abren el 
 | # | Proyecto | Tipo | Resumen |
 |---|---|---|---|
 | 1 | **RequiFy** | Extensión de Chrome (Manifest V3) + SPA | Mocking de peticiones HTTP (latencia, patrones) para que el frontend no dependa del backend. TFM con Matrícula de Honor (10). |
-| 2 | **Este portfolio** | Web | La propia web: avatar 3D, capas y scroll animado. |
+| 2 | **Este portfolio** | Web | La propia web: avatar ilustrado, capas y scroll animado. |
 | 3 | **Web de Panadería Rubicón** | Web corporativa | Sitio web del negocio. |
 | 4 | **Gestión de facturas — Panadería Rubicón** | Aplicación de gestión | Aplicación interna para gestionar la facturación. |
 | 5 | **Gestión de catálogo — Panadería Rubicón** | SPA | SPA para administrar el catálogo de productos. |

@@ -1,0 +1,12 @@
+.screenshot {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: var(--border-rule);
+  background: var(--color-surface);
+  object-fit: cover;
+}
+
+.featured {
+  grid-column: 1 / -1;
+}

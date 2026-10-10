@@ -1,3 +1,4 @@
+import { ProjectScreenshotImage } from '@/components/projectDetail/ProjectScreenshotImage/ProjectScreenshotImage';
 import { ScreenshotPlaceholder } from '@/components/projectDetail/ScreenshotPlaceholder/ScreenshotPlaceholder';
 import { Text } from '@/components/ui/Text/Text';
 import { TextTones, TextTypes } from '@/components/ui/Text/Text.types';
@@ -15,6 +16,23 @@ interface ProjectGalleryProps {
 export function ProjectGallery({ project }: ProjectGalleryProps) {
   const translation = useTranslation();
   const { gallery, mainScreenshot, screenshot } = translation.projectDetail;
+
+  if (project.screenshots) {
+    return (
+      <div className={styles.gallery}>
+        <span className={styles.title}>
+          <Text kind={TextTypes.Label} label={gallery} tone={TextTones.Muted} />
+        </span>
+        {project.screenshots.map((projectScreenshot, screenshotIndex) => (
+          <ProjectScreenshotImage
+            key={projectScreenshot.imageUrl}
+            screenshot={projectScreenshot}
+            isFeatured={screenshotIndex === 0}
+          />
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div className={styles.gallery}>
