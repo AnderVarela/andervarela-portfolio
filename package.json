@@ -20,6 +20,7 @@
     "test": "vitest run --passWithNoTests",
     "test:watch": "vitest",
     "verify": "npm run typecheck && npm run lint && npm run lint:styles && npm run format:check && npm run test && npm run build",
+    "optimize:avatar": "node scripts/optimize-avatar-images.js",
     "prepare": "husky"
   },
   "dependencies": {
@@ -52,6 +53,7 @@
     "jsdom": "^29.1.1",
     "lint-staged": "^16.4.0",
     "prettier": "^3.9.9",
+    "sharp": "^0.35.5",
     "stylelint": "^17.16.0",
     "stylelint-config-standard": "^40.0.0",
     "typescript": "^6.0.3",

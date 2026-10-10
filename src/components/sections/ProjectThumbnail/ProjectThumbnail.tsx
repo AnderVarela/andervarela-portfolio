@@ -1,3 +1,4 @@
+import { ImageWithSkeleton } from '@/components/ui/ImageWithSkeleton/ImageWithSkeleton';
 import { IconNames } from '@/components/ui/Icon/Icon.types';
 import { Tag } from '@/components/ui/Tag/Tag';
 import { TagVariants } from '@/components/ui/Tag/Tag.types';
@@ -20,7 +21,11 @@ export function ProjectThumbnail({ project, projectIndex }: ProjectThumbnailProp
   return (
     <span className={styles.thumbnail}>
       {coverScreenshot ? (
-        <img src={coverScreenshot.imageUrl} alt="" loading="lazy" className={styles.cover} />
+        <ImageWithSkeleton
+          imageUrl={coverScreenshot.imageUrl}
+          description=""
+          className={styles.cover}
+        />
       ) : (
         <>
           <span className={styles.reference}>P/{formatAsTwoDigits(projectIndex + 1)}</span>
