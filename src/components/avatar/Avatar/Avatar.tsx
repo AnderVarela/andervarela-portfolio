@@ -39,7 +39,12 @@ export function Avatar() {
           className={styles.poses}
         >
           {AVATAR_POSES.map((pose, poseIndex) => (
-            <AvatarPoseImage key={pose.sectionId} poseIndex={poseIndex} imageUrl={pose.imageUrl} />
+            <AvatarPoseImage
+              key={pose.sectionId}
+              pose={pose}
+              poseIndex={poseIndex}
+              isPriority={poseIndex === 0}
+            />
           ))}
           <TechnologyOrbit poseIndex={SKILLS_POSE_INDEX} />
         </div>

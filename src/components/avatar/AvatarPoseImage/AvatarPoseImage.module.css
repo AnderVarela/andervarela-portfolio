@@ -1,4 +1,16 @@
-.pose {
+.layer {
+  --pose-reveal-duration: 0.5s;
+
+  position: absolute;
+  inset: 0;
+}
+
+/* La opacidad de la capa la escribe Avatar.motion.helper en cada fotograma. */
+.scrollDriven {
+  opacity: 0;
+}
+
+.image {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -6,5 +18,54 @@
   object-fit: contain;
   object-position: 50% 100%;
   opacity: 0;
-  filter: drop-shadow(0 18px 24px rgb(0 0 0 / 28%));
+  filter: blur(14px) drop-shadow(0 18px 24px rgb(0 0 0 / 28%));
+  transition:
+    opacity var(--pose-reveal-duration) ease-out,
+    filter var(--pose-reveal-duration) ease-out;
+}
+
+/*
+ * La silueta difuminada de la pose, recortada con su miniatura. Al llegar la imagen se
+ * desvanece mientras la imagen se enfoca encima, así que el relevo no cambia de forma.
+ */
+.skeleton {
+  --skeleton-color: color-mix(in oklab, var(--color-text) 15%, var(--color-bg));
+
+  position: absolute;
+  inset: 0;
+  display: none;
+  transition:
+    opacity var(--pose-reveal-duration) ease-out,
+    visibility 0s linear var(--pose-reveal-duration);
+  mask-image: var(--pose-silhouette);
+  mask-position: 50% 100%;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+/* Sin máscaras el skeleton sería un rectángulo; mejor no mostrarlo. */
+@supports (mask-image: none) {
+  .skeleton {
+    display: block;
+  }
+}
+
+.loaded .image {
+  opacity: 1;
+  filter: blur(0) drop-shadow(0 18px 24px rgb(0 0 0 / 28%));
+}
+
+.loaded .skeleton {
+  visibility: hidden;
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .layer {
+    --pose-reveal-duration: 0.2s;
+  }
+
+  .image {
+    filter: drop-shadow(0 18px 24px rgb(0 0 0 / 28%));
+  }
 }

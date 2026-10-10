@@ -1,0 +1,30 @@
+.skeleton {
+  background-color: var(--skeleton-color, color-mix(in oklab, var(--color-text) 6%, transparent));
+  background-image: linear-gradient(
+    100deg,
+    transparent 30%,
+    color-mix(in oklab, var(--color-text) 12%, transparent) 50%,
+    transparent 70%
+  );
+  background-repeat: no-repeat;
+  background-size: 300% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+/* El brillo entra por la izquierda y sale por la derecha. */
+@keyframes shimmer {
+  from {
+    background-position: 105% 0;
+  }
+
+  to {
+    background-position: -5% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    background-image: none;
+    animation: none;
+  }
+}

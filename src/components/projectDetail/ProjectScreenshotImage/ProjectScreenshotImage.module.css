@@ -1,15 +1,14 @@
 .screenshot {
-  display: block;
+  --image-position: 50% 0;
+
   width: 100%;
   aspect-ratio: 16 / 9;
   border: var(--border-rule);
   background: var(--color-surface);
-  object-fit: cover;
-  object-position: 50% 0;
 }
 
-/* La principal se ve entera, con su propia proporción. */
+/* La principal se ve entera, con su propia proporción; hasta que carga reserva un hueco. */
 .featured {
   grid-column: 1 / -1;
-  aspect-ratio: auto;
+  aspect-ratio: 16 / 10;
 }

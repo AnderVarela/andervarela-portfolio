@@ -1,3 +1,4 @@
+import { AvatarPoseImage } from '@/components/avatar/AvatarPoseImage/AvatarPoseImage';
 import { TechnologyOrbit } from '@/components/avatar/TechnologyOrbit/TechnologyOrbit';
 import { AVATAR_POSES } from '@/content/avatarPoses';
 import {
@@ -47,7 +48,7 @@ export function AvatarStage({ sectionId, isCompact = false }: AvatarStageProps) 
           aria-label={`${translation.accessibility.avatarDescription}: ${poseDescription}`}
           className={joinClassNames(styles.avatar, sectionIndex === 0 && styles.openingAvatar)}
         >
-          <img src={pose.imageUrl} alt="" draggable={false} className={styles.pose} />
+          <AvatarPoseImage pose={pose} isPriority={sectionIndex === 0} />
           {sectionId === SectionIds.Skills && <TechnologyOrbit poseIndex={sectionIndex} />}
         </div>
       )}

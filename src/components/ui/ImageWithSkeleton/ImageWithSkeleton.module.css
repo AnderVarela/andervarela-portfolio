@@ -1,0 +1,52 @@
+/* El skeleton y la imagen comparten la única celda, uno encima del otro. */
+.frame {
+  --image-reveal-duration: 0.4s;
+
+  display: grid;
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
+  overflow: hidden;
+}
+
+.skeleton,
+.image {
+  grid-area: 1 / 1;
+}
+
+.skeleton {
+  transition:
+    opacity var(--image-reveal-duration) ease-out,
+    visibility 0s linear var(--image-reveal-duration);
+}
+
+/* --image-position lo ajusta quien la usa para elegir qué parte se conserva al recortar. */
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--image-position, 50% 50%);
+  opacity: 0;
+  transition: opacity var(--image-reveal-duration) ease-out;
+}
+
+.loaded .image {
+  opacity: 1;
+}
+
+.loaded .skeleton {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.naturalHeight.loaded {
+  aspect-ratio: auto;
+}
+
+.naturalHeight.loaded .image {
+  height: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frame {
+    --image-reveal-duration: 0.2s;
+  }
+}
