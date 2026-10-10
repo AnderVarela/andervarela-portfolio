@@ -1,0 +1,28 @@
+.section {
+  position: relative;
+}
+
+/* Recibe el foco al saltar desde otra sección, pero no es un control. */
+.section:focus-visible {
+  outline: none;
+}
+
+.viewport {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+@media (width >= 768px) {
+  .pinned {
+    height: var(--section-pinned-height);
+  }
+
+  .pinned > .viewport {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+  }
+}

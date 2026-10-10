@@ -1,0 +1,81 @@
+/* Hay una clase de colocación por sección; su nombre coincide con la clave de nombre de la sección. */
+.decoration {
+  --parallax-y: calc(var(--section-top, 0) * -0.3px);
+
+  position: absolute;
+  z-index: 0;
+  display: none;
+  color: var(--color-decoration);
+  font-size: var(--decoration-size);
+  font-stretch: 125%;
+  font-weight: 900;
+  line-height: 0.8;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.home {
+  bottom: -4vw;
+  left: calc(var(--rail-width) - 1vw);
+  transform: translate3d(0, calc(var(--section-top, 0) * 0.25px), 0);
+  letter-spacing: -0.05em;
+  opacity: calc(1 - var(--section-exit, 0));
+}
+
+.about {
+  top: 6vh;
+  right: var(--page-padding-x);
+  transform: translate3d(0, var(--parallax-y), 0);
+}
+
+.experience {
+  bottom: -3vw;
+  left: calc(var(--rail-width) + var(--page-padding-x));
+  transform: translate3d(calc(var(--section-progress, 0) * -12vw), 0, 0);
+}
+
+.projects {
+  top: 8vh;
+  right: var(--page-padding-x);
+  transform: translate3d(calc(var(--section-progress, 0) * -20vw), 0, 0);
+}
+
+.achievements {
+  top: 4vh;
+  left: 50%;
+  transform: translate3d(-30%, var(--parallax-y), 0);
+}
+
+.education {
+  top: 2vh;
+  left: calc(var(--rail-width) + var(--page-padding-x));
+  transform: translate3d(0, var(--parallax-y), 0);
+}
+
+.skills {
+  top: 3vh;
+  left: 50%;
+  transform: translate3d(-35%, var(--parallax-y), 0);
+}
+
+.contact {
+  top: 4vh;
+  right: var(--page-padding-x);
+  transform: translate3d(0, var(--parallax-y), 0);
+}
+
+@media (width >= 768px) {
+  .decoration {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .decoration {
+    --parallax-y: 0px;
+  }
+
+  .home {
+    transform: none;
+  }
+}

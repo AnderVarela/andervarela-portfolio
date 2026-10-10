@@ -1,0 +1,38 @@
+.layout {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  gap: 28px;
+  justify-content: center;
+  padding: var(--section-padding-top) 0 var(--section-padding-bottom)
+    calc(var(--rail-width) + var(--avatar-zone-projects));
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 40px;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 var(--page-padding-x);
+}
+
+.stage {
+  padding: 0 var(--page-padding-x);
+}
+
+.trackWindow {
+  padding: 0 var(--page-padding-x);
+}
+
+@media (width >= 768px) {
+  /* clip y no hidden: el foco no debe poder desplazar la ventana por su cuenta. */
+  .trackWindow {
+    overflow: clip;
+
+    /* Deja sitio al anillo de foco de las tarjetas, que sobresale de la ventana. */
+    overflow-clip-margin: 10px;
+  }
+}

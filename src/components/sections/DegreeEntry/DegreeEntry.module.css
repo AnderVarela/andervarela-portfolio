@@ -1,0 +1,29 @@
+.entry {
+  --text-title-size: 28px;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px 32px;
+  padding-top: 18px;
+  border-top: var(--border-rule);
+}
+
+.period {
+  color: var(--color-accent-ink);
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+@media (width >= 1024px) {
+  .entry {
+    grid-template-columns: 180px minmax(0, 1fr);
+  }
+}

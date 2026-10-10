@@ -1,0 +1,40 @@
+.heading {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-stretch: 110%;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 0.92;
+}
+
+.giant {
+  font-size: var(--heading-giant-size);
+  font-stretch: 112%;
+  letter-spacing: -0.035em;
+  line-height: 0.86;
+
+  /* Permite partir el nombre en dos líneas con un salto en el texto. */
+  white-space: pre-line;
+}
+
+.section {
+  font-size: var(--heading-section-size);
+}
+
+.sectionCompact {
+  font-size: var(--heading-section-compact-size);
+}
+
+.contact {
+  max-width: 100%;
+  font-size: var(--heading-contact-size);
+  font-stretch: 112%;
+  letter-spacing: -0.035em;
+  line-height: 0.88;
+  white-space: nowrap;
+}
+
+.detail {
+  font-size: var(--heading-detail-size);
+  text-wrap: balance;
+}

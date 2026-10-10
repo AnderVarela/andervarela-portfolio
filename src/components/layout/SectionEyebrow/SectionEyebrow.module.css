@@ -1,0 +1,11 @@
+.eyebrow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.rule {
+  width: 40px;
+  height: 2px;
+  background: var(--color-divider);
+}

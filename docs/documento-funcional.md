@@ -42,7 +42,7 @@ Cercano y en primera persona. Se abandona el tono de venta del CV ("elimino ries
 - Avatar 3D con poses por sección y seguimiento del cursor.
 - Sistema de capas con animaciones ligadas al scroll.
 - Detalle de proyecto en capa superpuesta, sin cambiar de página.
-- Tres idiomas: español, inglés y gallego.
+- Dos idiomas: español e inglés.
 - Tema oscuro (por defecto) y claro.
 - Descarga del CV en PDF.
 - Versión adaptada a móvil y a "reducir movimiento".
@@ -81,7 +81,7 @@ Una sola URL. Cada sección tiene un ancla propia.
 - Un enlace por sección. Al pulsarlo, la página hace scroll animado hasta la sección; no hay navegación entre páginas.
 - La sección actual queda marcada en el menú y se actualiza al hacer scroll manualmente.
 - El ancla de la URL se actualiza con la sección activa, de modo que un enlace como `andervarela.es/#proyectos` abre directamente en esa sección.
-- Incluye además: selector de idioma (ES / EN / GL), conmutador de tema y botón "Descargar CV".
+- Incluye además: selector de idioma (ES / EN), conmutador de tema y botón "Descargar CV".
 - Indicador de progreso de scroll de la página.
 
 ### 4.2 Menú en móvil
@@ -195,7 +195,7 @@ Línea de tiempo. La sección se fija y los hitos avanzan con el scroll.
 
 - Estandaricé los componentes de UI con React y TypeScript estricto para reducir bugs y horas de QA.
 - Monté una arquitectura de estado global con Zustand que evita re-renderizados innecesarios y datos desincronizados.
-- Migré el entorno a Vite y protegí el repositorio con Husky, Commitlint y Playwright.
+- Protegí el repositorio con Husky, Commitlint y Playwright.
 - Hago de puente entre front y back en la definición de contratos y el consumo de APIs.
 
 Cada punto muestra las tecnologías implicadas como etiquetas.
@@ -207,12 +207,12 @@ Rejilla o carrusel de tarjetas. **Todas las tarjetas son clicables** y abren el 
 | # | Proyecto | Tipo | Resumen |
 |---|---|---|---|
 | 1 | **RequiFy** | Extensión de Chrome (Manifest V3) + SPA | Mocking de peticiones HTTP (latencia, patrones) para que el frontend no dependa del backend. TFM con Matrícula de Honor (10). |
-| 2 | **Este portfolio** | Web | La propia web: avatar 3D, capas y scroll animado. |
-| 3 | **Web de Panadería Rubicón** | Web corporativa | Sitio web del negocio. |
-| 4 | **Gestión de facturas — Panadería Rubicón** | Aplicación de gestión | Aplicación interna para gestionar la facturación. |
-| 5 | **Gestión de catálogo — Panadería Rubicón** | SPA | SPA para administrar el catálogo de productos. |
-| 6 | **Proyecto HackSpain '26** | Hackatón | Solución de automatización industrial para THEKER Robotics. 1.er premio. |
-| 7 | **Proyecto HackUDC '25** | Hackatón | Reto corporativo de Denodo. 1.er premio. |
+| 2 | **Este portfolio** | Web | La propia web: avatar ilustrado, capas y scroll animado. |
+| 3 | **Web de Panadería Rubicón** | Web corporativa | Web de la panadería: catálogo, reseñas y horario. |
+| 4 | **Gestión de facturas — Panadería Rubicón** | Aplicación de escritorio | Lee, renombra y archiva las facturas recibidas. |
+| 5 | **Gestión de catálogo — Panadería Rubicón** | SPA | Panel para gestionar todo lo que muestra la web: catálogo, horario, avisos, equipo y contacto. |
+| 6 | **STACKSPECT · HackSpain '26** | Hackatón | Paletizado robótico medido episodio a episodio, para THEKER Robotics. 1.er premio. |
+| 7 | **Chatbot para Denodo · HackUDC '25** | Hackatón | Chat para consultar bases de datos en lenguaje natural, reto de Denodo. 1.er premio. |
 
 **Tarjeta**: imagen o captura, nombre, tipo, resumen de una línea, etiquetas de tecnología y distintivo si tiene premio.
 
@@ -267,8 +267,8 @@ Al pasar el cursor por una tecnología, se resaltan los proyectos y experiencias
 
 ### 8.1 Idiomas
 
-- Español (por defecto), inglés y gallego.
-- En la primera visita se usa el idioma del navegador si es uno de los tres; en otro caso, español.
+- Español (por defecto) e inglés.
+- En la primera visita se usa el idioma del navegador si es uno de los dos; en otro caso, español.
 - El cambio de idioma es instantáneo, no recarga la página y conserva la posición de scroll.
 - La elección se recuerda en visitas posteriores.
 - El CV descargable corresponde al idioma activo si existe esa versión; si no, se descarga el español.
@@ -316,7 +316,7 @@ En móvil se puede minimizar el avatar tocándolo.
 
 - Metadatos, Open Graph e imagen de vista previa por idioma.
 - Datos estructurados de tipo `Person`.
-- Etiquetas `hreflang` para los tres idiomas.
+- Etiquetas `hreflang` para los dos idiomas.
 
 ### 10.4 Privacidad
 
@@ -337,7 +337,7 @@ En móvil se puede minimizar el avatar tocándolo.
 | Animación y scroll | GSAP con ScrollTrigger |
 | Estado | Zustand (idioma, tema, sección activa, proyecto abierto) |
 | Estilos | CSS Modules con variables para los temas |
-| Idiomas | Ficheros de traducción por idioma (ES / EN / GL) |
+| Idiomas | Ficheros de traducción por idioma (ES / EN) |
 | Calidad | Playwright, Husky, Commitlint |
 | Despliegue | Hosting estático en `andervarela.es` |
 
@@ -366,5 +366,5 @@ Información que falta para completar el contenido:
 | 5 | Capturas de pantalla de cada proyecto | Proyectos |
 | 6 | Las cinco fotos de referencia para el avatar | Avatar |
 | 7 | Decidir quién modela el avatar (herramienta de IA, modelador 3D o propio) | Avatar |
-| 8 | Versiones del CV en inglés y gallego | Descarga de CV |
+| 8 | Versión del CV en inglés | Descarga de CV |
 | 9 | Elegir una de las tres paletas tras el prototipo | Diseño |

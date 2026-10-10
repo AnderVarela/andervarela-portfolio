@@ -1,0 +1,13 @@
+.brandMark {
+  font-size: 20px;
+  font-stretch: 118%;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+@media (width >= 768px) {
+  .brandMark {
+    font-size: 22px;
+  }
+}

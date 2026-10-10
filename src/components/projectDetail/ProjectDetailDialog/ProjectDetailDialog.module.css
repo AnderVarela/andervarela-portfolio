@@ -1,0 +1,93 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--layer-overlay);
+  background: transparent;
+  transition: background 0.45s;
+}
+
+.backdropVisible {
+  background: var(--color-backdrop);
+}
+
+.panel {
+  --panel-easing: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  position: fixed;
+  z-index: calc(var(--layer-overlay) + 1);
+  overflow: hidden;
+  border: var(--border-rule);
+  background: var(--color-bg);
+  box-shadow: var(--shadow-overlay);
+  transition:
+    top 0.5s var(--panel-easing),
+    left 0.5s var(--panel-easing),
+    width 0.5s var(--panel-easing),
+    height 0.5s var(--panel-easing);
+}
+
+/* Geometría de partida cuando no hay tarjeta de origen (por ejemplo, al llegar por URL). */
+.collapsed {
+  top: 14vh;
+  left: 14vw;
+  width: 72vw;
+  height: 72vh;
+}
+
+.expanded {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100dvh;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.12s;
+}
+
+.expanded .content {
+  opacity: 1;
+  transition: opacity 0.3s 0.28s;
+}
+
+.body {
+  display: grid;
+  flex: 1;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 32px 48px;
+  padding: 32px 20px 40px;
+  overflow: auto;
+}
+
+@media (width >= 768px) {
+  .expanded {
+    top: 5vh;
+    left: max(5vw, calc((100vw - 1320px) / 2));
+    width: min(90vw, 1320px);
+    height: 90vh;
+  }
+
+  .body {
+    padding-inline: 28px;
+  }
+}
+
+@media (width >= 1024px) {
+  .body {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    padding-inline: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backdrop,
+  .panel,
+  .content,
+  .expanded .content {
+    transition: none;
+  }
+}

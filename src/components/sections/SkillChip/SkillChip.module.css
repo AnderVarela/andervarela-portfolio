@@ -1,0 +1,17 @@
+.chip {
+  padding: 7px 11px;
+  border: var(--border-rule);
+  color: var(--color-text);
+  font-size: 16px;
+  font-weight: 600;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+}
+
+.chip:hover {
+  border-color: var(--color-accent-fill);
+  background: var(--color-accent-fill);
+  color: var(--color-bg);
+}

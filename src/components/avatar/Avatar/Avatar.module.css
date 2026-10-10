@@ -1,0 +1,54 @@
+/* Posición, tamaño y opacidad los escribe Avatar.motion.helper en cada fotograma. */
+.avatar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--layer-avatar);
+  width: 300px;
+  height: 538px;
+  transform-origin: 50% 50%;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.tilt {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 100%;
+}
+
+.poses {
+  position: absolute;
+  inset: 0;
+}
+
+.winkArea {
+  position: absolute;
+  top: 6%;
+  left: 25%;
+  z-index: 2;
+  display: none;
+  width: 50%;
+  height: 64%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+@media (width >= 768px) {
+  .avatar {
+    z-index: var(--layer-avatar-raised);
+  }
+
+  .poses {
+    position: absolute;
+    inset: 0;
+  }
+
+  .winkArea {
+    display: block;
+  }
+}

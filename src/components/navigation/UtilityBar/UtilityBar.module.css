@@ -1,0 +1,15 @@
+.utilityBar {
+  position: fixed;
+  top: 24px;
+  right: var(--page-padding-x);
+  z-index: var(--layer-interface);
+  display: none;
+  gap: 8px;
+  align-items: stretch;
+}
+
+@media (width >= 768px) {
+  .utilityBar {
+    display: flex;
+  }
+}

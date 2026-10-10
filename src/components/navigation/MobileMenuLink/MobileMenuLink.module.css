@@ -1,0 +1,32 @@
+.link {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: var(--border-rule);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.number {
+  width: 24px;
+  color: var(--color-muted);
+}
+
+.name {
+  font-size: 32px;
+  font-stretch: 108%;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.active .number,
+.active .name {
+  color: var(--color-accent-ink);
+}
+
+/* La fila ocupa todo el ancho: el anillo va por dentro para no salirse del menú. */
+.link:focus-visible {
+  outline-offset: -2px;
+}

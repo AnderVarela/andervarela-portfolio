@@ -1,0 +1,15 @@
+.app {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: clip;
+}
+
+.content {
+  position: relative;
+  z-index: var(--layer-content);
+}
+
+/* El contenido recibe el foco desde «Saltar al contenido», pero no es un control. */
+.content:focus-visible {
+  outline: none;
+}

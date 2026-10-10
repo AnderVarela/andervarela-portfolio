@@ -1,0 +1,25 @@
+.card {
+  --text-title-size: var(--project-card-title-size, 24px);
+
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  gap: 12px;
+  width: var(--project-card-width);
+  padding: 16px 0 0;
+  border: 0;
+  border-top: var(--border-rule);
+  background: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.card:hover {
+  border-top-color: var(--color-accent);
+}
+
+/* Separado de la tarjeta para que no se confunda con su borde superior. */
+.card:focus-visible {
+  outline-offset: 6px;
+}
