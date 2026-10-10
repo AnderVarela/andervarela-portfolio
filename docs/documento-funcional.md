@@ -212,7 +212,7 @@ Rejilla o carrusel de tarjetas. **Todas las tarjetas son clicables** y abren el 
 | 4 | **Gestión de facturas — Panadería Rubicón** | Aplicación de escritorio | Lee, renombra y archiva las facturas recibidas. |
 | 5 | **Gestión de catálogo — Panadería Rubicón** | SPA | Panel para gestionar todo lo que muestra la web: catálogo, horario, avisos, equipo y contacto. |
 | 6 | **STACKSPECT · HackSpain '26** | Hackatón | Paletizado robótico medido episodio a episodio, para THEKER Robotics. 1.er premio. |
-| 7 | **Proyecto HackUDC '25** | Hackatón | Reto corporativo de Denodo. 1.er premio. |
+| 7 | **Chatbot para Denodo · HackUDC '25** | Hackatón | Chat para consultar bases de datos en lenguaje natural, reto de Denodo. 1.er premio. |
 
 **Tarjeta**: imagen o captura, nombre, tipo, resumen de una línea, etiquetas de tecnología y distintivo si tiene premio.
 

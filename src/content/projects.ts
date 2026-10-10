@@ -4,6 +4,8 @@ import portfolioSkillsScreenshotUrl from '@/assets/projects/portfolio/skills.jpg
 import hackspainEpisodeDashboardScreenshotUrl from '@/assets/projects/hackspain/episode-dashboard.png';
 import hackspainSimulationCellScreenshotUrl from '@/assets/projects/hackspain/simulation-cell.gif';
 import hackspainControlPanelScreenshotUrl from '@/assets/projects/hackspain/simulation-control-panel.png';
+import hackudcChatAnswerScreenshotUrl from '@/assets/projects/hackudc/chat-answer.jpg';
+import hackudcNewChatScreenshotUrl from '@/assets/projects/hackudc/new-chat.jpg';
 import invoicesBatchFinishedScreenshotUrl from '@/assets/projects/rubicon-invoices/batch-finished.jpg';
 import invoicesBatchQueueScreenshotUrl from '@/assets/projects/rubicon-invoices/batch-queue.jpg';
 import invoicesCompleteDataScreenshotUrl from '@/assets/projects/rubicon-invoices/complete-invoice-data.jpg';
@@ -62,9 +64,6 @@ export interface Project {
 }
 
 const RUBICON_BAKERY_GROUP: ProjectGroup = { id: 'panaderia-rubicon', name: 'Panadería Rubicón' };
-
-const PENDING_HACKATHON_CONTRIBUTION = 'Pendiente: nombre, descripción y stack del proyecto.';
-const PENDING_STACK = ['Stack pendiente'];
 
 export const PROJECTS: readonly Project[] = [
   {
@@ -271,16 +270,30 @@ export const PROJECTS: readonly Project[] = [
   },
   {
     id: 'hackudc-25',
-    name: "Proyecto HackUDC '25",
-    shortName: "HackUDC '25",
+    name: "Chatbot para Denodo · HackUDC '25",
+    shortName: 'Chatbot para Denodo',
     glyph: 'HU25',
     type: 'Hackatón · 36 h',
-    summary: 'Reto corporativo de Denodo.',
-    problem: "Reto corporativo de Denodo en HackUDC '25.",
-    contribution: PENDING_HACKATHON_CONTRIBUTION,
-    isContributionPending: true,
-    technologies: PENDING_STACK,
-    links: [{ kind: ProjectLinkKinds.Code }],
+    summary: 'Chat para consultar bases de datos en lenguaje natural, reto de Denodo.',
+    problem:
+      "Reto de Denodo en HackUDC '25: consultar los datos de una organización preguntando en lenguaje natural, sin escribir consultas.",
+    contribution:
+      'En equipo construimos un chat web que envía las preguntas al AI SDK de Denodo y muestra la respuesta con formato y tablas, con historial de conversaciones, y unos scripts que usan Gemini para describir los datos de origen y generar sus vistas en Denodo. Yo me encargué del frontend.',
+    technologies: ['React', 'Redux Toolkit', 'JavaScript', 'Python', 'Flask', 'Denodo', 'Gemini'],
+    links: [
+      { kind: ProjectLinkKinds.Code, url: 'https://github.com/AnderVarela/HackUDC25-Denodo' },
+    ],
+    screenshots: [
+      {
+        imageUrl: hackudcChatAnswerScreenshotUrl,
+        description:
+          'Conversación del chat: a la pregunta «qué bases de datos tengo» responde con la lista de tablas y sus relaciones',
+      },
+      {
+        imageUrl: hackudcNewChatScreenshotUrl,
+        description: 'Pantalla de un chat nuevo, con el cuadro para escribir la pregunta',
+      },
+    ],
     awardBadge: '1.er premio',
   },
 ];
