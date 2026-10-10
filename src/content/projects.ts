@@ -1,3 +1,7 @@
+import portfolioExperienceScreenshotUrl from '@/assets/projects/portfolio/experience.jpg';
+import portfolioHomeScreenshotUrl from '@/assets/projects/portfolio/home.jpg';
+import portfolioSkillsScreenshotUrl from '@/assets/projects/portfolio/skills.jpg';
+
 export const ProjectLinkKinds = {
   Web: 'web',
   Code: 'code',
@@ -10,6 +14,11 @@ export interface ProjectLink {
   kind: ProjectLinkKind;
   /* Sin URL el enlace se anuncia como pendiente. */
   url?: string;
+}
+
+export interface ProjectScreenshot {
+  imageUrl: string;
+  description: string;
 }
 
 export interface ProjectGroup {
@@ -30,6 +39,8 @@ export interface Project {
   isContributionPending?: boolean;
   technologies: readonly string[];
   links: readonly ProjectLink[];
+  /* La primera captura es la principal y hace de portada de la tarjeta. */
+  screenshots?: readonly ProjectScreenshot[];
   awardBadge?: string;
   isPrivate?: boolean;
   group?: ProjectGroup;
@@ -63,21 +74,28 @@ export const PROJECTS: readonly Project[] = [
     shortName: 'Este portfolio',
     glyph: 'AV',
     type: 'Web',
-    summary: 'Avatar 3D, capas y scroll animado.',
+    summary: 'Avatar ilustrado, capas y scroll animado.',
     problem: 'Un CV en PDF no enseña cómo trabajo en frontend.',
     contribution:
-      'Esta web: un avatar 3D que guía el recorrido, un sistema de capas con animaciones ligadas al scroll, tres idiomas y tema claro y oscuro.',
-    technologies: [
-      'React',
-      'TypeScript',
-      'Vite',
-      'Zustand',
-      'Three.js',
-      'GSAP',
-      'CSS Modules',
-      'Playwright',
+      'Esta web: un avatar ilustrado que guía el recorrido y cambia de pose en cada sección, un sistema de capas con animaciones ligadas al scroll, tres idiomas y tema claro y oscuro.',
+    technologies: ['React', 'TypeScript', 'Vite', 'Zustand', 'CSS Modules', 'Vitest'],
+    links: [
+      { kind: ProjectLinkKinds.Code, url: 'https://github.com/AnderVarela/andervarela-portfolio' },
     ],
-    links: [{ kind: ProjectLinkKinds.Code }],
+    screenshots: [
+      {
+        imageUrl: portfolioHomeScreenshotUrl,
+        description: 'Inicio del portfolio, con el avatar saludando junto al titular',
+      },
+      {
+        imageUrl: portfolioExperienceScreenshotUrl,
+        description: 'Sección de experiencia, con el avatar sentado con el portátil',
+      },
+      {
+        imageUrl: portfolioSkillsScreenshotUrl,
+        description: 'Sección de skills, con el avatar rodeado de iconos de tecnologías',
+      },
+    ],
   },
   {
     id: 'rubicon-web',

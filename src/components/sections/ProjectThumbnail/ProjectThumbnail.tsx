@@ -12,17 +12,24 @@ interface ProjectThumbnailProps {
   projectIndex: number;
 }
 
-/* Marcador de la captura del proyecto mientras no haya una imagen real. */
+/* Portada de la tarjeta: la captura principal o, mientras no exista, un marcador. */
 export function ProjectThumbnail({ project, projectIndex }: ProjectThumbnailProps) {
   const translation = useTranslation();
+  const coverScreenshot = project.screenshots?.[0];
 
   return (
     <span className={styles.thumbnail}>
-      <span className={styles.reference}>P/{formatAsTwoDigits(projectIndex + 1)}</span>
-      <span className={styles.glyph} aria-hidden="true">
-        {project.glyph}
-      </span>
-      <span className={styles.pendingNote}>{translation.projects.screenshotPending}</span>
+      {coverScreenshot ? (
+        <img src={coverScreenshot.imageUrl} alt="" loading="lazy" className={styles.cover} />
+      ) : (
+        <>
+          <span className={styles.reference}>P/{formatAsTwoDigits(projectIndex + 1)}</span>
+          <span className={styles.glyph} aria-hidden="true">
+            {project.glyph}
+          </span>
+          <span className={styles.pendingNote}>{translation.projects.screenshotPending}</span>
+        </>
+      )}
       <span className={styles.badge}>
         {project.awardBadge && <Tag label={project.awardBadge} variant={TagVariants.Solid} />}
         {project.isPrivate && (
