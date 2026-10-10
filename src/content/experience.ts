@@ -24,9 +24,8 @@ export const CURRENT_POSITION: ExperiencePosition = {
       technologies: ['Zustand'],
     },
     {
-      description:
-        'Migré el entorno a Vite y protegí el repositorio con Husky, Commitlint y Playwright.',
-      technologies: ['Vite', 'Husky', 'Commitlint', 'Playwright'],
+      description: 'Protegí el repositorio con Husky, Commitlint y Playwright.',
+      technologies: ['Husky', 'Commitlint', 'Playwright'],
     },
     {
       description: 'Hago de puente entre front y back al definir contratos y consumir APIs.',
