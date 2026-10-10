@@ -1,7 +1,6 @@
 export const Languages = {
   Spanish: 'es',
   English: 'en',
-  Galician: 'gl',
 } as const;
 
 export type Language = (typeof Languages)[keyof typeof Languages];
@@ -12,7 +11,6 @@ export const SUPPORTED_LANGUAGES: readonly Language[] = Object.values(Languages)
 export const LANGUAGE_NAMES: Record<Language, string> = {
   [Languages.Spanish]: 'Español',
   [Languages.English]: 'English',
-  [Languages.Galician]: 'Galego',
 };
 
 export const DEFAULT_LANGUAGE: Language = Languages.Spanish;
