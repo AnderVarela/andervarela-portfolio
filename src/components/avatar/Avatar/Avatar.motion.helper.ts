@@ -10,14 +10,11 @@ import {
   computeAvatarSize,
   computeBreathingOffset,
   computeHeadTilt,
-  computeMobileOpacity,
   computeOrbPosition,
   computePoseOpacity,
   computeSectionPlacement,
-  computeStagePlacement,
   computeTimelinePlacement,
   interpolatePlacement,
-  selectDominantStage,
   type AvatarPlacement,
   type PointerPosition,
   type Viewport,
@@ -26,7 +23,6 @@ import {
 const TILT_SELECTOR = '[data-avatar-tilt]';
 const POSE_SELECTOR = '[data-avatar-pose]';
 const ORB_SELECTOR = '[data-technology-orb]';
-const STAGE_SELECTOR = '[data-avatar-stage]';
 
 const PLACEMENT_EASING = 0.22;
 const HEAD_TILT_EASING = 0.08;
@@ -49,7 +45,8 @@ interface AvatarElements {
   tilt: HTMLElement | null;
   poseLayers: PoseLayer[];
   orbs: SVGElement[];
-  stages: HTMLElement[];
+  /* Órbitas de los escenarios de móvil, que viven fuera del avatar. */
+  stageOrbs: SVGElement[];
 }
 
 interface AvatarMotionState {
@@ -59,7 +56,6 @@ interface AvatarMotionState {
   /* Con movimiento reducido, la pose visible cambia por fundido en lugar de seguir al scroll. */
   settledPoseIndex: number | null;
   isFadingBetweenPoses: boolean;
-  lastStagePoseIndex: number;
   winkEndTime: number;
 }
 
@@ -70,7 +66,6 @@ function createInitialMotionState(): AvatarMotionState {
     placement: null,
     settledPoseIndex: null,
     isFadingBetweenPoses: false,
-    lastStagePoseIndex: 0,
     winkEndTime: 0,
   };
 }
@@ -87,7 +82,9 @@ function collectAvatarElements(root: HTMLElement): AvatarElements {
       (element) => ({ element, poseIndex: readPoseIndex(element, 'data-avatar-pose') }),
     ),
     orbs: [...root.querySelectorAll<SVGElement>(ORB_SELECTOR)],
-    stages: [...document.querySelectorAll<HTMLElement>(STAGE_SELECTOR)],
+    stageOrbs: [...document.querySelectorAll<SVGElement>(ORB_SELECTOR)].filter(
+      (orb) => !root.contains(orb),
+    ),
   };
 }
 
@@ -207,44 +204,19 @@ function renderAnimatedFrame(
   }
 }
 
+/*
+ * En móvil el avatar va dibujado dentro de cada escenario y se desplaza con la página;
+ * aquí solo queda girar la órbita de tecnologías.
+ */
 function renderMobileFrame(
   elements: AvatarElements,
   state: AvatarMotionState,
   time: number,
   isMotionReduced: boolean,
 ): void {
-  const viewport = readViewport();
-  const dominantStage = selectDominantStage(
-    elements.stages.map((stageElement) => ({
-      poseIndex: readPoseIndex(stageElement, 'data-avatar-stage'),
-      rectangle: stageElement.getBoundingClientRect(),
-    })),
-    viewport.height,
-  );
-  const opacity = computeMobileOpacity(dominantStage, isMotionReduced);
-  const breathing = isMotionReduced ? 0 : computeBreathingOffset(time);
-
-  if (dominantStage.stage) {
-    const entranceOpacity = isMotionReduced ? 1 : opacity;
-
-    state.lastStagePoseIndex = dominantStage.stage.poseIndex;
-    applyPlacement(
-      elements.root,
-      computeStagePlacement(dominantStage.stage, viewport.height, entranceOpacity),
-      viewport,
-    );
-  }
-
-  // Al volver a tableta o escritorio el avatar se recoloca sin arrastrar la posición de móvil.
+  // Al volver a tableta o escritorio el avatar se recoloca sin arrastrar la posición anterior.
   state.placement = null;
-  elements.root.style.transition = isMotionReduced ? REDUCED_MOTION_FADE_TRANSITION : '';
-  elements.root.style.opacity = opacity.toFixed(3);
-  applyPoseOpacities(elements.poseLayers, holdTimelineAt(state.lastStagePoseIndex));
-  applyOrbit(elements.orbs, isMotionReduced ? 0 : time);
-
-  if (elements.tilt) {
-    elements.tilt.style.transform = `translateY(${(breathing * BREATHING_VERTICAL_FACTOR).toFixed(2)}px)`;
-  }
+  applyOrbit(elements.stageOrbs, isMotionReduced ? 0 : time);
 }
 
 function renderAvatarFrame(elements: AvatarElements, state: AvatarMotionState, time: number): void {
