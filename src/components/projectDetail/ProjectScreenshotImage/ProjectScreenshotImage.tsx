@@ -1,3 +1,4 @@
+import { ImageWithSkeleton } from '@/components/ui/ImageWithSkeleton/ImageWithSkeleton';
 import type { ProjectScreenshot } from '@/content/projects';
 import { joinClassNames } from '@/utils/classNames';
 
@@ -13,10 +14,10 @@ export function ProjectScreenshotImage({
   isFeatured = false,
 }: ProjectScreenshotImageProps) {
   return (
-    <img
-      src={screenshot.imageUrl}
-      alt={screenshot.description}
-      loading="lazy"
+    <ImageWithSkeleton
+      imageUrl={screenshot.imageUrl}
+      description={screenshot.description}
+      hasNaturalHeight={isFeatured}
       className={joinClassNames(styles.screenshot, isFeatured && styles.featured)}
     />
   );

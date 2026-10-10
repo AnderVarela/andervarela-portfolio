@@ -24,6 +24,9 @@ npm run dev
 | `npm run test`        | Tests con Vitest y Testing Library                             |
 | `npm run verify`      | Todo lo anterior en cadena; es lo que se ejecuta antes de push |
 
+Las poses del avatar se sirven en WebP y a varios tamaños. Tras añadir o cambiar un PNG en
+`src/assets/avatar`, `npm run optimize:avatar` regenera `src/assets/avatar/optimized`.
+
 ## Convenciones de código
 
 - **Responsabilidad única**: un componente por fichero (`react/no-multi-comp`), incluso para los
