@@ -42,7 +42,10 @@
   line-height: 0.8;
 }
 
-/* --stage-position-display y --stage-avatar-left los ajusta la sección que comparte el hueco. */
+/*
+ * --stage-position-display y --stage-avatar-left los ajusta la sección que comparte el hueco.
+ * Sin ajuste, el avatar va pegado al borde derecho del hueco.
+ */
 .position {
   position: absolute;
   display: var(--stage-position-display, block);
@@ -57,7 +60,7 @@
 .avatar {
   position: absolute;
   bottom: 0;
-  left: var(--stage-avatar-left, 66%);
+  left: var(--stage-avatar-left, calc(100% - var(--avatar-height) * 0.279));
   height: var(--avatar-height);
   aspect-ratio: 0.558;
   translate: -50% 0;
