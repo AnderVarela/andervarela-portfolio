@@ -6,17 +6,66 @@
   pointer-events: none;
 }
 
-.grid {
+.grid,
+.spotlight {
+  --grid-line: var(--color-grid-line);
+
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(to right, var(--color-grid-line) 1px, transparent 1px);
+  background-image: linear-gradient(to right, var(--grid-line) 1px, transparent 1px);
   background-position: var(--rail-width) calc(var(--scroll-position, 0) * -0.12px);
   background-size: 25vw 100%;
+}
+
+/*
+ * La misma rejilla, encendida, visible solo alrededor del puntero. --pointer-x e -y los
+ * escribe PageBackground.helper; sin puntero fino o con movimiento reducido no aparece.
+ */
+.spotlight {
+  --grid-line: var(--color-grid-line-lit);
+  --spotlight-area: circle 340px at var(--pointer-x, 50%) var(--pointer-y, 50%);
+
+  background-image:
+    radial-gradient(
+      var(--spotlight-area),
+      color-mix(in srgb, var(--color-accent) 9%, transparent),
+      transparent
+    ),
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px);
+  background-position:
+    0 0,
+    var(--rail-width) calc(var(--scroll-position, 0) * -0.12px);
+  background-size:
+    100% 100%,
+    25vw 100%;
+  opacity: 0;
+  transition: opacity 0.6s var(--ease-out);
+  mask-image: radial-gradient(var(--spotlight-area), #000, transparent);
+}
+
+.spotlight[data-active] {
+  opacity: 1;
+}
+
+/* Grano fijo sobre el fondo: quita el aspecto plano sin tocar el contenido. */
+.grain {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: overlay;
 }
 
 @media (width >= 768px) {
   .grid {
     background-size: calc(var(--content-width) / 12) 100%;
+  }
+
+  .spotlight {
+    background-size:
+      100% 100%,
+      calc(var(--content-width) / 12) 100%;
   }
 }
 

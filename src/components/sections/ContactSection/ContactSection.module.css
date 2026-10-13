@@ -8,6 +8,13 @@
     calc(var(--rail-width) + var(--page-padding-x) + var(--avatar-zone-contact));
 }
 
+/* En escritorio el pie no se pega al borde inferior de la ventana. */
+@media (width >= 1024px) {
+  .layout {
+    padding-bottom: 80px;
+  }
+}
+
 .content {
   position: relative;
   z-index: 1;

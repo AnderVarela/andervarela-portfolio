@@ -49,12 +49,14 @@ export function HeroSection() {
               />
             </div>
           </Reveal>
-          <AvatarStage sectionId={SectionIds.Home} isCompact />
-          <Reveal order={RevealOrders.Third} direction={RevealDirections.LiftOnExit}>
-            <div className={styles.tagline}>
-              <Text kind={TextTypes.Lead} label={translation.hero.tagline} />
-            </div>
-          </Reveal>
+          <div className={styles.stageRow}>
+            <AvatarStage sectionId={SectionIds.Home} />
+            <Reveal order={RevealOrders.Third} direction={RevealDirections.LiftOnExit}>
+              <div className={styles.tagline}>
+                <Text kind={TextTypes.Lead} label={translation.hero.tagline} />
+              </div>
+            </Reveal>
+          </div>
           <Reveal order={RevealOrders.Fourth} direction={RevealDirections.None}>
             <HeroActions />
           </Reveal>

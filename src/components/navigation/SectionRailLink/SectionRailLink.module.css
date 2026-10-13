@@ -7,14 +7,17 @@
   color: var(--color-muted);
   letter-spacing: 0.04em;
   text-decoration: none;
+  transition: color var(--duration-hover) ease;
 }
 
 .link:focus-visible {
   outline-offset: 4px;
 }
 
-.link:hover {
-  color: var(--color-text);
+@media (hover: hover) and (pointer: fine) {
+  .link:hover:not(.active) {
+    color: var(--color-text);
+  }
 }
 
 .active {
@@ -22,14 +25,17 @@
   font-weight: 600;
 }
 
+/* La marca crece desde el centro al cambiar de sección en vez de aparecer de golpe. */
 .marker {
   width: 2px;
   height: 16px;
-  background: transparent;
+  transform: scaleY(0);
+  background: var(--color-accent);
+  transition: transform 0.25s var(--ease-out);
 }
 
 .active .marker {
-  background: var(--color-accent);
+  transform: scaleY(1);
 }
 
 .name {

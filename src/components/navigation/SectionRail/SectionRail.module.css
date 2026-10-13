@@ -55,3 +55,16 @@
     line-height: 1.6;
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .rail {
+    animation: rail-enter 0.9s var(--ease-out) backwards;
+  }
+}
+
+@keyframes rail-enter {
+  from {
+    transform: translate3d(-16px, 0, 0);
+    opacity: 0;
+  }
+}

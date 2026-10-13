@@ -14,13 +14,15 @@
 
 .sourceLink {
   color: var(--color-muted);
-  text-underline-offset: 3px;
+  transition: color var(--duration-hover) ease;
 }
 
 .sourceLink:focus-visible {
   outline-offset: 4px;
 }
 
-.sourceLink:hover {
-  color: var(--color-accent-ink);
+@media (hover: hover) and (pointer: fine) {
+  .sourceLink:hover {
+    color: var(--color-accent-ink);
+  }
 }

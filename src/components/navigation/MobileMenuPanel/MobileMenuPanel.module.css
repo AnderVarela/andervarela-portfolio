@@ -8,6 +8,14 @@
   padding: 0 20px 24px;
   overflow: auto;
   background: var(--color-bg);
+  transition:
+    opacity 0.22s var(--ease-out),
+    transform 0.22s var(--ease-out);
+
+  @starting-style {
+    transform: translate3d(0, -12px, 0);
+    opacity: 0;
+  }
 }
 
 .topBar {
@@ -29,6 +37,47 @@
   list-style: none;
 }
 
+/* Las secciones entran en cascada tras abrirse el panel. */
+.links > li {
+  animation: link-enter 0.5s var(--ease-out) backwards;
+  animation-delay: calc(60ms + var(--link-order, 0) * 35ms);
+}
+
+.links > li:nth-child(2) {
+  --link-order: 1;
+}
+
+.links > li:nth-child(3) {
+  --link-order: 2;
+}
+
+.links > li:nth-child(4) {
+  --link-order: 3;
+}
+
+.links > li:nth-child(5) {
+  --link-order: 4;
+}
+
+.links > li:nth-child(6) {
+  --link-order: 5;
+}
+
+.links > li:nth-child(7) {
+  --link-order: 6;
+}
+
+.links > li:nth-child(n + 8) {
+  --link-order: 7;
+}
+
+@keyframes link-enter {
+  from {
+    transform: translate3d(0, 18px, 0);
+    opacity: 0;
+  }
+}
+
 /* Pegado al borde inferior: el espacio sobrante queda entre las secciones y los ajustes. */
 .footer {
   display: flex;
@@ -48,5 +97,19 @@
 @media (width >= 768px) {
   .menu {
     display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .links > li {
+    animation: none;
+  }
+
+  .menu {
+    transition: opacity 0.2s ease;
+
+    @starting-style {
+      transform: none;
+    }
   }
 }

@@ -13,3 +13,16 @@
     display: flex;
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .utilityBar {
+    animation: utility-enter 0.9s var(--ease-out) 0.5s backwards;
+  }
+}
+
+@keyframes utility-enter {
+  from {
+    transform: translate3d(0, -12px, 0);
+    opacity: 0;
+  }
+}

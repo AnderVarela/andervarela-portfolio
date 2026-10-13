@@ -57,3 +57,17 @@
     display: block;
   }
 }
+
+/* Apertura: el personaje sube a escena al cargar. Sin filtros, que Safari no los anima bien aquí. */
+@media (prefers-reduced-motion: no-preference) {
+  .tilt {
+    animation: avatar-enter 1.2s var(--ease-out) 0.35s backwards;
+  }
+}
+
+@keyframes avatar-enter {
+  from {
+    transform: translate3d(0, 48px, 0) scale(0.96);
+    opacity: 0;
+  }
+}

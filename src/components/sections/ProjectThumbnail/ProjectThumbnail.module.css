@@ -13,6 +13,14 @@
 .cover {
   position: absolute;
   inset: 0;
+  transform: scale(var(--thumbnail-zoom, 1));
+  transition: transform 0.5s var(--ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cover {
+    transform: none;
+  }
 }
 
 .reference,
@@ -53,4 +61,34 @@
   right: 12px;
   display: flex;
   gap: 6px;
+}
+
+/*
+ * Señal de que la tarjeta se abre: sube desde el borde inferior con el puntero o el foco.
+ * --thumbnail-cue-shift lo ajusta la tarjeta. En táctil no hay hover, así que queda a la vista.
+ */
+.openCue {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  transform: translate3d(0, var(--thumbnail-cue-shift, 101%), 0);
+  background: var(--color-accent-fill);
+  color: var(--color-bg);
+  transition: transform 0.35s var(--ease-out);
+}
+
+@media (hover: none) {
+  .openCue {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .openCue {
+    transition: none;
+  }
 }
