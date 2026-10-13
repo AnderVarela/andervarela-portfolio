@@ -22,6 +22,10 @@
   --columns-around-avatar: minmax(0, 1fr);
   --columns-right-offset: 0px;
 
+  /* Alto del personaje en móvil, igual en todas las secciones, y el ancho de su imagen. */
+  --avatar-figure-height: clamp(240px, 38svh, 330px);
+  --avatar-figure-width: calc(var(--avatar-figure-height) * 0.558);
+
   --decoration-size: 46vw;
   --heading-giant-size: clamp(56px, 17vw, 76px);
   --heading-section-size: 48px;

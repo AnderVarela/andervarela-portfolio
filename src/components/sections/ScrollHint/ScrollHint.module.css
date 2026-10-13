@@ -9,10 +9,28 @@
   opacity: calc(1 - clamp(0, calc(var(--section-top, 0) / -80), 1));
 }
 
+/* El tramo de acento recorre la línea hacia abajo: señala la dirección del scroll. */
 .line {
   width: 2px;
   height: 40px;
-  background: linear-gradient(var(--color-accent) 50%, var(--color-divider) 50%);
+  background: linear-gradient(var(--color-accent) 50%, var(--color-divider) 50%) 0 0 / 100% 200%;
+  animation: travel 2.4s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+}
+
+@keyframes travel {
+  from {
+    background-position: 0 100%;
+  }
+
+  to {
+    background-position: 0 -100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line {
+    animation: none;
+  }
 }
 
 /* En ventanas muy bajas no cabría sin tocar el borde inferior: mejor no mostrarlo. */

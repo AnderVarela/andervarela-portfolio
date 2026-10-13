@@ -11,10 +11,16 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+
+  /* En móvil, el alto visible con la barra del navegador desplegada: el inicio cabe entero. */
+  min-height: 100svh;
 }
 
 @media (width >= 768px) {
+  .viewport {
+    min-height: 100vh;
+  }
+
   .pinned {
     height: var(--section-pinned-height);
   }

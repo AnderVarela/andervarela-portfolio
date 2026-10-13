@@ -5,6 +5,7 @@
   font-weight: 900;
   letter-spacing: -0.03em;
   line-height: 0.92;
+  text-wrap: balance;
 }
 
 .giant {
@@ -15,6 +16,23 @@
 
   /* Permite partir el nombre en dos líneas con un salto en el texto. */
   white-space: pre-line;
+}
+
+/* El nombre se descubre de arriba abajo al cargar; los márgenes negativos salvan los trazos que sobresalen. */
+@media (prefers-reduced-motion: no-preference) {
+  .giant {
+    animation: name-unveil 1.1s var(--ease-in-out) 0.25s backwards;
+  }
+}
+
+@keyframes name-unveil {
+  from {
+    clip-path: inset(-0.2em -0.2em 110% -0.2em);
+  }
+
+  to {
+    clip-path: inset(-0.2em);
+  }
 }
 
 .section {
@@ -36,5 +54,4 @@
 
 .detail {
   font-size: var(--heading-detail-size);
-  text-wrap: balance;
 }

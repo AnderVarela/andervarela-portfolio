@@ -22,10 +22,18 @@
   --color-divider: color-mix(in srgb, var(--color-text) 26%, transparent);
   --color-muted: color-mix(in oklab, var(--color-text) 66%, var(--color-bg));
   --color-grid-line: color-mix(in srgb, var(--color-text) 7%, transparent);
+  --color-grid-line-lit: color-mix(in srgb, var(--color-text) 24%, transparent);
+  --grain-opacity: 0.09;
   --color-decoration: color-mix(in srgb, var(--color-text) 6%, transparent);
   --color-backdrop: rgb(0 0 0 / 62%);
   --shadow-overlay: 0 12px 32px color-mix(in srgb, #2d2b2b 22%, transparent);
   --border-rule: 2px solid var(--color-divider);
+
+  /* Movimiento: salida enérgica para la interfaz; el color cambia más despacio que la presión. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --duration-press: 0.16s;
+  --duration-hover: 0.18s;
 
   color-scheme: dark;
 }
@@ -47,6 +55,8 @@
   --color-divider: color-mix(in srgb, var(--color-text) 34%, transparent);
   --color-muted: color-mix(in oklab, var(--color-text) 70%, var(--color-bg));
   --color-grid-line: color-mix(in srgb, var(--color-text) 9%, transparent);
+  --color-grid-line-lit: color-mix(in srgb, var(--color-text) 30%, transparent);
+  --grain-opacity: 0.14;
 
   color-scheme: light;
 }

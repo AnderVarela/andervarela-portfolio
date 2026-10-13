@@ -7,6 +7,11 @@ export interface AvatarPose {
   imageSourceSet: string;
   /* Miniatura con la silueta de la pose; va incrustada y se ve mientras llega la imagen. */
   placeholderUrl: string;
+  /*
+   * Cuánto hay que ampliar la imagen para que el personaje mida lo mismo que en las demás:
+   * las poses con algo por encima de la cabeza lo dibujan más pequeño dentro del lienzo.
+   */
+  figureScale: number;
 }
 
 interface PoseImageVariant {
@@ -34,7 +39,7 @@ function findPoseImageUrls(poseName: string): Map<string, string> {
   return urlsByVariantName;
 }
 
-function buildPose(sectionId: SectionId, poseName: string): AvatarPose {
+function buildPose(sectionId: SectionId, poseName: string, figureScale = 1): AvatarPose {
   const urlsByVariantName = findPoseImageUrls(poseName);
   const variants: PoseImageVariant[] = [...urlsByVariantName]
     .filter(([variantName]) => variantName !== PLACEHOLDER_VARIANT_NAME)
@@ -46,6 +51,7 @@ function buildPose(sectionId: SectionId, poseName: string): AvatarPose {
     imageUrl: variants.at(-1)?.url ?? '',
     imageSourceSet: variants.map(({ width, url }) => `${url} ${width}w`).join(', '),
     placeholderUrl: urlsByVariantName.get(PLACEHOLDER_VARIANT_NAME) ?? '',
+    figureScale,
   };
 }
 
@@ -55,9 +61,9 @@ export const AVATAR_POSES: readonly AvatarPose[] = [
   buildPose(SectionIds.About, 'arms-crossed'),
   buildPose(SectionIds.Experience, 'laptop'),
   buildPose(SectionIds.Projects, 'hands-in-pockets'),
-  buildPose(SectionIds.Achievements, 'trophy'),
-  buildPose(SectionIds.Education, 'graduation-cap'),
-  buildPose(SectionIds.Skills, 'arms-raised'),
+  buildPose(SectionIds.Achievements, 'trophy', 1.14),
+  buildPose(SectionIds.Education, 'graduation-cap', 1.25),
+  buildPose(SectionIds.Skills, 'arms-raised', 1.25),
   buildPose(SectionIds.Contact, 'greeting'),
 ];
 
