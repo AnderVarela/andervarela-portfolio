@@ -26,10 +26,18 @@
 @media (width >= 768px) {
   .panel {
     --project-card-width: 270px;
+
+    min-height: 0;
+  }
+
+  .header {
+    flex: none;
   }
 
   .members {
+    flex: 0 1 auto;
     flex-direction: row;
+    min-height: 0;
   }
 }
 

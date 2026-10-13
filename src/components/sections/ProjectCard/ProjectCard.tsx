@@ -30,7 +30,9 @@ export function ProjectCard({ project, projectIndex, title }: ProjectCardProps) 
       <ProjectThumbnail project={project} projectIndex={projectIndex} />
       <Text kind={TextTypes.Label} label={project.type} tone={TextTones.Muted} />
       <Text kind={TextTypes.Title} label={title} />
-      <Text kind={TextTypes.P} label={project.summary} tone={TextTones.Muted} isInline />
+      <span className={styles.summary}>
+        <Text kind={TextTypes.P} label={project.summary} tone={TextTones.Muted} isInline />
+      </span>
       <TagList labels={project.technologies} />
     </button>
   );

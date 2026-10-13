@@ -38,3 +38,26 @@
 
   outline-offset: 6px;
 }
+
+/* En la pista horizontal la tarjeta puede perder alto: lo cede su portada, nunca el texto. */
+@media (width >= 768px) {
+  .card {
+    min-height: 0;
+  }
+
+  .card > * {
+    flex: none;
+  }
+
+  .card > :first-child {
+    flex: 0 1 auto;
+    min-height: 56px;
+  }
+}
+
+/* En ventanas muy bajas el resumen se queda para el detalle: así la portada conserva tamaño. */
+@media (width >= 768px) and (height < 660px) {
+  .summary {
+    display: none;
+  }
+}
