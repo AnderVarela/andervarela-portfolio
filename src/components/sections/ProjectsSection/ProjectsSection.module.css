@@ -27,12 +27,37 @@
   padding: 0 var(--page-padding-x);
 }
 
+/*
+ * Con la sección fijada todo debe caber en el alto de la ventana. La cabecera conserva su
+ * tamaño y la pista se queda con el resto: si falta alto, encogen las portadas de las tarjetas.
+ */
 @media (width >= 768px) {
+  .layout {
+    flex: 1 1 0;
+    min-height: 0;
+    padding-block: clamp(76px, 13vh, var(--section-padding-top)) clamp(20px, 5vh, 56px);
+  }
+
+  .layout > * {
+    flex: none;
+  }
+
   /* clip y no hidden: el foco no debe poder desplazar la ventana por su cuenta. */
-  .trackWindow {
+  .layout > .trackWindow {
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: column;
+    min-height: 0;
     overflow: clip;
 
     /* Deja sitio al anillo de foco de las tarjetas, que sobresale de la ventana. */
     overflow-clip-margin: 10px;
+  }
+
+  .trackWindow > * {
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: column;
+    min-height: 0;
   }
 }
