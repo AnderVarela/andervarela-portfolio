@@ -19,6 +19,17 @@ describe('computeSectionPlacement', () => {
     expect(about.centerX).toBeLessThan(VIEWPORT.width / 2);
     expect(home.centerX).toBeGreaterThan(VIEWPORT.width / 2);
   });
+
+  it('keeps the avatar inside its gap in "projects", however narrow the window', () => {
+    const narrowViewport = { width: 1100, height: 1000 };
+    const railWidth = 200;
+    const gapWidth = (narrowViewport.width - railWidth) * 0.33;
+    const placement = computeSectionPlacement(3, narrowViewport, ViewportModes.Desktop);
+    const scaledWidth = computeAvatarSize(narrowViewport.height).width * placement.scale;
+
+    expect(placement.centerX).toBeCloseTo(railWidth + gapWidth / 2);
+    expect(scaledWidth).toBeLessThanOrEqual(gapWidth + 0.001);
+  });
 });
 
 describe('computePoseOpacity', () => {

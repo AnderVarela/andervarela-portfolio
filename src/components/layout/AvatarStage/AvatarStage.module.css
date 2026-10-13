@@ -1,11 +1,13 @@
+/*
+ * El personaje mide --avatar-figure-height en todas las secciones. --figure-scale lo da cada
+ * pose: amplía la imagen, y con ella el hueco, para que el personaje no encoja.
+ */
 .stage {
+  --avatar-height: calc(var(--avatar-figure-height) * var(--figure-scale, 1));
+
   position: relative;
   flex: none;
-  height: clamp(300px, 48svh, 460px);
-}
-
-.compact {
-  height: clamp(200px, 30svh, 340px);
+  height: calc(var(--avatar-height) + 10px);
 }
 
 /* Recorta el número de fondo sin recortar al avatar ni su sombra. */
@@ -40,8 +42,10 @@
   line-height: 0.8;
 }
 
+/* --stage-position-display y --stage-avatar-left los ajusta la sección que comparte el hueco. */
 .position {
   position: absolute;
+  display: var(--stage-position-display, block);
   top: 10px;
   left: 0;
   color: var(--color-muted);
@@ -53,15 +57,11 @@
 .avatar {
   position: absolute;
   bottom: 0;
-  left: 66%;
-  height: 97%;
+  left: var(--stage-avatar-left, 66%);
+  height: var(--avatar-height);
   aspect-ratio: 0.558;
   translate: -50% 0;
   pointer-events: none;
-}
-
-.openingAvatar {
-  left: 62%;
 }
 
 /* La órbita nace oculta porque en escritorio la funde el avatar; aquí siempre se ve. */

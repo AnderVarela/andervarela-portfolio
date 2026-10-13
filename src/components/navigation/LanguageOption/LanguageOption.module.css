@@ -8,6 +8,15 @@
   font-family: var(--font-mono);
   font-size: 12px;
   cursor: pointer;
+  transition:
+    background-color var(--duration-hover) ease,
+    color var(--duration-hover) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .option:hover {
+    background: color-mix(in srgb, var(--color-text) 10%, var(--color-bg));
+  }
 }
 
 .selected {

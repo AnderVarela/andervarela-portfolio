@@ -15,4 +15,22 @@
   color: var(--color-bg);
   font-family: var(--font-mono);
   font-size: 13px;
+  transition:
+    opacity 0.2s var(--ease-out),
+    transform 0.2s var(--ease-out);
+
+  @starting-style {
+    transform: translate3d(0, 8px, 0);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    transition: opacity 0.2s ease;
+
+    @starting-style {
+      transform: none;
+    }
+  }
 }

@@ -11,8 +11,10 @@
   .track {
     --project-card-width: 290px;
 
+    flex: 0 1 auto;
     flex-direction: row;
     width: max-content;
+    min-height: 0;
     transform: translate3d(
       calc(var(--section-progress, 0) * var(--track-overflow, 0) * -1px),
       0,

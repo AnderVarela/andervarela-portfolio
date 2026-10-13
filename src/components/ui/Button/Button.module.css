@@ -11,6 +11,16 @@
   line-height: 1.2;
   text-decoration: none;
   cursor: pointer;
+  transition:
+    background-color var(--duration-hover) ease,
+    border-color var(--duration-hover) ease,
+    color var(--duration-hover) ease,
+    transform var(--duration-press) var(--ease-out);
+}
+
+/* Respuesta inmediata a la pulsación, también en táctil. */
+.button:active {
+  transform: scale(0.97);
 }
 
 .leading {
@@ -28,10 +38,6 @@
   color: var(--color-bg);
 }
 
-.primary:hover {
-  background: var(--color-accent-fill-hover);
-}
-
 .primary:active {
   background: var(--color-accent-fill-pressed);
 }
@@ -39,10 +45,6 @@
 .secondary {
   border-color: var(--color-divider);
   background: var(--color-bg);
-}
-
-.secondary:hover {
-  background: color-mix(in srgb, var(--color-text) 7%, var(--color-bg));
 }
 
 .secondary:active {
@@ -54,8 +56,19 @@
   color: var(--color-accent-ink);
 }
 
-.ghost:hover {
-  color: var(--color-text);
+/* El hover solo existe con puntero: en táctil se quedaría pegado tras el toque. */
+@media (hover: hover) and (pointer: fine) {
+  .primary:hover:not(:active) {
+    background: var(--color-accent-fill-hover);
+  }
+
+  .secondary:hover:not(:active) {
+    background: color-mix(in srgb, var(--color-text) 7%, var(--color-bg));
+  }
+
+  .ghost:hover {
+    color: var(--color-text);
+  }
 }
 
 /*

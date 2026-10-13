@@ -1,5 +1,6 @@
 import { ImageWithSkeleton } from '@/components/ui/ImageWithSkeleton/ImageWithSkeleton';
-import { IconNames } from '@/components/ui/Icon/Icon.types';
+import { Icon } from '@/components/ui/Icon/Icon';
+import { IconNames, IconSizes } from '@/components/ui/Icon/Icon.types';
 import { Tag } from '@/components/ui/Tag/Tag';
 import { TagVariants } from '@/components/ui/Tag/Tag.types';
 import type { Project } from '@/content/projects';
@@ -44,6 +45,9 @@ export function ProjectThumbnail({ project, projectIndex }: ProjectThumbnailProp
             iconName={IconNames.Lock}
           />
         )}
+      </span>
+      <span className={styles.openCue} aria-hidden="true">
+        <Icon name={IconNames.ArrowUpRight} size={IconSizes.Large} />
       </span>
     </span>
   );

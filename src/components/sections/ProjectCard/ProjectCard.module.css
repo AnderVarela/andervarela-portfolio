@@ -13,13 +13,51 @@
   color: inherit;
   text-align: left;
   cursor: pointer;
+  transition:
+    border-color var(--duration-hover) ease,
+    transform var(--duration-press) var(--ease-out);
 }
 
-.card:hover {
-  border-top-color: var(--color-accent);
+.card:active {
+  transform: scale(0.985);
+}
+
+/* --thumbnail-zoom lo recoge la portada para acercarse dentro de su marco. */
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    --thumbnail-zoom: 1.03;
+    --thumbnail-cue-shift: 0%;
+
+    border-top-color: var(--color-accent);
+  }
 }
 
 /* Separado de la tarjeta para que no se confunda con su borde superior. */
 .card:focus-visible {
+  --thumbnail-cue-shift: 0%;
+
   outline-offset: 6px;
+}
+
+/* En la pista horizontal la tarjeta puede perder alto: lo cede su portada, nunca el texto. */
+@media (width >= 768px) {
+  .card {
+    min-height: 0;
+  }
+
+  .card > * {
+    flex: none;
+  }
+
+  .card > :first-child {
+    flex: 0 1 auto;
+    min-height: 56px;
+  }
+}
+
+/* En ventanas muy bajas el resumen se queda para el detalle: así la portada conserva tamaño. */
+@media (width >= 768px) and (height < 660px) {
+  .summary {
+    display: none;
+  }
 }

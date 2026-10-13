@@ -13,12 +13,25 @@ body {
   background: var(--color-bg);
 }
 
+html {
+  scrollbar-color: color-mix(in srgb, var(--color-text) 30%, transparent) var(--color-bg);
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   color: var(--color-text);
   font-family: var(--font-sans);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 400;
   line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
 }
 
 button {
@@ -41,4 +54,5 @@ img {
 
 ::selection {
   background: color-mix(in srgb, var(--color-accent) 30%, transparent);
+  color: var(--color-text);
 }

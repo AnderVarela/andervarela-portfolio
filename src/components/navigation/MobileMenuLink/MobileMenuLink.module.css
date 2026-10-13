@@ -22,7 +22,8 @@
 }
 
 .active .number,
-.active .name {
+.active .name,
+.link:active .name {
   color: var(--color-accent-ink);
 }
 

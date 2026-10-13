@@ -5,13 +5,15 @@
   font-size: 16px;
   font-weight: 600;
   transition:
-    background 0.15s,
-    border-color 0.15s,
-    color 0.15s;
+    background-color var(--duration-hover) ease,
+    border-color var(--duration-hover) ease,
+    color var(--duration-hover) ease;
 }
 
-.chip:hover {
-  border-color: var(--color-accent-fill);
-  background: var(--color-accent-fill);
-  color: var(--color-bg);
+@media (hover: hover) and (pointer: fine) {
+  .chip:hover {
+    border-color: var(--color-accent-fill);
+    background: var(--color-accent-fill);
+    color: var(--color-bg);
+  }
 }

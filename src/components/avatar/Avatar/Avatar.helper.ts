@@ -42,13 +42,18 @@ const RAIL_WIDTH_BY_MODE: Record<LargeViewportMode, number> = {
 
 /* Posición horizontal del avatar en cada sección, como fracción del ancho de contenido. */
 const HORIZONTAL_ANCHOR_BY_SECTION: Record<LargeViewportMode, readonly number[]> = {
-  [ViewportModes.Tablet]: [0.74, 0.2, 0.73, 0.22, 0.5, 0.8, 0.5, 0.2],
-  [ViewportModes.Desktop]: [0.76, 0.2, 0.73, 0.22, 0.5, 0.8, 0.5, 0.2],
+  [ViewportModes.Tablet]: [0.74, 0.2, 0.73, 0.165, 0.5, 0.8, 0.5, 0.2],
+  [ViewportModes.Desktop]: [0.76, 0.2, 0.73, 0.165, 0.5, 0.8, 0.5, 0.2],
 };
 const SCALE_BY_SECTION: Record<LargeViewportMode, readonly number[]> = {
   [ViewportModes.Tablet]: [0.95, 0.88, 0.88, 0.85, 0.85, 0.88, 0.85, 0.88],
   [ViewportModes.Desktop]: [1.08, 0.98, 0.98, 0.96, 0.96, 0.98, 0.96, 0.98],
 };
+/*
+ * Ancho máximo del avatar en una sección, como fracción del ancho de contenido. En proyectos
+ * es su hueco, --avatar-zone-projects de layout.css: así queda centrado en él y no pisa la pista.
+ */
+const MAXIMUM_WIDTH_BY_SECTION: Readonly<Record<number, number>> = { 3: 0.33 };
 const DEFAULT_HORIZONTAL_ANCHOR = 0.5;
 const DEFAULT_SCALE = 1;
 
@@ -83,11 +88,17 @@ export function computeSectionPlacement(
   const railWidth = RAIL_WIDTH_BY_MODE[mode];
   const horizontalAnchor =
     HORIZONTAL_ANCHOR_BY_SECTION[mode][sectionIndex] ?? DEFAULT_HORIZONTAL_ANCHOR;
-  const scale = SCALE_BY_SECTION[mode][sectionIndex] ?? DEFAULT_SCALE;
-  const avatarHeight = computeAvatarSize(viewport.height).height * scale;
+  const contentWidth = viewport.width - railWidth;
+  const baseSize = computeAvatarSize(viewport.height);
+  const maximumWidth = MAXIMUM_WIDTH_BY_SECTION[sectionIndex];
+  const scale = Math.min(
+    SCALE_BY_SECTION[mode][sectionIndex] ?? DEFAULT_SCALE,
+    maximumWidth === undefined ? Infinity : (maximumWidth * contentWidth) / baseSize.width,
+  );
+  const avatarHeight = baseSize.height * scale;
 
   return {
-    centerX: railWidth + horizontalAnchor * (viewport.width - railWidth),
+    centerX: railWidth + horizontalAnchor * contentWidth,
     centerY: viewport.height - avatarHeight / 2,
     scale,
   };
