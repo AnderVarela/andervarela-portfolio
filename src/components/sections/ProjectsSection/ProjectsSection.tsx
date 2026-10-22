@@ -8,12 +8,17 @@ import { RevealDirections, RevealOrders } from '@/components/ui/Reveal/Reveal.ty
 import { formatSectionNumber, SectionIds } from '@/content/sections';
 import { useTranslation } from '@/i18n/useTranslation';
 
-import { computePinnedHeight, useProjectsTrackOverflow } from './ProjectsSection.helper';
+import {
+  computePinnedHeight,
+  useHorizontalGestureScrolling,
+  useProjectsTrackOverflow,
+} from './ProjectsSection.helper';
 import styles from './ProjectsSection.module.css';
 
 export function ProjectsSection() {
   const translation = useTranslation();
   const { trackWindowReference, trackReference, overflowDistance } = useProjectsTrackOverflow();
+  useHorizontalGestureScrolling(trackWindowReference, overflowDistance);
 
   return (
     <Section id={SectionIds.Projects} pinnedHeight={computePinnedHeight(overflowDistance)}>
