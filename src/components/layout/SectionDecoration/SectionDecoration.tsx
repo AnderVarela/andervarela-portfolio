@@ -8,14 +8,16 @@ interface SectionDecorationProps {
   label: string;
 }
 
-/* Tipografía gigante de fondo que se desplaza a distinto ritmo que el contenido. */
+/*
+ * Tipografía gigante de fondo que se desplaza a distinto ritmo que el contenido.
+ * El marco la recorta a su sección para que no asome sobre la anterior.
+ */
 export function SectionDecoration({ sectionId, label }: SectionDecorationProps) {
   return (
-    <div
-      aria-hidden="true"
-      className={joinClassNames(styles.decoration, styles[getSectionNameKey(sectionId)])}
-    >
-      {label}
+    <div aria-hidden="true" className={styles.frame}>
+      <div className={joinClassNames(styles.decoration, styles[getSectionNameKey(sectionId)])}>
+        {label}
+      </div>
     </div>
   );
 }

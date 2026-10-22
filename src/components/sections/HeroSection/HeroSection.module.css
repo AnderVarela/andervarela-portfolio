@@ -2,7 +2,9 @@
   display: flex;
   flex: 1 0 auto;
   flex-direction: column;
-  justify-content: flex-start;
+
+  /* En móvil el contenido no llena todo el alto: centrado, no queda un hueco suelto abajo. */
+  justify-content: center;
   padding: 76px var(--page-padding-x) 40px calc(var(--rail-width) + var(--page-padding-x));
 }
 
@@ -53,8 +55,9 @@
     max-width: calc(var(--content-width) * 0.56);
   }
 
+  /* Medida en el cuerpo de la propia frase, no en el del contenedor: dos líneas en escritorio. */
   .tagline {
-    max-width: 24ch;
+    max-width: calc(var(--lead-size) * 17);
   }
 }
 

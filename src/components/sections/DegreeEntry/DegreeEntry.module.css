@@ -9,7 +9,7 @@
 }
 
 .period {
-  color: var(--color-accent-ink);
+  color: var(--color-text);
   font-family: var(--font-mono);
   font-size: 22px;
   font-weight: 500;

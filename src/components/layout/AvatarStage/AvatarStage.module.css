@@ -34,8 +34,10 @@
   position: absolute;
   bottom: -0.1em;
   left: -0.04em;
-  color: color-mix(in srgb, var(--color-accent) 16%, transparent);
-  font-size: 46vw;
+  color: var(--color-decoration);
+
+  /* Cabe en la mitad libre, a la izquierda del avatar, sin quedar tapado por él. */
+  font-size: 34vw;
   font-stretch: 125%;
   font-weight: 900;
   letter-spacing: -0.05em;

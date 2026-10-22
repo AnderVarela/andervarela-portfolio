@@ -10,6 +10,13 @@ export interface SkillArea {
 
 const AREAS_BESIDE_EACH_SIDE_OF_AVATAR = 2;
 
+/* El stack principal: se destaca sobre el resto para que se lea primero. */
+const FEATURED_TECHNOLOGIES: ReadonlySet<string> = new Set(['React', 'TypeScript']);
+
+export function isFeaturedTechnology(technology: string): boolean {
+  return FEATURED_TECHNOLOGIES.has(technology);
+}
+
 function listSkillAreas(translation: Translation): readonly SkillArea[] {
   const { skills } = translation;
 
