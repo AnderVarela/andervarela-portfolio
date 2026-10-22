@@ -8,8 +8,19 @@ export interface DeepLink {
 const HASH_PREFIX = '#';
 const HASH_SEGMENT_SEPARATOR = '/';
 
+/* Secciones que se fundieron en otra: sus enlaces antiguos siguen llevando a algún sitio. */
+const RENAMED_SECTION_IDS: Readonly<Record<string, SectionId>> = {
+  logros: SectionIds.Background,
+  estudios: SectionIds.Background,
+};
+
 function isSectionId(candidate: string): candidate is SectionId {
   return findSectionIndex(candidate) !== -1;
+}
+
+function resolveSectionId(candidate: string): SectionId | null {
+  if (isSectionId(candidate)) return candidate;
+  return RENAMED_SECTION_IDS[candidate] ?? null;
 }
 
 /* Formatos admitidos: "#proyectos" y "#proyectos/requify". */
@@ -19,7 +30,7 @@ export function parseDeepLink(hash: string): DeepLink {
     .split(HASH_SEGMENT_SEPARATOR);
 
   return {
-    sectionId: isSectionId(sectionSegment) ? sectionSegment : null,
+    sectionId: resolveSectionId(sectionSegment),
     projectId: projectSegment ?? null,
   };
 }

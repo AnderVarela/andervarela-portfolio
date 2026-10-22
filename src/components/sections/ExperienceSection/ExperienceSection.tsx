@@ -1,4 +1,3 @@
-import { AvatarStage } from '@/components/layout/AvatarStage/AvatarStage';
 import { Section } from '@/components/layout/Section/Section';
 import { SectionDecoration } from '@/components/layout/SectionDecoration/SectionDecoration';
 import { SectionHeader } from '@/components/layout/SectionHeader/SectionHeader';
@@ -34,7 +33,6 @@ export function ExperienceSection() {
                 sectionName={translation.sections.experience}
                 title={translation.sections.experience}
               />
-              <AvatarStage sectionId={SectionIds.Experience} />
               <ExperiencePositionSummary position={currentPosition} />
             </div>
           </Reveal>

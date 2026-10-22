@@ -69,11 +69,6 @@
   pointer-events: none;
 }
 
-/* La órbita nace oculta porque en escritorio la funde el avatar; aquí siempre se ve. */
-.avatar > svg {
-  opacity: 1;
-}
-
 @media (width >= 768px) {
   .stage {
     display: none;

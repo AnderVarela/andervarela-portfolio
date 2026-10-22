@@ -52,22 +52,16 @@
   transform: translate3d(calc(var(--section-progress, 0) * -20vw), 0, 0);
 }
 
-.achievements {
-  top: 4vh;
-  left: 50%;
-  transform: translate3d(-30%, var(--parallax-y), 0);
-}
-
-.education {
-  top: 2vh;
-  left: calc(var(--rail-width) + var(--page-padding-x));
+.skills {
+  top: 3vh;
+  right: var(--page-padding-x);
   transform: translate3d(0, var(--parallax-y), 0);
 }
 
-.skills {
-  top: 3vh;
-  left: 50%;
-  transform: translate3d(-35%, var(--parallax-y), 0);
+.background {
+  bottom: -3vw;
+  left: calc(var(--rail-width) + var(--page-padding-x));
+  transform: translate3d(0, var(--parallax-y), 0);
 }
 
 .contact {

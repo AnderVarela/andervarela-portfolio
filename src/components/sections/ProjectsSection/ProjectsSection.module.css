@@ -6,8 +6,7 @@
   flex-direction: column;
   gap: 28px;
   justify-content: center;
-  padding: var(--section-padding-top) 0 var(--section-padding-bottom)
-    calc(var(--rail-width) + var(--avatar-zone-projects));
+  padding: var(--section-padding-top) 0 var(--section-padding-bottom) var(--rail-width);
 }
 
 .header {
@@ -16,10 +15,6 @@
   gap: 16px 40px;
   align-items: flex-end;
   justify-content: space-between;
-  padding: 0 var(--page-padding-x);
-}
-
-.stage {
   padding: 0 var(--page-padding-x);
 }
 

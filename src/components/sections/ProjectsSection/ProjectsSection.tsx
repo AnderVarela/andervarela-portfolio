@@ -1,4 +1,3 @@
-import { AvatarStage } from '@/components/layout/AvatarStage/AvatarStage';
 import { Section } from '@/components/layout/Section/Section';
 import { SectionDecoration } from '@/components/layout/SectionDecoration/SectionDecoration';
 import { SectionHeader } from '@/components/layout/SectionHeader/SectionHeader';
@@ -33,9 +32,6 @@ export function ProjectsSection() {
             <ProjectsScrollProgress />
           </div>
         </Reveal>
-        <div className={styles.stage}>
-          <AvatarStage sectionId={SectionIds.Projects} />
-        </div>
         <div ref={trackWindowReference} className={styles.trackWindow}>
           <Reveal order={RevealOrders.Second} direction={RevealDirections.None} fadesOnExit={false}>
             <ProjectsTrack ref={trackReference} overflowDistance={overflowDistance} />

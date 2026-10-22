@@ -4,10 +4,15 @@ import { buildProjectHash, buildSectionHash, parseDeepLink } from './locationHas
 
 describe('locationHash', () => {
   it('parses a section hash', () => {
-    expect(parseDeepLink('#logros')).toEqual({
-      sectionId: SectionIds.Achievements,
+    expect(parseDeepLink('#formacion')).toEqual({
+      sectionId: SectionIds.Background,
       projectId: null,
     });
+  });
+
+  it('sends the hashes of merged sections to the section that replaced them', () => {
+    expect(parseDeepLink('#logros').sectionId).toBe(SectionIds.Background);
+    expect(parseDeepLink('#estudios').sectionId).toBe(SectionIds.Background);
   });
 
   it('parses a project hash', () => {

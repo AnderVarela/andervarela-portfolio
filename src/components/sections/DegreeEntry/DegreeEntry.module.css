@@ -24,6 +24,6 @@
 
 @media (width >= 1024px) {
   .entry {
-    grid-template-columns: 180px minmax(0, 1fr);
+    grid-template-columns: 136px minmax(0, 1fr);
   }
 }
