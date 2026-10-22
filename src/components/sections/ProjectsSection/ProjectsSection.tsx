@@ -1,4 +1,3 @@
-import { AvatarStage } from '@/components/layout/AvatarStage/AvatarStage';
 import { Section } from '@/components/layout/Section/Section';
 import { SectionDecoration } from '@/components/layout/SectionDecoration/SectionDecoration';
 import { SectionHeader } from '@/components/layout/SectionHeader/SectionHeader';
@@ -9,12 +8,17 @@ import { RevealDirections, RevealOrders } from '@/components/ui/Reveal/Reveal.ty
 import { formatSectionNumber, SectionIds } from '@/content/sections';
 import { useTranslation } from '@/i18n/useTranslation';
 
-import { computePinnedHeight, useProjectsTrackOverflow } from './ProjectsSection.helper';
+import {
+  computePinnedHeight,
+  useHorizontalGestureScrolling,
+  useProjectsTrackOverflow,
+} from './ProjectsSection.helper';
 import styles from './ProjectsSection.module.css';
 
 export function ProjectsSection() {
   const translation = useTranslation();
   const { trackWindowReference, trackReference, overflowDistance } = useProjectsTrackOverflow();
+  useHorizontalGestureScrolling(trackWindowReference, overflowDistance);
 
   return (
     <Section id={SectionIds.Projects} pinnedHeight={computePinnedHeight(overflowDistance)}>
@@ -33,9 +37,6 @@ export function ProjectsSection() {
             <ProjectsScrollProgress />
           </div>
         </Reveal>
-        <div className={styles.stage}>
-          <AvatarStage sectionId={SectionIds.Projects} />
-        </div>
         <div ref={trackWindowReference} className={styles.trackWindow}>
           <Reveal order={RevealOrders.Second} direction={RevealDirections.None} fadesOnExit={false}>
             <ProjectsTrack ref={trackReference} overflowDistance={overflowDistance} />

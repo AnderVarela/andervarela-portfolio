@@ -10,7 +10,6 @@ import {
   computeAvatarSize,
   computeBreathingOffset,
   computeHeadTilt,
-  computeOrbPosition,
   computePoseOpacity,
   computeSectionPlacement,
   computeTimelinePlacement,
@@ -22,7 +21,6 @@ import {
 
 const TILT_SELECTOR = '[data-avatar-tilt]';
 const POSE_SELECTOR = '[data-avatar-pose]';
-const ORB_SELECTOR = '[data-technology-orb]';
 
 const PLACEMENT_EASING = 0.22;
 const HEAD_TILT_EASING = 0.08;
@@ -34,6 +32,7 @@ const WINK_DURATION_MILLISECONDS = 380;
 const WINK_SCALE_BOOST = 0.03;
 const REDUCED_MOTION_FADE_MILLISECONDS = 260;
 const REDUCED_MOTION_FADE_TRANSITION = 'opacity 0.25s';
+const MINIMUM_VISIBLE_OPACITY = 0.01;
 
 interface PoseLayer {
   element: HTMLElement | SVGElement;
@@ -44,9 +43,6 @@ interface AvatarElements {
   root: HTMLElement;
   tilt: HTMLElement | null;
   poseLayers: PoseLayer[];
-  orbs: SVGElement[];
-  /* Órbitas de los escenarios de móvil, que viven fuera del avatar. */
-  stageOrbs: SVGElement[];
 }
 
 interface AvatarMotionState {
@@ -81,10 +77,6 @@ function collectAvatarElements(root: HTMLElement): AvatarElements {
     poseLayers: [...root.querySelectorAll<HTMLElement | SVGElement>(POSE_SELECTOR)].map(
       (element) => ({ element, poseIndex: readPoseIndex(element, 'data-avatar-pose') }),
     ),
-    orbs: [...root.querySelectorAll<SVGElement>(ORB_SELECTOR)],
-    stageOrbs: [...document.querySelectorAll<SVGElement>(ORB_SELECTOR)].filter(
-      (orb) => !root.contains(orb),
-    ),
   };
 }
 
@@ -104,17 +96,24 @@ function applyPlacement(root: HTMLElement, placement: AvatarPlacement, viewport:
   root.style.transform = buildPlacementTransform(placement, size);
 }
 
-function applyPoseOpacities(poseLayers: readonly PoseLayer[], timeline: AvatarTimeline): void {
-  poseLayers.forEach(({ element, poseIndex }) => {
-    element.style.opacity = computePoseOpacity(poseIndex, timeline).toFixed(3);
-  });
-}
+/*
+ * Funde las poses y, si ninguna se ve (secciones sin avatar), oculta el avatar entero:
+ * así su zona de guiño no queda encima del contenido.
+ */
+function applyPoseOpacities(
+  root: HTMLElement,
+  poseLayers: readonly PoseLayer[],
+  timeline: AvatarTimeline,
+): void {
+  let visibleOpacity = 0;
 
-function applyOrbit(orbs: readonly SVGElement[], time: number): void {
-  orbs.forEach((orb, orbIndex) => {
-    const { x, y } = computeOrbPosition(orbIndex, time);
-    orb.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)})`);
+  poseLayers.forEach(({ element, poseIndex }) => {
+    const opacity = computePoseOpacity(poseIndex, timeline);
+    visibleOpacity += opacity;
+    element.style.opacity = opacity.toFixed(3);
   });
+
+  root.style.visibility = visibleOpacity > MINIMUM_VISIBLE_OPACITY ? '' : 'hidden';
 }
 
 /* Fundido entre poses para quien prefiere movimiento reducido. */
@@ -153,8 +152,7 @@ function renderStillFrame(elements: AvatarElements, state: AvatarMotionState): v
     computeSectionPlacement(settledPoseIndex, viewport, mode),
     viewport,
   );
-  applyPoseOpacities(elements.poseLayers, holdTimelineAt(settledPoseIndex));
-  applyOrbit(elements.orbs, 0);
+  applyPoseOpacities(elements.root, elements.poseLayers, holdTimelineAt(settledPoseIndex));
   if (elements.tilt) elements.tilt.style.transform = '';
 }
 
@@ -186,8 +184,7 @@ function renderAnimatedFrame(
   elements.root.style.transition = '';
   elements.root.style.opacity = '1';
   applyPlacement(elements.root, placement, viewport);
-  applyPoseOpacities(elements.poseLayers, timeline);
-  applyOrbit(elements.orbs, time);
+  applyPoseOpacities(elements.root, elements.poseLayers, timeline);
 
   if (elements.tilt) {
     const turn = state.headTilt.horizontal * MAXIMUM_HEAD_TURN_DEGREES;
@@ -204,27 +201,13 @@ function renderAnimatedFrame(
   }
 }
 
-/*
- * En móvil el avatar va dibujado dentro de cada escenario y se desplaza con la página;
- * aquí solo queda girar la órbita de tecnologías.
- */
-function renderMobileFrame(
-  elements: AvatarElements,
-  state: AvatarMotionState,
-  time: number,
-  isMotionReduced: boolean,
-): void {
-  // Al volver a tableta o escritorio el avatar se recoloca sin arrastrar la posición anterior.
-  state.placement = null;
-  applyOrbit(elements.stageOrbs, isMotionReduced ? 0 : time);
-}
-
 function renderAvatarFrame(elements: AvatarElements, state: AvatarMotionState, time: number): void {
-  const isMotionReduced = prefersReducedMotion();
   const isMobile = resolveViewportMode(window.innerWidth) === ViewportModes.Mobile;
 
-  if (isMobile) renderMobileFrame(elements, state, time, isMotionReduced);
-  else if (isMotionReduced) renderStillFrame(elements, state);
+  // En móvil el avatar va dibujado dentro de cada escenario y se desplaza con la página.
+  // Al volver a tableta o escritorio se recoloca sin arrastrar la posición anterior.
+  if (isMobile) state.placement = null;
+  else if (prefersReducedMotion()) renderStillFrame(elements, state);
   else renderAnimatedFrame(elements, state, time);
 }
 

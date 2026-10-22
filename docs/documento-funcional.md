@@ -4,8 +4,19 @@
 |---|---|
 | **Proyecto** | Web portfolio / currículum interactivo |
 | **Dominio** | `andervarela.es` |
-| **Versión** | 1.0 — 8 de octubre de 2026 |
-| **Estado** | Funcional cerrado, pendiente de diseño |
+| **Versión** | 1.1 — 22 de octubre de 2026 |
+| **Estado** | Implementado. La versión 1.1 cambia lo que se indica abajo |
+
+## Cambios de la versión 1.1
+
+Revisión para que la web se lea como el portfolio de un perfil profesional con criterio. Donde este apartado contradiga al resto del documento, prevalece este apartado.
+
+- **Avatar solo en Inicio y Contacto.** Abre y despide la página; en las demás secciones se retira y el contenido ocupa todo el ancho. Desaparecen las poses de brazos cruzados, portátil, manos en los bolsillos, trofeo, birrete y brazos arriba, y la órbita de tecnologías.
+- **7 secciones en lugar de 8.** "Hackatones y logros" y "Estudios" se funden en **Formación y logros** (`#formacion`), que pasa al final, entre Skills y Contacto. Los enlaces antiguos `#logros` y `#estudios` llevan a la nueva sección.
+- **Experiencia contada por impacto.** Cada hito dice qué se decidió, por qué y qué mejoró.
+- **"Sobre mí" con señales profesionales.** Las cifras son el puesto actual, los productos entregados a un cliente y los premios en hackatones, en lugar de la nota del TFM y la certificación.
+- **Proyectos como casos de estudio.** Primero el trabajo para clientes (Panadería Rubicón), después el TFM y los hackatones. Cada detalle sigue el orden problema → qué hice → resultado. Se retira "Este portfolio" como proyecto; el código de la web sigue enlazado en el pie.
+- **Skills recortadas** a lo que se domina, sin lo que se da por supuesto (Git, HTML, hooks de commit), con un bloque **Cómo trabajo**: tipado estricto, accesibilidad, rendimiento y testing.
 
 ---
 
@@ -38,8 +49,8 @@ Cercano y en primera persona. Se abandona el tono de venta del CV ("elimino ries
 
 **Incluido**
 
-- Una única página con 8 secciones y navegación por scroll.
-- Avatar 3D con poses por sección y seguimiento del cursor.
+- Una única página con 7 secciones y navegación por scroll.
+- Avatar en Inicio y Contacto, con seguimiento del cursor.
 - Sistema de capas con animaciones ligadas al scroll.
 - Detalle de proyecto en capa superpuesta, sin cambiar de página.
 - Dos idiomas: español e inglés.
@@ -65,11 +76,10 @@ Una sola URL. Cada sección tiene un ancla propia.
 | 1 | Inicio | `#inicio` | Nombre, rol, frase de presentación, CTAs |
 | 2 | Sobre mí | `#sobre-mi` | Quién soy y cómo trabajo |
 | 3 | Experiencia | `#experiencia` | Trayectoria laboral |
-| 4 | Proyectos | `#proyectos` | 7 proyectos clicables |
-| 5 | Hackatones y logros | `#logros` | Premios y certificaciones |
-| 6 | Estudios | `#estudios` | Máster y Grado |
-| 7 | Skills | `#skills` | Stack agrupado por áreas |
-| 8 | Contacto | `#contacto` | Email, LinkedIn, GitHub, CV |
+| 4 | Proyectos | `#proyectos` | 6 proyectos clicables |
+| 5 | Skills | `#skills` | Stack agrupado por áreas y cómo trabajo |
+| 6 | Formación y logros | `#formacion` | Máster, Grado, premios y certificaciones |
+| 7 | Contacto | `#contacto` | Email, LinkedIn, GitHub, CV |
 
 ---
 

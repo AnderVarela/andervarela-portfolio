@@ -20,7 +20,7 @@ export function ProjectGroupPanel({ group, members }: ProjectGroupPanelProps) {
   return (
     <div role="group" aria-label={`${group.name} · ${memberCountLabel}`} className={styles.panel}>
       <div className={styles.header}>
-        <Text kind={TextTypes.Label} label={group.name} tone={TextTones.Accent} />
+        <Text kind={TextTypes.Label} label={group.name} tone={TextTones.Default} />
         <Text kind={TextTypes.Label} label={memberCountLabel} tone={TextTones.Muted} />
       </div>
       <div className={styles.members}>

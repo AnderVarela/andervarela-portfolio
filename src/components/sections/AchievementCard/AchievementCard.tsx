@@ -19,7 +19,7 @@ export function AchievementCard({ achievement }: AchievementCardProps) {
 
   return (
     <article className={styles.card}>
-      <Text kind={TextTypes.Figure} label={figure} tone={TextTones.Accent} />
+      <Text kind={TextTypes.Figure} label={figure} tone={TextTones.Default} />
       <Text kind={TextTypes.Title} label={title} />
       {detail && <Text kind={TextTypes.Caption} label={detail} tone={TextTones.Muted} />}
       {relatedProjectId && (

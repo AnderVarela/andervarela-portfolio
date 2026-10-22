@@ -32,6 +32,9 @@ export function ProjectDetailSummary({ project, titleId }: ProjectDetailSummaryP
       <ProjectDetailBlock label={translation.projectDetail.contribution}>
         <Text kind={TextTypes.ParagraphLarge} label={project.contribution} />
       </ProjectDetailBlock>
+      <ProjectDetailBlock label={translation.projectDetail.outcome}>
+        <Text kind={TextTypes.ParagraphLarge} label={project.outcome} />
+      </ProjectDetailBlock>
       <ProjectDetailBlock label={translation.projectDetail.stack}>
         <TagList labels={project.technologies} />
       </ProjectDetailBlock>

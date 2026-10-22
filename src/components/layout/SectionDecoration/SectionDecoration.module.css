@@ -1,11 +1,23 @@
-/* Hay una clase de colocación por sección; su nombre coincide con la clave de nombre de la sección. */
+.frame {
+  position: absolute;
+  z-index: 0;
+  display: none;
+  inset: 0;
+  overflow: clip;
+  pointer-events: none;
+}
+
+/*
+ * Hay una clase de colocación por sección; su nombre coincide con la clave de nombre de la sección.
+ * Solo aparece cuando su sección ya ocupa buena parte de la pantalla, para no coincidir con
+ * el número de la sección anterior.
+ */
 .decoration {
   --parallax-y: calc(var(--section-top, 0) * -0.3px);
 
   position: absolute;
-  z-index: 0;
-  display: none;
   color: var(--color-decoration);
+  opacity: calc(clamp(0, var(--section-enter, 1) * 2.5 - 1.5, 1) * (1 - var(--section-exit, 0)));
   font-size: var(--decoration-size);
   font-stretch: 125%;
   font-weight: 900;
@@ -40,22 +52,16 @@
   transform: translate3d(calc(var(--section-progress, 0) * -20vw), 0, 0);
 }
 
-.achievements {
-  top: 4vh;
-  left: 50%;
-  transform: translate3d(-30%, var(--parallax-y), 0);
-}
-
-.education {
-  top: 2vh;
-  left: calc(var(--rail-width) + var(--page-padding-x));
+.skills {
+  top: 3vh;
+  right: var(--page-padding-x);
   transform: translate3d(0, var(--parallax-y), 0);
 }
 
-.skills {
-  top: 3vh;
-  left: 50%;
-  transform: translate3d(-35%, var(--parallax-y), 0);
+.background {
+  bottom: -3vw;
+  left: calc(var(--rail-width) + var(--page-padding-x));
+  transform: translate3d(0, var(--parallax-y), 0);
 }
 
 .contact {
@@ -65,7 +71,7 @@
 }
 
 @media (width >= 768px) {
-  .decoration {
+  .frame {
     display: block;
   }
 }

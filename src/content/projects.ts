@@ -1,6 +1,3 @@
-import portfolioExperienceScreenshotUrl from '@/assets/projects/portfolio/experience.jpg';
-import portfolioHomeScreenshotUrl from '@/assets/projects/portfolio/home.jpg';
-import portfolioSkillsScreenshotUrl from '@/assets/projects/portfolio/skills.jpg';
 import hackspainEpisodeDashboardScreenshotUrl from '@/assets/projects/hackspain/episode-dashboard.png';
 import hackspainSimulationCellScreenshotUrl from '@/assets/projects/hackspain/simulation-cell.gif';
 import hackspainControlPanelScreenshotUrl from '@/assets/projects/hackspain/simulation-control-panel.png';
@@ -54,6 +51,7 @@ export interface Project {
   summary: string;
   problem: string;
   contribution: string;
+  outcome: string;
   technologies: readonly string[];
   links: readonly ProjectLink[];
   /* La primera captura es la principal y hace de portada de la tarjeta. */
@@ -66,7 +64,6 @@ export interface Project {
 /* Clave de los textos de cada proyecto en los ficheros de traducción. */
 export const ProjectTextKeys = {
   Requify: 'requify',
-  Portfolio: 'portfolio',
   RubiconWeb: 'rubiconWeb',
   RubiconInvoices: 'rubiconInvoices',
   RubiconCatalogue: 'rubiconCatalogue',
@@ -84,6 +81,7 @@ export interface ProjectText {
   summary: string;
   problem: string;
   contribution: string;
+  outcome: string;
   awardBadge?: string;
   screenshotDescriptions: readonly string[];
 }
@@ -110,33 +108,8 @@ const RUBICON_BAKERY_GROUP: ProjectGroupDefinition = {
   textKey: 'rubiconBakery',
 };
 
+/* Primero el trabajo para clientes; después el TFM y los hackatones. */
 const PROJECT_DEFINITIONS: readonly ProjectDefinition[] = [
-  {
-    id: 'requify',
-    textKey: ProjectTextKeys.Requify,
-    glyph: 'RQ',
-    technologies: ['Manifest V3', 'React', 'TypeScript', 'Zustand', 'Vite', 'Vitest', 'Playwright'],
-    links: [{ kind: ProjectLinkKinds.Code, url: 'https://github.com/AnderVarela/RequiFy' }],
-    screenshotUrls: [
-      requifyControlPanelScreenshotUrl,
-      requifyActiveRuleScreenshotUrl,
-      requifyNewRuleScreenshotUrl,
-    ],
-  },
-  {
-    id: 'portfolio',
-    textKey: ProjectTextKeys.Portfolio,
-    glyph: 'AV',
-    technologies: ['React', 'TypeScript', 'Vite', 'Zustand', 'CSS Modules', 'Vitest'],
-    links: [
-      { kind: ProjectLinkKinds.Code, url: 'https://github.com/AnderVarela/andervarela-portfolio' },
-    ],
-    screenshotUrls: [
-      portfolioHomeScreenshotUrl,
-      portfolioExperienceScreenshotUrl,
-      portfolioSkillsScreenshotUrl,
-    ],
-  },
   {
     id: 'rubicon-web',
     textKey: ProjectTextKeys.RubiconWeb,
@@ -186,6 +159,18 @@ const PROJECT_DEFINITIONS: readonly ProjectDefinition[] = [
     ],
     isPrivate: true,
     group: RUBICON_BAKERY_GROUP,
+  },
+  {
+    id: 'requify',
+    textKey: ProjectTextKeys.Requify,
+    glyph: 'RQ',
+    technologies: ['Manifest V3', 'React', 'TypeScript', 'Zustand', 'Vite', 'Vitest', 'Playwright'],
+    links: [{ kind: ProjectLinkKinds.Code, url: 'https://github.com/AnderVarela/RequiFy' }],
+    screenshotUrls: [
+      requifyControlPanelScreenshotUrl,
+      requifyActiveRuleScreenshotUrl,
+      requifyNewRuleScreenshotUrl,
+    ],
   },
   {
     id: 'hackspain-26',

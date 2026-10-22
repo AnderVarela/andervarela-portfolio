@@ -1,4 +1,3 @@
-import { AvatarStage } from '@/components/layout/AvatarStage/AvatarStage';
 import { Section } from '@/components/layout/Section/Section';
 import { SectionDecoration } from '@/components/layout/SectionDecoration/SectionDecoration';
 import { SectionHeader } from '@/components/layout/SectionHeader/SectionHeader';
@@ -31,7 +30,6 @@ export function AboutSection() {
               title={translation.sections.about}
             />
           </Reveal>
-          <AvatarStage sectionId={SectionIds.About} />
           <Reveal order={RevealOrders.Second}>
             <Text kind={TextTypes.Lead} label={translation.about.summary} />
           </Reveal>
