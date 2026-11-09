@@ -44,7 +44,7 @@ describe('App', () => {
     fireEvent.click(screen.getByRole('button', { name: /English/ }));
 
     expect(screen.getByText(/I'm a frontend developer/)).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /This portfolio/ })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /Corporate website/ })).toBeInTheDocument();
     expect(screen.getByText('Applied AI', { exact: false })).toBeInTheDocument();
     expect(screen.queryByText(/Soy desarrollador/)).not.toBeInTheDocument();
   });

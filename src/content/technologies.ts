@@ -7,7 +7,6 @@ export const TranslatedTechnologies = {
   RestApis: 'restApis',
   Contracts: 'contracts',
   AgentsAndSkills: 'agentsAndSkills',
-  TokenOptimisation: 'tokenOptimisation',
 } as const satisfies Record<string, TranslatedTechnologyKey>;
 
 function isTranslatedTechnology(

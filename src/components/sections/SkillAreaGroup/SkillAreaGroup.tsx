@@ -1,7 +1,7 @@
 import { SkillChip } from '@/components/sections/SkillChip/SkillChip';
 import { Text } from '@/components/ui/Text/Text';
 import { TextTones, TextTypes } from '@/components/ui/Text/Text.types';
-import type { SkillArea } from '@/content/skills';
+import { isFeaturedTechnology, type SkillArea } from '@/content/skills';
 
 import styles from './SkillAreaGroup.module.css';
 
@@ -19,7 +19,11 @@ export function SkillAreaGroup({ skillArea }: SkillAreaGroupProps) {
       />
       <ul className={styles.technologies}>
         {skillArea.technologies.map((technology) => (
-          <SkillChip key={technology} label={technology} />
+          <SkillChip
+            key={technology}
+            label={technology}
+            isFeatured={isFeaturedTechnology(technology)}
+          />
         ))}
       </ul>
     </div>

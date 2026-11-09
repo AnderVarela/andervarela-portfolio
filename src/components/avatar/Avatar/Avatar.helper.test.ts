@@ -4,35 +4,43 @@ import { computeAvatarSize, computePoseOpacity, computeSectionPlacement } from '
 
 const VIEWPORT = { width: 1400, height: 1000 };
 
+const HOME_INDEX = 0;
+const ABOUT_INDEX = 1;
+const CONTACT_INDEX = 6;
+
 describe('computeSectionPlacement', () => {
-  it('rests the avatar on the bottom edge of the viewport', () => {
-    const placement = computeSectionPlacement(1, VIEWPORT, ViewportModes.Desktop);
+  it('rests the avatar on the bottom edge of the viewport in the sections that have it', () => {
+    const placement = computeSectionPlacement(CONTACT_INDEX, VIEWPORT, ViewportModes.Desktop);
     const scaledHeight = computeAvatarSize(VIEWPORT.height).height * placement.scale;
 
     expect(placement.centerY + scaledHeight / 2).toBeCloseTo(VIEWPORT.height);
   });
 
-  it('places the avatar on the left for "about" and on the right for "home"', () => {
-    const home = computeSectionPlacement(0, VIEWPORT, ViewportModes.Desktop);
-    const about = computeSectionPlacement(1, VIEWPORT, ViewportModes.Desktop);
+  it('places the avatar on the right for "home" and on the left for "contact"', () => {
+    const home = computeSectionPlacement(HOME_INDEX, VIEWPORT, ViewportModes.Desktop);
+    const contact = computeSectionPlacement(CONTACT_INDEX, VIEWPORT, ViewportModes.Desktop);
 
-    expect(about.centerX).toBeLessThan(VIEWPORT.width / 2);
     expect(home.centerX).toBeGreaterThan(VIEWPORT.width / 2);
+    expect(contact.centerX).toBeLessThan(VIEWPORT.width / 2);
   });
 
-  it('keeps the avatar inside its gap in "projects", however narrow the window', () => {
-    const narrowViewport = { width: 1100, height: 1000 };
-    const railWidth = 200;
-    const gapWidth = (narrowViewport.width - railWidth) * 0.33;
-    const placement = computeSectionPlacement(3, narrowViewport, ViewportModes.Desktop);
-    const scaledWidth = computeAvatarSize(narrowViewport.height).width * placement.scale;
+  it('drops the avatar below the bottom edge, where it came from, in sections without it', () => {
+    const home = computeSectionPlacement(HOME_INDEX, VIEWPORT, ViewportModes.Desktop);
+    const about = computeSectionPlacement(ABOUT_INDEX, VIEWPORT, ViewportModes.Desktop);
 
-    expect(placement.centerX).toBeCloseTo(railWidth + gapWidth / 2);
-    expect(scaledWidth).toBeLessThanOrEqual(gapWidth + 0.001);
+    expect(about.centerX).toBeCloseTo(home.centerX);
+    expect(about.centerY).toBeGreaterThan(home.centerY);
   });
 });
 
 describe('computePoseOpacity', () => {
+  it('shows no pose while holding on a section without avatar', () => {
+    const timeline = { sectionIndex: ABOUT_INDEX, transitionProgress: 0, poseIndex: ABOUT_INDEX };
+
+    expect(computePoseOpacity(HOME_INDEX, timeline)).toBe(0);
+    expect(computePoseOpacity(CONTACT_INDEX, timeline)).toBe(0);
+  });
+
   it('shows only the current pose while holding', () => {
     const timeline = { sectionIndex: 2, transitionProgress: 0, poseIndex: 2 };
 

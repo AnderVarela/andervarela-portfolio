@@ -7,9 +7,8 @@ import { SectionRail } from '@/components/navigation/SectionRail/SectionRail';
 import { UtilityBar } from '@/components/navigation/UtilityBar/UtilityBar';
 import { ProjectDetail } from '@/components/projectDetail/ProjectDetail/ProjectDetail';
 import { AboutSection } from '@/components/sections/AboutSection/AboutSection';
-import { AchievementsSection } from '@/components/sections/AchievementsSection/AchievementsSection';
+import { BackgroundSection } from '@/components/sections/BackgroundSection/BackgroundSection';
 import { ContactSection } from '@/components/sections/ContactSection/ContactSection';
-import { EducationSection } from '@/components/sections/EducationSection/EducationSection';
 import { ExperienceSection } from '@/components/sections/ExperienceSection/ExperienceSection';
 import { HeroSection } from '@/components/sections/HeroSection/HeroSection';
 import { ProjectsSection } from '@/components/sections/ProjectsSection/ProjectsSection';
@@ -39,9 +38,8 @@ export function App() {
           <AboutSection />
           <ExperienceSection />
           <ProjectsSection />
-          <AchievementsSection />
-          <EducationSection />
           <SkillsSection />
+          <BackgroundSection />
           <ContactSection />
         </main>
         <Avatar />

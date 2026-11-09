@@ -1,15 +1,15 @@
 .area {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding-top: 14px;
+  gap: 16px;
+  padding-top: 18px;
   border-top: var(--border-rule);
 }
 
 .technologies {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
   margin: 0;
   padding: 0;
   list-style: none;

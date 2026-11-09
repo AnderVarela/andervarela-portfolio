@@ -9,7 +9,7 @@
 }
 
 .period {
-  color: var(--color-accent-ink);
+  color: var(--color-text);
   font-family: var(--font-mono);
   font-size: 22px;
   font-weight: 500;
@@ -24,6 +24,6 @@
 
 @media (width >= 1024px) {
   .entry {
-    grid-template-columns: 180px minmax(0, 1fr);
+    grid-template-columns: 136px minmax(0, 1fr);
   }
 }
