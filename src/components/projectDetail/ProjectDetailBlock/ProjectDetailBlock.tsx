@@ -13,7 +13,7 @@ interface ProjectDetailBlockProps {
 export function ProjectDetailBlock({ label, children }: ProjectDetailBlockProps) {
   return (
     <section aria-label={label} className={styles.block}>
-      <Text kind={TextTypes.Label} label={label} tone={TextTones.Accent} />
+      <Text kind={TextTypes.Label} label={label} tone={TextTones.Muted} />
       {children}
     </section>
   );

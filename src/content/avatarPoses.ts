@@ -1,3 +1,5 @@
+import type { Translation } from '@/i18n/translations/es';
+
 import { SectionIds, type SectionId } from './sections';
 
 export interface AvatarPose {
@@ -55,16 +57,19 @@ function buildPose(sectionId: SectionId, poseName: string, figureScale = 1): Ava
   };
 }
 
-/* Una pose por sección, en el mismo orden que SECTIONS. La descripción la da la traducción. */
+/* Solo las secciones con avatar tienen pose; el resto de la página es contenido. */
 export const AVATAR_POSES: readonly AvatarPose[] = [
   buildPose(SectionIds.Home, 'greeting'),
-  buildPose(SectionIds.About, 'arms-crossed'),
-  buildPose(SectionIds.Experience, 'laptop'),
-  buildPose(SectionIds.Projects, 'hands-in-pockets'),
-  buildPose(SectionIds.Achievements, 'trophy', 1.14),
-  buildPose(SectionIds.Education, 'graduation-cap', 1.25),
-  buildPose(SectionIds.Skills, 'arms-raised', 1.25),
   buildPose(SectionIds.Contact, 'greeting'),
 ];
 
-export const ORBITING_TECHNOLOGY_LABELS: readonly string[] = ['TS', 'R', 'JS', 'AWS'];
+export function findAvatarPose(sectionId: SectionId): AvatarPose | undefined {
+  return AVATAR_POSES.find((pose) => pose.sectionId === sectionId);
+}
+
+/* Qué hace el avatar en cada pose, para su descripción accesible. */
+export function describeAvatarPose(pose: AvatarPose, translation: Translation): string {
+  return pose.sectionId === SectionIds.Contact
+    ? translation.avatarPoses.contact
+    : translation.avatarPoses.home;
+}

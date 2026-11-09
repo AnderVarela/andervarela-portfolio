@@ -94,7 +94,7 @@ describe('App accessibility', () => {
 
     fireEvent.keyDown(window, { key: 'ArrowRight' });
 
-    expect(screen.getByRole('heading', { name: 'Este portfolio' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: "STACKSPECT · HackSpain '26" })).toBeInTheDocument();
   });
 
   it('moves focus into the mobile menu and closes it with Escape', () => {

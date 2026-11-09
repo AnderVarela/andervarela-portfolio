@@ -13,10 +13,11 @@ export interface ProfileHighlight {
 
 export function listProfileHighlights(translation: Translation): readonly ProfileHighlight[] {
   const { highlights } = translation.about;
+  const { firstPlaceFigure } = translation.achievements;
 
   return [
-    { figure: '10', description: highlights.thesisHonours },
-    { figure: '2', description: highlights.hackathonsWon },
-    { figure: 'AWS', description: highlights.cloudCertification },
+    { figure: 'Kelea', description: highlights.currentRole },
+    { figure: '3', description: highlights.clientProducts },
+    { figure: firstPlaceFigure, description: highlights.hackathonWins },
   ];
 }

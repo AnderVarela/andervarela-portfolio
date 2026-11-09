@@ -26,11 +26,7 @@ export function listHackathonAwards(translation: Translation): readonly Achievem
   ];
 }
 
-export function listAcademicAndCertifiedMerits(translation: Translation): readonly Achievement[] {
-  const { thesisHonoursTitle, thesisHonoursDetail } = translation.achievements;
-
-  return [
-    { figure: '10', title: thesisHonoursTitle, detail: thesisHonoursDetail },
-    { figure: 'AWS', title: 'AWS Certified Cloud Practitioner' },
-  ];
+/* La Matrícula de Honor del TFM ya figura junto al máster; aquí solo van certificaciones. */
+export function listCertifications(): readonly Achievement[] {
+  return [{ figure: 'AWS', title: 'AWS Certified Cloud Practitioner' }];
 }

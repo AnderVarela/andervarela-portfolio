@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: center;
   padding: var(--section-padding-top) var(--page-padding-x) var(--section-padding-bottom)
-    calc(var(--rail-width) + var(--page-padding-x) + var(--avatar-zone-side));
+    calc(var(--rail-width) + var(--page-padding-x));
 }
 
 .content {
@@ -13,5 +13,5 @@
   display: flex;
   flex-direction: column;
   gap: 36px;
-  max-width: 760px;
+  max-width: 920px;
 }

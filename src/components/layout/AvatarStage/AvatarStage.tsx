@@ -1,15 +1,8 @@
 import type { CSSProperties } from 'react';
 
 import { AvatarPoseImage } from '@/components/avatar/AvatarPoseImage/AvatarPoseImage';
-import { TechnologyOrbit } from '@/components/avatar/TechnologyOrbit/TechnologyOrbit';
-import { AVATAR_POSES } from '@/content/avatarPoses';
-import {
-  SECTION_COUNT,
-  SectionIds,
-  findSectionIndex,
-  getSectionNameKey,
-  type SectionId,
-} from '@/content/sections';
+import { describeAvatarPose, findAvatarPose } from '@/content/avatarPoses';
+import { SECTION_COUNT, findSectionIndex, type SectionId } from '@/content/sections';
 import { useTranslation } from '@/i18n/useTranslation';
 import { formatAsTwoDigits, formatPositionInTotal } from '@/utils/formatting';
 
@@ -20,16 +13,15 @@ interface AvatarStageProps {
 }
 
 /*
- * Hueco que cada sección reserva al avatar en móvil. El avatar va dibujado dentro, con la
- * pose de la sección, y se desplaza con la página; así nunca tapa texto ni botones.
- * El personaje mide lo mismo en todas: el hueco crece lo que pida la pose.
+ * Hueco que reservan al avatar en móvil las secciones que lo llevan. El avatar va dibujado
+ * dentro, con la pose de la sección, y se desplaza con la página; así nunca tapa texto ni botones.
  */
 export function AvatarStage({ sectionId }: AvatarStageProps) {
   const translation = useTranslation();
   const sectionIndex = findSectionIndex(sectionId);
   const sectionPosition = sectionIndex + 1;
-  const pose = AVATAR_POSES[sectionIndex];
-  const poseDescription = translation.avatarPoses[getSectionNameKey(sectionId)];
+  const pose = findAvatarPose(sectionId);
+  const poseDescription = pose ? describeAvatarPose(pose, translation) : '';
   const figureScale = { '--figure-scale': pose?.figureScale ?? 1 } as CSSProperties;
 
   return (
@@ -48,7 +40,6 @@ export function AvatarStage({ sectionId }: AvatarStageProps) {
           className={styles.avatar}
         >
           <AvatarPoseImage pose={pose} isPriority={sectionIndex === 0} />
-          {sectionId === SectionIds.Skills && <TechnologyOrbit poseIndex={sectionIndex} />}
         </div>
       )}
     </div>

@@ -1,3 +1,4 @@
+import { SECTIONS } from '@/content/sections';
 import type { AvatarTimeline } from '@/stores/useScrollStore';
 import { clamp, interpolate } from '@/utils/math';
 import { ViewportModes, type ViewportMode } from '@/utils/viewport';
@@ -40,22 +41,23 @@ const RAIL_WIDTH_BY_MODE: Record<LargeViewportMode, number> = {
   [ViewportModes.Desktop]: 200,
 };
 
-/* Posición horizontal del avatar en cada sección, como fracción del ancho de contenido. */
+/*
+ * Posición horizontal del avatar en cada sección, como fracción del ancho de contenido.
+ * Las secciones sin avatar repiten la de su vecina con avatar: así sale y entra en su sitio.
+ */
 const HORIZONTAL_ANCHOR_BY_SECTION: Record<LargeViewportMode, readonly number[]> = {
-  [ViewportModes.Tablet]: [0.74, 0.2, 0.73, 0.165, 0.5, 0.8, 0.5, 0.2],
-  [ViewportModes.Desktop]: [0.76, 0.2, 0.73, 0.165, 0.5, 0.8, 0.5, 0.2],
+  [ViewportModes.Tablet]: [0.74, 0.74, 0.74, 0.5, 0.2, 0.2, 0.2],
+  [ViewportModes.Desktop]: [0.76, 0.76, 0.76, 0.5, 0.2, 0.2, 0.2],
 };
 const SCALE_BY_SECTION: Record<LargeViewportMode, readonly number[]> = {
-  [ViewportModes.Tablet]: [0.95, 0.88, 0.88, 0.85, 0.85, 0.88, 0.85, 0.88],
-  [ViewportModes.Desktop]: [1.08, 0.98, 0.98, 0.96, 0.96, 0.98, 0.96, 0.98],
+  [ViewportModes.Tablet]: [0.95, 0.95, 0.9, 0.9, 0.88, 0.88, 0.88],
+  [ViewportModes.Desktop]: [1.08, 1.08, 1, 1, 0.98, 0.98, 0.98],
 };
-/*
- * Ancho máximo del avatar en una sección, como fracción del ancho de contenido. En proyectos
- * es su hueco, --avatar-zone-projects de layout.css: así queda centrado en él y no pisa la pista.
- */
-const MAXIMUM_WIDTH_BY_SECTION: Readonly<Record<number, number>> = { 3: 0.33 };
 const DEFAULT_HORIZONTAL_ANCHOR = 0.5;
 const DEFAULT_SCALE = 1;
+
+/* En las secciones sin avatar baja por debajo del borde mientras se desvanece. */
+const HIDDEN_DROP_IN_VIEWPORTS = 0.35;
 
 const POSE_CROSSFADE_START = 0.3;
 const POSE_CROSSFADE_LENGTH = 0.4;
@@ -67,19 +69,16 @@ const POINTER_REACH_IN_VIEWPORT_HEIGHTS = 0.45;
 const BREATHING_AMPLITUDE = 1.6;
 const BREATHING_PERIOD_SECONDS = 4;
 
-const ORBIT_CENTER = { x: 200, y: 70 };
-const ORBIT_RADIUS = { x: 210, y: 34 };
-const ORB_HALF_SIZE = 26;
-const ORBIT_RADIANS_PER_MILLISECOND = 0.0011;
-const ORBIT_ORB_COUNT = 4;
-
 export function computeAvatarSize(viewportHeight: number): AvatarSize {
   const height = viewportHeight * HEIGHT_IN_VIEWPORTS;
 
   return { width: height * WIDTH_TO_HEIGHT_RATIO, height };
 }
 
-/* Dónde descansa el avatar mientras una sección ocupa la pantalla; siempre apoyado abajo. */
+/*
+ * Dónde descansa el avatar mientras una sección ocupa la pantalla: apoyado abajo en las
+ * secciones con avatar y hundido bajo el borde en las demás.
+ */
 export function computeSectionPlacement(
   sectionIndex: number,
   viewport: Viewport,
@@ -89,17 +88,14 @@ export function computeSectionPlacement(
   const horizontalAnchor =
     HORIZONTAL_ANCHOR_BY_SECTION[mode][sectionIndex] ?? DEFAULT_HORIZONTAL_ANCHOR;
   const contentWidth = viewport.width - railWidth;
-  const baseSize = computeAvatarSize(viewport.height);
-  const maximumWidth = MAXIMUM_WIDTH_BY_SECTION[sectionIndex];
-  const scale = Math.min(
-    SCALE_BY_SECTION[mode][sectionIndex] ?? DEFAULT_SCALE,
-    maximumWidth === undefined ? Infinity : (maximumWidth * contentWidth) / baseSize.width,
-  );
-  const avatarHeight = baseSize.height * scale;
+  const scale = SCALE_BY_SECTION[mode][sectionIndex] ?? DEFAULT_SCALE;
+  const avatarHeight = computeAvatarSize(viewport.height).height * scale;
+  const hasAvatar = SECTIONS[sectionIndex]?.hasAvatar ?? false;
+  const drop = hasAvatar ? 0 : viewport.height * HIDDEN_DROP_IN_VIEWPORTS;
 
   return {
     centerX: railWidth + horizontalAnchor * contentWidth,
-    centerY: viewport.height - avatarHeight / 2,
+    centerY: viewport.height - avatarHeight / 2 + drop,
     scale,
   };
 }
@@ -166,17 +162,6 @@ export function computeBreathingOffset(timeInMilliseconds: number): number {
   const breathingPhase = (timeInMilliseconds / 1000 / BREATHING_PERIOD_SECONDS) * 2 * Math.PI;
 
   return Math.sin(breathingPhase) * BREATHING_AMPLITUDE;
-}
-
-/* Posición de un icono de tecnología en la órbita, en coordenadas del lienzo del avatar. */
-export function computeOrbPosition(orbIndex: number, timeInMilliseconds: number): PointerPosition {
-  const angle =
-    timeInMilliseconds * ORBIT_RADIANS_PER_MILLISECOND + (orbIndex * 2 * Math.PI) / ORBIT_ORB_COUNT;
-
-  return {
-    x: ORBIT_CENTER.x + Math.cos(angle) * ORBIT_RADIUS.x - ORB_HALF_SIZE,
-    y: ORBIT_CENTER.y + Math.sin(angle) * ORBIT_RADIUS.y - ORB_HALF_SIZE,
-  };
 }
 
 export function buildPlacementTransform(placement: AvatarPlacement, size: AvatarSize): string {

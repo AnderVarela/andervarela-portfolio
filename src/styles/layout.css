@@ -14,13 +14,9 @@
   --mobile-bar-height: 56px;
   --page-padding-x: 20px;
   --content-width: calc(100vw - var(--rail-width));
-  --avatar-zone-side: 0px;
-  --avatar-zone-projects: 0px;
   --avatar-zone-contact: 0px;
   --section-padding-top: 88px;
   --section-padding-bottom: 120px;
-  --columns-around-avatar: minmax(0, 1fr);
-  --columns-right-offset: 0px;
 
   /* Alto del personaje en móvil, igual en todas las secciones, y el ancho de su imagen. */
   --avatar-figure-height: clamp(240px, 38svh, 330px);
@@ -42,13 +38,9 @@
   :root {
     --rail-width: 72px;
     --page-padding-x: 32px;
-    --avatar-zone-side: calc(var(--content-width) * 0.4);
-    --avatar-zone-projects: calc(var(--content-width) * 0.33);
     --avatar-zone-contact: calc(var(--content-width) * 0.4);
     --section-padding-top: 110px;
     --section-padding-bottom: 72px;
-    --columns-around-avatar: minmax(0, 1fr) minmax(0, 0.9fr) minmax(0, 1fr);
-    --columns-right-offset: 100px;
 
     --decoration-size: 32vw;
 
@@ -72,8 +64,6 @@
     --avatar-zone-contact: calc(var(--content-width) * 0.34);
     --section-padding-top: 120px;
     --section-padding-bottom: 80px;
-    --columns-around-avatar: minmax(0, 1fr) minmax(0, 1.1fr) minmax(0, 1fr);
-    --columns-right-offset: 120px;
 
     --decoration-size: 30vw;
     --heading-giant-size: clamp(64px, min(9.6vw, 13vh), 168px);

@@ -8,9 +8,8 @@ describe('arrangeProjectsForTrack', () => {
 
   it('keeps standalone projects and collapses a group into one item', () => {
     expect(trackItems.map((item) => item.kind)).toEqual([
-      TrackItemKinds.SingleProject,
-      TrackItemKinds.SingleProject,
       TrackItemKinds.ProjectGroup,
+      TrackItemKinds.SingleProject,
       TrackItemKinds.SingleProject,
       TrackItemKinds.SingleProject,
     ]);
@@ -19,6 +18,6 @@ describe('arrangeProjectsForTrack', () => {
   it('keeps the original index of every grouped project', () => {
     const groupItem = trackItems.find((item) => item.kind === TrackItemKinds.ProjectGroup);
 
-    expect(groupItem?.members.map((member) => member.projectIndex)).toEqual([2, 3, 4]);
+    expect(groupItem?.members.map((member) => member.projectIndex)).toEqual([0, 1, 2]);
   });
 });

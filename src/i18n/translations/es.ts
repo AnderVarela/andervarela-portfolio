@@ -9,26 +9,14 @@ const projectTexts: Record<ProjectTextKey, ProjectText> = {
     problem:
       'El frontend se queda bloqueado cada vez que un endpoint del backend no está listo o falla.',
     contribution:
-      'Construí una extensión de Chrome (Manifest V3) que intercepta las peticiones HTTP de cualquier web y devuelve respuestas simuladas, y una SPA de panel de control para gestionar las reglas por colecciones: método y patrón de URL, código de estado, retardo, cabeceras y cuerpo, con importación y exportación. No necesita backend: todo se guarda en el navegador. Fue mi TFM y lo defendí con Matrícula de Honor (10).',
+      'Construí una extensión de Chrome (Manifest V3) que intercepta las peticiones HTTP de cualquier web y devuelve respuestas simuladas, y una SPA de panel de control para gestionar las reglas por colecciones: método y patrón de URL, código de estado, retardo, cabeceras y cuerpo, con importación y exportación. No necesita backend: todo se guarda en el navegador.',
+    outcome:
+      'Lo defendí como TFM con Matrícula de Honor (10). El código es abierto y está en GitHub.',
     awardBadge: 'TFM · Matrícula de Honor',
     screenshotDescriptions: [
       'Panel de control de RequiFy, con las colecciones de reglas y el editor de una respuesta simulada',
       'Popup de RequiFy con una regla activa que cambia los artículos y precios de una cesta de la compra',
       'Formulario de RequiFy para crear una regla nueva',
-    ],
-  },
-  portfolio: {
-    name: 'Este portfolio',
-    shortName: 'Este portfolio',
-    type: 'Web',
-    summary: 'Avatar ilustrado, capas y scroll animado.',
-    problem: 'Un CV en PDF no enseña cómo trabajo en frontend.',
-    contribution:
-      'Esta web: un avatar ilustrado que guía el recorrido y cambia de pose en cada sección, un sistema de capas con animaciones ligadas al scroll, dos idiomas y tema claro y oscuro.',
-    screenshotDescriptions: [
-      'Inicio del portfolio, con el avatar saludando junto al titular',
-      'Sección de experiencia, con el avatar sentado con el portátil',
-      'Sección de skills, con el avatar rodeado de iconos de tecnologías',
     ],
   },
   rubiconWeb: {
@@ -40,6 +28,8 @@ const projectTexts: Record<ProjectTextKey, ProjectText> = {
       'La panadería no tenía un sitio propio donde enseñar sus productos, su horario y cómo llegar.',
     contribution:
       'Construí la web de la panadería: catálogo de productos por categorías con ficha de detalle e ingredientes, reseñas de Google, horario que indica si está abierta en ese momento, avisos puntuales y cómo llegar.',
+    outcome:
+      'Está en producción en panaderiarubicon.es y la panadería mantiene su contenido desde su propio panel.',
     screenshotDescriptions: [
       'Portada de la web de Panadería Rubicón, con el logotipo, el horario de hoy y una foto del mostrador',
       'Ficha de un pan abierta sobre el catálogo, con precio e ingredientes',
@@ -55,6 +45,8 @@ const projectTexts: Record<ProjectTextKey, ProjectText> = {
       'Clasificar a mano las facturas recibidas: abrir cada una, renombrarla y guardarla en la carpeta de su proveedor y trimestre.',
     contribution:
       'Construí una aplicación de escritorio para macOS y Windows: se arrastran PDF o fotos y la app lee con OCR el proveedor, el número, el mes y el año, renombra cada factura y la archiva en su carpeta. Si falta un dato, pregunta; lo que no puede procesar va a revisión manual y nunca sobrescribe nada. Todo se ejecuta en local: ninguna factura sale del equipo.',
+    outcome:
+      'Se acaba la clasificación a mano: se arrastran las facturas y quedan renombradas y archivadas, sin que ningún documento salga del equipo.',
     screenshotDescriptions: [
       'La aplicación pide completar los datos que no pudo leer de una factura, con el documento al lado',
       'Zona para arrastrar facturas y lista de las cuatro que se van a procesar',
@@ -69,7 +61,9 @@ const projectTexts: Record<ProjectTextKey, ProjectText> = {
     problem:
       'Cambiar un precio, el horario o un aviso de la web no puede depender de pedírselo a un desarrollador.',
     contribution:
-      'Construí el panel desde el que la panadería gestiona su web sin tocar código: productos y categorías (alta, edición, orden y visibilidad), portada, franja de aviso con fecha de retirada, horario, equipo, reseñas y contacto. Los cambios se publican al instante.',
+      'Construí el panel desde el que la panadería gestiona su web sin tocar código: productos y categorías (alta, edición, orden y visibilidad), portada, franja de aviso con fecha de retirada, horario, equipo, reseñas y contacto.',
+    outcome:
+      'La panadería cambia precios, horario y avisos por su cuenta, sin pedírselo a un desarrollador, y los cambios se publican al instante.',
     screenshotDescriptions: [
       'Listado de productos del panel, con pestañas por categoría, buscador e interruptor de visibilidad',
       'Gestión de categorías: orden, visibilidad y alta de una categoría nueva',
@@ -85,6 +79,7 @@ const projectTexts: Record<ProjectTextKey, ProjectText> = {
       "Reto de THEKER Robotics en HackSpain '26: que un brazo robótico apile paquetes en un palé sin que se derrumbe y demostrar con datos cuánto mejora la solución.",
     contribution:
       'En equipo construimos una celda simulada en la que un brazo UR10e paletiza cajas vigilando el centro de gravedad, y una plataforma de observabilidad que mide cada episodio: estabilidad, tiempo de ciclo, utilización y eventos, en directo y comparando ejecuciones entre commits. Yo trabajé en la plataforma web.',
+    outcome: "1.er premio del reto de THEKER Robotics en HackSpain '26.",
     awardBadge: '1.er premio',
     screenshotDescriptions: [
       'Panel de un episodio de paletizado: vista cenital y alzado del palé, indicadores y registro de eventos',
@@ -101,6 +96,7 @@ const projectTexts: Record<ProjectTextKey, ProjectText> = {
       "Reto de Denodo en HackUDC '25: consultar los datos de una organización preguntando en lenguaje natural, sin escribir consultas.",
     contribution:
       'En equipo construimos un chat web que envía las preguntas al AI SDK de Denodo y muestra la respuesta con formato y tablas, con historial de conversaciones, y unos scripts que usan Gemini para describir los datos de origen y generar sus vistas en Denodo. Yo me encargué del frontend.',
+    outcome: "1.er premio del reto de Denodo en HackUDC '25.",
     awardBadge: '1.er premio',
     screenshotDescriptions: [
       'Conversación del chat: a la pregunta «qué bases de datos tengo» responde con la lista de tablas y sus relaciones',
@@ -120,9 +116,8 @@ export const spanishTranslation = {
     about: 'Sobre mí',
     experience: 'Experiencia',
     projects: 'Proyectos',
-    achievements: 'Logros',
-    education: 'Estudios',
     skills: 'Skills',
+    background: 'Formación y logros',
     contact: 'Contacto',
   },
   hero: {
@@ -139,11 +134,12 @@ export const spanishTranslation = {
   },
   about: {
     summary:
-      'Soy desarrollador frontend con visión full-stack. Me gusta que el código sea predecible: componentes bien tipados, estado bajo control y un repositorio en el que no entra nada roto. Uso la IA a diario para ir más rápido sin perder calidad.',
+      'Soy desarrollador frontend con visión full-stack. Trabajo para que el código sea predecible: componentes bien tipados, estado bajo control y un repositorio en el que no entra nada roto. Acuerdo los contratos con backend antes de implementar, entrego a clientes reales y uso la IA a diario para ir más rápido sin bajar el listón.',
     highlights: {
-      thesisHonours: 'Matrícula de Honor en el TFM',
-      hackathonsWon: 'hackatones ganados',
-      cloudCertification: 'Certified Cloud Practitioner',
+      currentRole: 'Frontend Developer desde 2025',
+      clientProducts:
+        'productos entregados a un cliente: web, panel de gestión y app de escritorio',
+      hackathonWins: "en HackSpain '26 y HackUDC '25, en equipo",
     },
     spokenLanguagesLabel: 'Idiomas',
     spokenLanguagesSummary: 'Español y gallego (nativos), inglés técnico.',
@@ -153,23 +149,24 @@ export const spanishTranslation = {
     placeAndPeriod: 'A Coruña · may. 2025 – actualidad',
     milestones: {
       uiComponents:
-        'Estandaricé los componentes de UI con React y TypeScript estricto: menos bugs y menos horas de QA.',
+        'Definí la base de componentes de UI con React y TypeScript estricto, para que cada pantalla nueva parta de piezas ya probadas. Resultado: menos bugs y menos horas de QA.',
       globalState:
-        'Monté el estado global con Zustand para evitar re-renderizados innecesarios y datos desincronizados.',
-      repositoryQuality: 'Protegí el repositorio con Husky, Commitlint y Playwright.',
-      apiContracts: 'Hago de puente entre front y back al definir contratos y consumir APIs.',
+        'Diseñé el estado global con Zustand: cada vista se suscribe solo a lo que usa, sin re-renderizados innecesarios ni datos desincronizados.',
+      repositoryQuality:
+        'Puse las reglas para que no entre nada roto en el repositorio: commits validados con Husky y Commitlint, y tests end-to-end con Playwright.',
+      apiContracts:
+        'Acuerdo con backend los contratos de las APIs antes de implementar, para que front y back avancen en paralelo sin bloquearse.',
     },
   },
   achievements: {
-    title: 'Hackatones y logros',
+    title: 'Premios y certificaciones',
     seeProject: 'Ver proyecto',
     firstPlaceFigure: '1.º',
     hackspainDetail: '1.er premio · THEKER Robotics · 36 h',
     hackudcDetail: '1.er premio · reto de Denodo · 36 h',
-    thesisHonoursTitle: 'Matrícula de Honor (10)',
-    thesisHonoursDetail: 'defensa del TFM',
   },
   education: {
+    title: 'Formación',
     mastersTitle: 'Máster Universitario en Ingeniería Informática',
     mastersInstitution: 'Universidade da Coruña',
     mastersDistinction: 'TFM con Matrícula de Honor',
@@ -181,21 +178,34 @@ export const spanishTranslation = {
     testingAndQuality: 'Testing y calidad',
     appliedArtificialIntelligence: 'IA aplicada',
     fullStack: 'Full-stack',
+    principlesTitle: 'Cómo trabajo',
+    principles: {
+      strictTyping: {
+        title: 'Tipado estricto',
+        description: 'TypeScript sin atajos: los errores salen al compilar, no en producción.',
+      },
+      accessibility: {
+        title: 'Accesible desde el inicio',
+        description: 'Teclado, foco visible y lectores de pantalla desde el primer componente.',
+      },
+      performance: {
+        title: 'Rendimiento medido',
+        description:
+          'Imágenes optimizadas, animaciones que no bloquean y estado que no re-renderiza de más.',
+      },
+      testing: {
+        title: 'Tests donde importan',
+        description: 'Unitarios en la lógica y end-to-end en los flujos que no pueden fallar.',
+      },
+    },
   },
   technologies: {
     restApis: 'APIs REST',
     contracts: 'Contratos',
     agentsAndSkills: 'Agentes y skills',
-    tokenOptimisation: 'Optimización de tokens',
   },
   avatarPoses: {
     home: 'Saluda con la mano y sonríe',
-    about: 'Relajado, brazos cruzados',
-    experience: 'Con el portátil',
-    projects: 'Manos en el bolsillo, mira la tarjeta del cursor',
-    achievements: 'Levanta un trofeo',
-    education: 'Con birrete',
-    skills: 'Brazos arriba, con iconos de tecnologías',
     contact: 'Se despide',
   },
   projects: {
@@ -210,6 +220,7 @@ export const spanishTranslation = {
   projectDetail: {
     problem: 'El problema',
     contribution: 'Qué hice',
+    outcome: 'El resultado',
     stack: 'Stack',
     gallery: 'Capturas',
     mainScreenshot: 'Captura principal',
